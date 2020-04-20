@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : PlayerStats
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +28,8 @@ public class PlayerController : PlayerStats
 
     void Movement()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = movementInput.x;
+        float z = movementInput.y;
 
         Vector3 move = transform.right * x + transform.forward * z;
 

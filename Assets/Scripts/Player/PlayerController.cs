@@ -11,13 +11,6 @@ public class PlayerController : PlayerStats
         InitGame();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Movement();
-    }
-
-
     void InitGame()
     {
         OGhealth = health;
@@ -25,14 +18,66 @@ public class PlayerController : PlayerStats
     }
 
 
+    // Update is called once per frame
+    void Update()
+    {
+        Movement();
+        InputDecider();
+        //Rotation();
+    }
+
+
+    void InputDecider()
+    {
+        float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
+
+        if(currentSpeed > allowRotation)
+        {
+            Rotation();
+        }
+        else
+        {
+            dir = Vector3.zero;
+        }
+    }
+
+    void Rotation()
+    {
+
+        Vector3 forward = cam.transform.forward;
+        Vector3 right = cam.transform.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        dir = right * movementInput.x + forward * movementInput.y; 
+        
+
+        if (!aiming)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+        }
+    }
+
+
+
 
     void Movement()
     {
-        float x = movementInput.x;
-        float z = movementInput.y;
+        gravity -= 9.8f * Time.deltaTime;
+        gravity = gravity * gravityMultiplier;
 
-        Vector3 move = transform.right * x + transform.forward * z;
 
-        CC.Move(move * speed * Time.deltaTime);
+        Vector3 moveDir = dir * (speed * Time.deltaTime);
+        moveDir = new Vector3(moveDir.x, gravity, moveDir.z);
+        CC.Move(moveDir);
+
+        if(CC.isGrounded)
+        {
+            gravity = 0;
+        }
     }
 }

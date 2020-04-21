@@ -22,7 +22,23 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e16401e6-6d92-4ad5-a52c-acb31c580690"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""14522139-ead5-487c-856a-b479a0753562"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce31f1b7-ef24-48dc-8350-40285b5e3015"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -46,14 +62,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Punch1"",
                     ""type"": ""Button"",
                     ""id"": ""f0ef61bb-9667-4cbc-9388-9fcc50eeda96"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""ce31f1b7-ef24-48dc-8350-40285b5e3015"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -86,17 +94,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""708542ae-cf00-4b8e-989a-063c3534a3c6"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f3a2399d-8800-4f5b-8ad4-85e8b7635b4d"",
                     ""path"": """",
                     ""interactions"": """",
@@ -114,17 +111,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Punch1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dcf56217-2e29-4665-a294-49b96df6f638"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -226,6 +212,105 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""IJKL"",
+                    ""id"": ""238406c1-6d61-4305-8401-86311b3e8a6e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""fb31801a-8e9e-45ee-a731-eda87c9dbb91"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1bf9e915-7818-451c-ae5c-0155bd8b3316"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""968526b8-5b3a-4eca-b1cf-a18e03e3e017"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""68d7d2bd-b49a-408d-a13f-3cbc556c6889"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bffdb7d4-3cea-4cf1-ad2b-d6c3cfe6f793"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcf56217-2e29-4665-a294-49b96df6f638"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9dbefe24-8037-4231-8c9d-c77a4caf7a16"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""708542ae-cf00-4b8e-989a-063c3534a3c6"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -258,10 +343,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
+        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
         m_Gameplay_Punch1 = m_Gameplay.FindAction("Punch1", throwIfNotFound: true);
-        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_SuperMegaRobotAssemble = m_Gameplay.FindAction("Super Mega Robot Assemble", throwIfNotFound: true);
@@ -315,10 +401,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
+    private readonly InputAction m_Gameplay_Aim;
+    private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Punch;
     private readonly InputAction m_Gameplay_Punch1;
-    private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_Ultimate;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_SuperMegaRobotAssemble;
@@ -327,10 +414,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
+        public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
+        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
         public InputAction @Punch1 => m_Wrapper.m_Gameplay_Punch1;
-        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @SuperMegaRobotAssemble => m_Wrapper.m_Gameplay_SuperMegaRobotAssemble;
@@ -346,6 +434,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
                 @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
@@ -355,9 +449,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Punch1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch1;
                 @Punch1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch1;
                 @Punch1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch1;
-                @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
                 @Ultimate.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
                 @Ultimate.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
                 @Ultimate.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
@@ -374,6 +465,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -383,9 +480,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Punch1.started += instance.OnPunch1;
                 @Punch1.performed += instance.OnPunch1;
                 @Punch1.canceled += instance.OnPunch1;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
                 @Ultimate.started += instance.OnUltimate;
                 @Ultimate.performed += instance.OnUltimate;
                 @Ultimate.canceled += instance.OnUltimate;
@@ -420,10 +514,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnPunch1(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
         void OnUltimate(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnSuperMegaRobotAssemble(InputAction.CallbackContext context);

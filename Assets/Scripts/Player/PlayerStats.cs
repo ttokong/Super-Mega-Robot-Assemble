@@ -10,14 +10,14 @@ public class PlayerStats : MonoBehaviour
     public float health;
     public float ultiPercentage;
 
-   
-    PlayerControls controls;
-
-    public bool aiming;
 
     public float allowRotation;
 
     public float gravityMultiplier;
+
+    public GameObject bulletPrefab;
+
+    public GameObject firePoint;
 
     [HideInInspector]
     public float gravity;
@@ -26,7 +26,15 @@ public class PlayerStats : MonoBehaviour
     public Vector3 dir;
 
     [HideInInspector]
+    public bool shootTrig = false;
+
+    public bool shooting = false;
+
+    [HideInInspector]
     public Vector2 movementInput;
+
+    [HideInInspector]
+    public Vector2 aimInput;
 
     [HideInInspector]
     public float OGhealth;
@@ -35,14 +43,10 @@ public class PlayerStats : MonoBehaviour
     public CharacterController CC;
 
     [HideInInspector]
-    public Camera cam;
+    public PlayerControls controls;
 
-    public void Awake()
-    {
-        controls = new PlayerControls();
-        controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        cam = Camera.main;
-    }
+    [HideInInspector]
+    public Camera cam;
 
     public void TakeDamage(float dmg)
     {

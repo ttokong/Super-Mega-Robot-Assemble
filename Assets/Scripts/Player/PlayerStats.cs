@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerStats : MonoBehaviour
 {
+
     public float speed;
 
     public float health;
@@ -31,6 +32,7 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public bool shootTrig = false;
 
+    [HideInInspector]
     public bool shooting = false;
 
     [HideInInspector]

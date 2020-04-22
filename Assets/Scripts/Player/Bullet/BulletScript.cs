@@ -29,12 +29,21 @@ public class BulletScript : MonoBehaviour
             if (other.tag == "Enemy")
             {
                 other.GetComponent<EnemyParameters>().TakeDamage(damage);
+
+                DestoryBullet();
             }
-
-            Destroy(gameObject);
-
-            GameObject effect = (GameObject)Instantiate(impactExplosion , transform.position, transform.rotation);
-            Destroy(effect, 3f);
+            else
+            {
+                DestoryBullet();
+            }
         }
+    }
+
+    private void DestoryBullet()
+    {
+        Destroy(gameObject);
+
+        GameObject effect = (GameObject)Instantiate(impactExplosion, transform.position, transform.rotation);
+        Destroy(effect, 3f);
     }
 }

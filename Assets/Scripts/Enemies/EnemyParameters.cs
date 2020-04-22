@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyParameters : MonoBehaviour
 {
 
-    public float speed;
-
     public float health;
 
     [HideInInspector]

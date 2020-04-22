@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
-
     #region Singleton
 
     // static makes this -buildmanager- accessible from any other script
@@ -24,13 +22,4 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-
-    /*
-    void SpawnPlayers()
-    {
-        foreach (GameObject player in PlayerManager.instance.players)
-        {
-            player.transform.position = 
-        }
-    }*/
 }

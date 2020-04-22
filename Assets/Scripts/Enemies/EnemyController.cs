@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
 
     NavMeshAgent agent;
 
+    private EnemyParameters e;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class EnemyController : MonoBehaviour
     void InitGame()
     {
         agent = GetComponent<NavMeshAgent>();
+        e = GetComponent<EnemyParameters>();
     }
 
     // Update is called once per frame
@@ -34,20 +37,28 @@ public class EnemyController : MonoBehaviour
 
     void FollowTarget()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
-
-        agent.stoppingDistance = stopRadius;
-
-        if (distance <= aggroRadius)
+        if(e.followTarget)
         {
-            agent.SetDestination(target.position);
+            float distance = Vector3.Distance(target.position, transform.position);
+
+            agent.stoppingDistance = stopRadius;
+
+            if (distance <= aggroRadius)
+            {
+                agent.SetDestination(target.position);
+            }
         }
+        else
+        {
+            agent.SetDestination(agent.transform.position);
+        }
+
     }
 
 
-    void LocateTarget()
+    public void LocateTarget()
     {
-        target = PlayerManager.instance.players[0].transform;
+        target = LevelManager.instance.playersOnScene[0].transform;
     }
 
     void OnDrawGizmosSelected()

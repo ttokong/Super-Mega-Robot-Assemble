@@ -4,6 +4,8 @@ using Photon.Pun;
 
 public class GameSetupController : MonoBehaviour
 {
+    public int playerId;
+
     // this script will be added to any multiplayer scene
     void Start()
     {
@@ -12,8 +14,9 @@ public class GameSetupController : MonoBehaviour
 
     private void CreatePlayer()
     {
-        Debug.Log("Creating Player");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), Vector3.zero, Quaternion.identity);
+        playerId++;
+        Debug.Log("Creating Player" + playerId);
+        PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Player" + playerId), LevelManager.instance.spawnpoints[playerId - 1].position, Quaternion.identity);
     }
 
     // Update is called once per frame

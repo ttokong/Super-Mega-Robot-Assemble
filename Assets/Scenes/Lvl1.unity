@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -150,10 +150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1275809370}
+  - {fileID: 676649938}
+  - {fileID: 1189606827}
+  - {fileID: 292876214}
   playersOnScene: []
 --- !u!4 &9544962
 Transform:
@@ -369,7 +369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &184979681
 Rigidbody:
@@ -493,7 +499,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &273551772
 Rigidbody:
@@ -959,7 +971,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &503026137
 Rigidbody:
@@ -1161,7 +1179,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &610996706
 Rigidbody:
@@ -1285,7 +1309,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &641641674
 Rigidbody:
@@ -1418,8 +1448,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1530,7 +1560,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &731145031
 Rigidbody:
@@ -1893,7 +1929,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &977221259
 Rigidbody:
@@ -2443,8 +2485,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -15, y: 0, z: -2.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1886042830}
+  m_Children: []
   m_Father: {fileID: 37696237}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2652,7 +2693,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &1457868789
 Rigidbody:
@@ -2962,81 +3009,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686441155}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1886042829
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1275809370}
-    m_Modifications:
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2819794589670876651, guid: 9abe5a3d0b729d84ab3193e939008558,
-        type: 3}
-      propertyPath: m_Name
-      value: Player1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9abe5a3d0b729d84ab3193e939008558, type: 3}
---- !u!4 &1886042830 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2819794589670876567, guid: 9abe5a3d0b729d84ab3193e939008558,
-    type: 3}
-  m_PrefabInstance: {fileID: 1886042829}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994459777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,7 +3061,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e2e5a9604823e46a1f90f0937e8542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 1000
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!33 &1994459780
 MeshFilter:
@@ -3343,7 +3321,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!54 &2132661630
 Rigidbody:
@@ -3439,7 +3423,7 @@ PrefabInstance:
     - target: {fileID: 1505545720381654788, guid: dfa97cc4b4d367a4e9edaed2cb8ee516,
         type: 3}
       propertyPath: players
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1505545720381654789, guid: dfa97cc4b4d367a4e9edaed2cb8ee516,
         type: 3}

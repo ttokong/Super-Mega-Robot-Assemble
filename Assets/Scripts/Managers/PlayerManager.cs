@@ -16,5 +16,5 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-    public GameObject[] players;
+    public GameObject[] players = new GameObject[4];
 }

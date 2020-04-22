@@ -35,10 +35,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""ce31f1b7-ef24-48dc-8350-40285b5e3015"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""ShootHold"",
+                    ""type"": ""Value"",
+                    ""id"": ""7361e798-fa95-411e-a7a6-2c618a28ce98"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -281,34 +281,34 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dcf56217-2e29-4665-a294-49b96df6f638"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9dbefe24-8037-4231-8c9d-c77a4caf7a16"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""708542ae-cf00-4b8e-989a-063c3534a3c6"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""681fb48f-4005-4494-aab6-1a6914503988"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ShootHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8504b0a-cb11-48f7-b77a-d55d45227a73"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShootHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -344,7 +344,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
-        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_ShootHold = m_Gameplay.FindAction("ShootHold", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
         m_Gameplay_Punch1 = m_Gameplay.FindAction("Punch1", throwIfNotFound: true);
@@ -402,7 +402,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Aim;
-    private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_ShootHold;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Punch;
     private readonly InputAction m_Gameplay_Punch1;
@@ -415,7 +415,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
-        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @ShootHold => m_Wrapper.m_Gameplay_ShootHold;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
         public InputAction @Punch1 => m_Wrapper.m_Gameplay_Punch1;
@@ -437,9 +437,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
-                @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @ShootHold.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootHold;
+                @ShootHold.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootHold;
+                @ShootHold.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootHold;
                 @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
@@ -468,9 +468,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
+                @ShootHold.started += instance.OnShootHold;
+                @ShootHold.performed += instance.OnShootHold;
+                @ShootHold.canceled += instance.OnShootHold;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -515,7 +515,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
+        void OnShootHold(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
         void OnPunch1(InputAction.CallbackContext context);

@@ -12,17 +12,16 @@ public class PlayerController : PlayerStats
         controls = new PlayerControls();
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
-        //controls.Gameplay.Shoot.performed += _ => Shoot();
-        //controls.Gameplay.ShootHold.performed += a => ShootHold();
+        controls.Gameplay.ShootHold.performed += context => RapidFire(context);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        InitGame();
+        InitSequence();
     }
 
-    void InitGame()
+    void InitSequence()
     {
         OGhealth = health;
         CC = gameObject.GetComponent<CharacterController>();
@@ -34,6 +33,8 @@ public class PlayerController : PlayerStats
     {
         Movement();
         InputDecider();
+
+        StartCoroutine(Shoot());
     }
 
 
@@ -118,22 +119,24 @@ public class PlayerController : PlayerStats
         }
     }
 
-
-    public void Shoot()
+    void RapidFire(InputAction.CallbackContext context)
     {
-        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
+        float value = context.ReadValue<float>();
+        shooting = value >= 0.9f; //if value is more than 0.9, shooting = true, else false.
     }
 
-
-    /*IEnumerator ShootHold()
+    IEnumerator Shoot()
     {
-        if (!shootTrig)
+        if(shooting)
         {
-            shootTrig = true;
-            yield return new WaitForSeconds(0.2f);
-            Shoot();
-            shootTrig = false;
+            if (!shootTrig)
+            {
+                shootTrig = true;
+                Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
+                yield return new WaitForSeconds(1/firerate);
+                shootTrig = false;
+            }
         }
 
-    }*/
+    }
 }

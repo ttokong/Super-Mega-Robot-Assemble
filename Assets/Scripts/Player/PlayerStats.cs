@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     public float speed;
 
     public float health;
+
     public float ultiPercentage;
 
 
@@ -18,6 +19,8 @@ public class PlayerStats : MonoBehaviour
     public GameObject bulletPrefab;
 
     public GameObject firePoint;
+
+    public float firerate;
 
     [HideInInspector]
     public float gravity;

@@ -5,7 +5,12 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     private float bulletSpeed = 100;
+
+    public GameObject impactExplosion;
+
     public float bulletSpeedMultiplier;
+
+    public float damage;
 
     private Rigidbody bullet;
 
@@ -21,8 +26,15 @@ public class BulletScript : MonoBehaviour
     {
         if (other.tag != "Player")
         {
-            Destroy(gameObject);
-        }
+            if (other.tag == "Enemy")
+            {
+                other.GetComponent<EnemyParameters>().TakeDamage(damage);
+            }
 
+            Destroy(gameObject);
+
+            GameObject effect = (GameObject)Instantiate(impactExplosion , transform.position, transform.rotation);
+            Destroy(effect, 3f);
+        }
     }
 }

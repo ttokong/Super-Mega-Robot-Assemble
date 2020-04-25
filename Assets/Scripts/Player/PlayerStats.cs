@@ -17,8 +17,6 @@ public class PlayerStats : MonoBehaviour
 
     public float gravityMultiplier;
 
-    public GameObject bulletPrefab;
-
     public GameObject firePoint;
 
     public float firerate;

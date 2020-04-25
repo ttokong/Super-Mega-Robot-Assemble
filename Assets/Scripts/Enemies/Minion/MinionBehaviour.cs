@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class MinionBehaviour : EnemyParameters
 {
@@ -15,6 +16,7 @@ public class MinionBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        PV = GetComponent<PhotonView>();
         OGhealth = health;
     }
 

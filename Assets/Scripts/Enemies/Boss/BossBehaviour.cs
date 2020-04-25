@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class BossBehaviour : EnemyParameters
 {
@@ -12,6 +13,7 @@ public class BossBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        PV = GetComponent<PhotonView>();
         OGhealth = health;
     }
 

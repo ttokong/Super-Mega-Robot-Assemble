@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3892558652060600949}
   - component: {fileID: 3892558652060600948}
   - component: {fileID: 6476218634322436998}
+  - component: {fileID: -4454500757303654832}
+  - component: {fileID: -3651025725839518243}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Player
@@ -107,8 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac156b010c310ed43870a64177d3b1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactExplosion: {fileID: 1690631632978393224, guid: 2b5a12ad59dd9d84fa70868b2a40c3a5,
-    type: 3}
   bulletSpeedMultiplier: 40
   damage: 50
 --- !u!54 &3892558652060600948
@@ -232,3 +232,40 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-4454500757303654832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892558652060600971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -3651025725839518243}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-3651025725839518243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892558652060600971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1007797582892336944}
   - component: {fileID: 1007797582892336951}
   - component: {fileID: 1007797582892336950}
+  - component: {fileID: 5065544597252853951}
+  - component: {fileID: 4202783108989220647}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Enemy
@@ -108,7 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTarget: 0
+  targetRadiusMin: 0
+  targetRadiusMax: 0
   health: 300
+  wanderTimer: 0
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
 --- !u!114 &1007797582892336950
 MonoBehaviour:
@@ -124,6 +132,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopRadius: 2
   aggroRadius: 40
+--- !u!114 &5065544597252853951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007797582892336949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4202783108989220647}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4202783108989220647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007797582892336949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &1007797583059685097
 GameObject:
   m_ObjectHideFlags: 0

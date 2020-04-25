@@ -9,9 +9,13 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-    private void Awake()
+    private void OnEnable()
     {
-        instance = this;
+        if(LevelManager.instance == null)
+        {
+            LevelManager.instance = this;
+        }
+
     }
 
     #endregion

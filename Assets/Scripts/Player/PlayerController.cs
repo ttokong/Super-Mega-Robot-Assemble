@@ -148,7 +148,7 @@ public class PlayerController : PlayerStats
             if (!shootTrig)
             {
                 shootTrig = true;
-                PV.RPC("RPC_Fire", RpcTarget.AllBuffered);
+                PV.RPC("RPC_Fire", RpcTarget.All);
                 yield return new WaitForSeconds(1/firerate);
                 shootTrig = false;
             }
@@ -160,6 +160,6 @@ public class PlayerController : PlayerStats
     private void RPC_Fire()
     {
         Debug.Log("Fire");
-        PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs","Bullets", "Bullet"), firePoint.transform.position, transform.rotation);
+        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
     }
 }

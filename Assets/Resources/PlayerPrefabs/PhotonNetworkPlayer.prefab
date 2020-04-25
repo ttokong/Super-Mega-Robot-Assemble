@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 548443295089887639}
   m_Layer: 0
   m_Name: Firepoint
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,8 @@ MonoBehaviour:
   ultiPercentage: 0
   allowRotation: 0.1
   gravityMultiplier: 0.65
+  bulletPrefab: {fileID: 3892558652060600971, guid: f6342bba944f9db4b830a5f447108502,
+    type: 3}
   firePoint: {fileID: 548443295089887632}
   firerate: 7
   gravity: 0

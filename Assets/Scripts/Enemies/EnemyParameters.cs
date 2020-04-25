@@ -21,6 +21,9 @@ public class EnemyParameters : MonoBehaviour
 
     public float health;
 
+    [HideInInspector]
+    public bool Wandering;
+
     public float wanderTimer;
 
     [HideInInspector]
@@ -31,6 +34,9 @@ public class EnemyParameters : MonoBehaviour
 
     [HideInInspector]
     public float OGhealth;
+
+    [HideInInspector]
+    public EnemyController ec;
 
     [PunRPC]
     public void RPC_TakeDamage(float dmg)

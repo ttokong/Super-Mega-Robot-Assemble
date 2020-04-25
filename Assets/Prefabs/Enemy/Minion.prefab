@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
   followTarget: 0
   targetRadiusMin: 0
   targetRadiusMax: 0
@@ -130,8 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da76ccee59b16f84cb03c7713dd77733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopRadius: 2
-  aggroRadius: 40
+  stopRadius: 4
 --- !u!114 &5065544597252853951
 MonoBehaviour:
   m_ObjectHideFlags: 0

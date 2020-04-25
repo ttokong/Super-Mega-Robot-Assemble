@@ -22,19 +22,9 @@ public class LevelManager : MonoBehaviour
 
     public Transform[] spawnpoints;
 
-    public GameObject[] playersOnScene;
-
-
     private void Start()
     {
-        playersOnScene = new GameObject[4];
-        PlayerManager.instance.AllocatePlayers();
+
     }
 
-
-    public void SpawnPlayer(int playerid)
-    {
-        GameObject playerSpawned = (GameObject)Instantiate(PlayerManager.instance.playerPrefabs[playerid], spawnpoints[playerid].position, transform.rotation);
-        playersOnScene[playerid] = playerSpawned;
-    }
 }

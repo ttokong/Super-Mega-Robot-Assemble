@@ -17,6 +17,8 @@ public class MinionBehaviour : EnemyParameters
     void InitSequence()
     {
         PV = GetComponent<PhotonView>();
+        agent = GetComponent<NavMeshAgent>();
+        timer = wanderTimer;
         OGhealth = health;
     }
 
@@ -24,7 +26,7 @@ public class MinionBehaviour : EnemyParameters
     void Update()
     {
         DeathTrigger();
-        //ChangeLocation();
+        ChangeLocation();
     }
 
     void OnDrawGizmosSelected()
@@ -35,45 +37,23 @@ public class MinionBehaviour : EnemyParameters
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, targetRadiusMin);
     }
-    /*
-    void GenerateDirection()
-    {
-        Vector3 dir = Vector3.zero;
-        while(dir == Vector3.zero)
-        {
-            dir = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
-        }
 
-        dir = dir.normalized;
-
-        //Assuming the small circle radius is 5 and the large radius is 10.
-        float Magnitude = Random.Range(targetRadiusMin, targetRadiusMax);
-
-        //Create you spawn Vector
-        Vector3 targetLocation = dir * Magnitude;
-        //Height Vector, ten high (change to what you want).
-        Height_Vector = Vector3(0, 10, 0);
-        //Use Spawn Vector in relation to character position to get spawn position.
-        //and adjust with the Height_Vector.
-        Spawn_Position = Character.transform.position + Spawn_Vector + Height_Vector;
-    }
     void ChangeLocation()
     {
         timer += Time.deltaTime;
 
         if (timer >= wanderTimer)
         {
+            Wandering = true;
+            if (agent.isStopped)
+            {
+                agent.isStopped = false;
+            }
+
             Vector3 newPos = RandomNavSphere(transform.position, targetRadiusMax, -1);
             agent.SetDestination(newPos);
             timer = 0;
         }
-    }
-
-    // Use this for initialization
-    void OnEnable()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        timer = wanderTimer;
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
@@ -82,10 +62,9 @@ public class MinionBehaviour : EnemyParameters
 
         randDirection += origin;
 
-        NavMeshHit navHit;
 
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+        NavMesh.SamplePosition(randDirection, out NavMeshHit navHit, dist, layermask);
 
         return navHit.position;
-    }*/
+    }
 }

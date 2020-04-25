@@ -154,7 +154,6 @@ MonoBehaviour:
   - {fileID: 676649938}
   - {fileID: 1189606827}
   - {fileID: 292876214}
-  playersOnScene: []
 --- !u!4 &9544962
 Transform:
   m_ObjectHideFlags: 0
@@ -499,6 +498,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Minion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007797582892336950, guid: 04f665e83f2848340861541385e54848,
+        type: 3}
+      propertyPath: lookForClosest
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007797582892336951, guid: 04f665e83f2848340861541385e54848,
+        type: 3}
+      propertyPath: targetRadiusMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007797582892336951, guid: 04f665e83f2848340861541385e54848,
+        type: 3}
+      propertyPath: targetRadiusMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007797582892336951, guid: 04f665e83f2848340861541385e54848,
+        type: 3}
+      propertyPath: followTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007797582892336951, guid: 04f665e83f2848340861541385e54848,
+        type: 3}
+      propertyPath: wanderTimer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5065544597252853951, guid: 04f665e83f2848340861541385e54848,
         type: 3}
@@ -2473,7 +2497,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopRadius: 6
-  aggroRadius: 40
 --- !u!114 &1994459779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2491,10 +2514,12 @@ MonoBehaviour:
   targetRadiusMin: 0
   targetRadiusMax: 0
   health: 1000
+  Wandering: 0
   wanderTimer: 0
   target: {fileID: 0}
   agent: {fileID: 0}
   OGhealth: 0
+  ec: {fileID: 0}
 --- !u!33 &1994459780
 MeshFilter:
   m_ObjectHideFlags: 0

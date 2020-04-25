@@ -43,6 +43,8 @@ MonoBehaviour:
   - RPC_Fire
   - RPC_LoadedGameScene
   - RPC_TakeDamage
+  - DisableButtons
+  - EnableButtons
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

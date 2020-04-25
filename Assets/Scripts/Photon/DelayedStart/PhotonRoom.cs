@@ -64,8 +64,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         readyToCount = false;
         readyToCount = false;
         lessThanMaxPlayers = startingTime;
-        atMaxPlayers = 6;
+        atMaxPlayers = 5.9f;
         timeToStart = startingTime;
+        PhotonLobby.lobby.WaitingForPlayers.text = "Waiting for Players " + playersInRoom + "/" + MultiPlayerSettings.multiPlayerSetting.maxPlayers;
     }
 
     // Update is called once per frame
@@ -81,16 +82,18 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
             {
                 if (readyToStart)
                 {
+                    PhotonLobby.lobby.GameStarting.gameObject.SetActive(true);
                     atMaxPlayers -= Time.deltaTime;
                     lessThanMaxPlayers = atMaxPlayers;
                     timeToStart = atMaxPlayers;
                 }
                 else if (readyToCount)
                 {
+                    PhotonLobby.lobby.GameStarting.gameObject.SetActive(false);
                     lessThanMaxPlayers -= Time.deltaTime;
                     timeToStart = lessThanMaxPlayers;
                 }
-                Debug.Log("Display time to start to the players " + timeToStart);
+                PhotonLobby.lobby.GameStarting.text = "Game Starting in: " + timeToStart.ToString("F0");
                 if (timeToStart <= 0)
                 {
                     StartGame();
@@ -108,8 +111,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         myNumberInRoom = PlayerInfo.instance.mySelectedCharacter + 1;
         PhotonNetwork.NickName = myNumberInRoom.ToString();
         Debug.Log("You are now in-game as Player " + PhotonNetwork.NickName);
+        PhotonLobby.lobby.WaitingForPlayers.text = "Waiting for Players " + playersInRoom + "/" + MultiPlayerSettings.multiPlayerSetting.maxPlayers;
 
-        if(MultiPlayerSettings.multiPlayerSetting.delayStart)
+        if (MultiPlayerSettings.multiPlayerSetting.delayStart)
         {
             Debug.Log("Displayer players in room out of max players possible (" + 
                 playersInRoom + ":" + MultiPlayerSettings.multiPlayerSetting.maxPlayers + ")");
@@ -138,7 +142,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         Debug.Log("A new player had joined the room");
         photonPlayers = PhotonNetwork.PlayerList;
         playersInRoom++;
-        if(MultiPlayerSettings.multiPlayerSetting.delayStart)
+        PhotonLobby.lobby.WaitingForPlayers.text = "Waiting for Players " + playersInRoom + "/" + MultiPlayerSettings.multiPlayerSetting.maxPlayers;
+        if (MultiPlayerSettings.multiPlayerSetting.delayStart)
         {
             Debug.Log("Displayer players in room out of max players possible (" + playersInRoom +
                 ":" + MultiPlayerSettings.multiPlayerSetting.maxPlayers + ")");
@@ -172,7 +177,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         lessThanMaxPlayers = startingTime;
         timeToStart = startingTime;
-        atMaxPlayers = 6;
+        atMaxPlayers = 5.9f;
         readyToCount = false;
         readyToStart = false;
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,9 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public GameObject playerButton1;
     public GameObject playButton;
     public GameObject cancelButton;
+
+    public Text WaitingForPlayers;
+    public Text GameStarting;
 
     private void Awake()
     {
@@ -65,6 +69,9 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("Cancel Button was clicked");
         playButton.SetActive(true);
         cancelButton.SetActive(false);
-        PhotonNetwork.LeaveLobby();
+        PhotonRoom.room.playersInRoom--;
+        WaitingForPlayers.text = "Waiting for Players " + PhotonRoom.room.playersInRoom + "/" + MultiPlayerSettings.multiPlayerSetting.maxPlayers;
+        GameStarting.gameObject.SetActive(false);
+        PhotonNetwork.LeaveRoom();
     }
 }

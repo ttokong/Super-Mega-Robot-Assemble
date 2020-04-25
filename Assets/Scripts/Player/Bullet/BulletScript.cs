@@ -14,37 +14,51 @@ public class BulletScript : MonoBehaviour
 
     public float damage;
 
+    public GameObject impactExplosion;
+
     private Rigidbody bullet;
 
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        bullet = gameObject.GetComponent<Rigidbody>();
+        if(PV.IsMine)
+        {
+            bullet = gameObject.GetComponent<Rigidbody>();
 
-        bulletSpeed *= bulletSpeedMultiplier;
+            bulletSpeed *= bulletSpeedMultiplier;
+        }
+
     }
 
     private void Update()
     {
-        bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
+        if (PV.IsMine)
+        {
+            bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player")
+        if (PV.IsMine)
         {
-            if (other.tag == "Enemy")
+            if (other.tag != "Player")
             {
-                other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
-                Debug.Log("Damage");
+                if (other.tag == "Enemy")
+                {
+                    other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+                    Debug.Log("Damage");
 
-                PV.RPC("DestroyBullet", RpcTarget.AllBuffered);
-            }
-            else
-            {
-                PV.RPC("DestroyBullet", RpcTarget.AllBuffered);
+                    PV.RPC("DestroyBullet", RpcTarget.All);
+                }
+                else
+                {
+                    PV.RPC("DestroyBullet", RpcTarget.All);
+                }
             }
         }
+
     }
 
     [PunRPC]
@@ -52,7 +66,7 @@ public class BulletScript : MonoBehaviour
     {
         Destroy(gameObject);
 
-        GameObject effect = PhotonNetwork.Instantiate(Path.Combine("Effects", "BulletExplosion"), transform.position, transform.rotation);
+        GameObject effect = Instantiate(impactExplosion, transform.position, transform.rotation);
         Destroy(effect, 3f);
     }
 }

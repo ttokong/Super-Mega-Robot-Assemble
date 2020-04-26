@@ -21,43 +21,32 @@ public class BulletScript : MonoBehaviour
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        if(PV.IsMine)
-        {
-            bullet = gameObject.GetComponent<Rigidbody>();
 
-            bulletSpeed *= bulletSpeedMultiplier;
-        }
+        bullet = gameObject.GetComponent<Rigidbody>();
 
+        bulletSpeed *= bulletSpeedMultiplier;
     }
 
     private void Update()
     {
-        if (PV.IsMine)
-        {
-            bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
-        }
-
+        bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PV.IsMine)
+        if (other.tag != "Player" && other.tag != "Bullet")
         {
-            if (other.tag != "Player" && other.tag != "Bullet")
+            if (other.tag == "Enemy")
             {
-                if (other.tag == "Enemy")
-                {
-                    other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+                other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
 
-                    PV.RPC("DestroyBullet", RpcTarget.All);
-                }
-                else
-                {
-                    PV.RPC("DestroyBullet", RpcTarget.All);
-                }
+                PV.RPC("DestroyBullet", RpcTarget.All);
+            }
+            else
+            {
+                PV.RPC("DestroyBullet", RpcTarget.All);
             }
         }
-
     }
 
     [PunRPC]

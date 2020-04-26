@@ -21,43 +21,33 @@ public class EnemyBullet : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
 
-        if (PV.IsMine)
-        {
-            bullet = gameObject.GetComponent<Rigidbody>();
+        bullet = gameObject.GetComponent<Rigidbody>();
 
-            bulletSpeed *= bulletSpeedMultiplier;
-        }
+        bulletSpeed *= bulletSpeedMultiplier;
 
     }
 
     private void Update()
     {
-        if (PV.IsMine)
-        {
-            bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
-        }
+        bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PV.IsMine)
+        if (other.tag != "Enemy" && other.tag != "Bullet")
         {
-            if (other.tag != "Enemy" && other.tag != "Bullet")
+            if (other.tag == "Player")
             {
-                if (other.tag == "Player")
-                {
-                    other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
+                other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
 
-                    PV.RPC("DestroyBullet", RpcTarget.All);
-                }
-                else
-                {
-                    PV.RPC("DestroyBullet", RpcTarget.All);
-                }
+                PV.RPC("DestroyBullet", RpcTarget.All);
+            }
+            else
+            {
+                PV.RPC("DestroyBullet", RpcTarget.All);
             }
         }
-
     }
 
     [PunRPC]

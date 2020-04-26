@@ -1282,6 +1282,11 @@ MonoBehaviour:
   Arms_L: {fileID: 840792598}
   Arms_R: {fileID: 1617273526}
   Torso: {fileID: 954299119}
+  playerID: 1
+  health: 100
+  allowRotation: 0.1
+  speed: 10
+  gravityMultiplier: 0.65
 --- !u!114 &651455187
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -43,14 +43,14 @@ public class RobotController : MonoBehaviour
     void InitSequence()
     {
         OGhealth = health;
-        PV = GetComponent<PhotonView>();
+        //PV = GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        if (PV.IsMine)
-        {
+        //if (PV.IsMine)
+        //{
             if (PhotonRoom.room.myNumberInRoom == 1)
             {
                 Movement();
@@ -58,7 +58,7 @@ public class RobotController : MonoBehaviour
 
 
             InputDecider();                             // dont touch this thanks
-        }
+        //}
 
     }
 

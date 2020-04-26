@@ -85,8 +85,16 @@ public class RobotController : MonoBehaviour
         right.Normalize();
 
         dir = right * movementInput.x + forward * movementInput.y;
+        if (playerID == 1)
+        {
+            Legs.transform.rotation = Quaternion.Slerp(Legs.transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+        }
+        else if (playerID == 2)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+        }
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+        
     }
 
     void Movement()

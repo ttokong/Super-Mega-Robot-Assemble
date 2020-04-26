@@ -49,25 +49,31 @@ public class RobotController : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        InputDecider();                             // dont touch this thanks
+        if (PV.IsMine)
+        {
+            if (PhotonRoom.room.myNumberInRoom == 1)
+            {
+                Movement();
+            }
+
+
+            InputDecider();                             // dont touch this thanks
+        }
+
     }
 
 
     void InputDecider()
     {
-        if (playerID == 1 || playerID == 2)
-        {
-            float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
+        float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
 
-            if (currentSpeed > allowRotation)                   //if u exceed a certain speed u will rotate basically
-            {
-                Rotation();
-            }
-            else
-            {
-                dir = Vector3.zero;                             //if not moving then dont rotate
-            }
+        if (currentSpeed > allowRotation)                   //if u exceed a certain speed u will rotate basically
+        {
+            Rotation();
+        }
+        else
+        {
+            dir = Vector3.zero;                             //if not moving then dont rotate
         }
     }
 
@@ -85,13 +91,13 @@ public class RobotController : MonoBehaviour
         right.Normalize();
 
         dir = right * movementInput.x + forward * movementInput.y;
-        if (playerID == 1)
+        if (PhotonRoom.room.myNumberInRoom == 1)
         {
             Legs.transform.rotation = Quaternion.Slerp(Legs.transform.rotation, Quaternion.LookRotation(dir), 0.15F);
         }
-        else if (playerID == 2)
+        else if (PhotonRoom.room.myNumberInRoom == 2)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+            Torso.transform.rotation = Quaternion.Slerp(Torso.transform.rotation, Quaternion.LookRotation(dir), 0.15F);
         }
 
         

@@ -1282,7 +1282,7 @@ MonoBehaviour:
   Arms_L: {fileID: 840792598}
   Arms_R: {fileID: 1617273526}
   Torso: {fileID: 954299119}
-  playerID: 1
+  playerID: 2
   health: 100
   allowRotation: 0.1
   speed: 10
@@ -4164,7 +4164,7 @@ PrefabInstance:
     - target: {fileID: 4075032300234468785, guid: 1808f7ea131e36747829b3f3379f1f98,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4075032300234468787, guid: 1808f7ea131e36747829b3f3379f1f98,
         type: 3}

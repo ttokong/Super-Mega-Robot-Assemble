@@ -1,49 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class BulletScript : MonoBehaviour
 {
-    private float bulletSpeed = 100;
+    private PhotonView PV;
 
-    public GameObject impactExplosion;
+    private float bulletSpeed = 100;
 
     public float bulletSpeedMultiplier;
 
     public float damage;
 
+    public GameObject impactExplosion;
+
     private Rigidbody bullet;
 
     void Start()
     {
-        bulletSpeed *= bulletSpeedMultiplier;
+        PV = GetComponent<PhotonView>();
 
         bullet = gameObject.GetComponent<Rigidbody>();
+
+        bulletSpeed *= bulletSpeedMultiplier;
+    }
+
+    private void Update()
+    {
         bullet.velocity = transform.forward * bulletSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player")
+        if (other.tag != "Player" && other.tag != "Bullet")
         {
             if (other.tag == "Enemy")
             {
-                other.GetComponent<EnemyParameters>().TakeDamage(damage);
+                other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
 
-                DestoryBullet();
+                PV.RPC("DestroyBullet", RpcTarget.All);
             }
             else
             {
-                DestoryBullet();
+                PV.RPC("DestroyBullet", RpcTarget.All);
             }
         }
     }
 
-    private void DestoryBullet()
+    [PunRPC]
+    private void DestroyBullet()
     {
-        Destroy(gameObject);
+        Destroy(PV.gameObject);
 
-        GameObject effect = (GameObject)Instantiate(impactExplosion, transform.position, transform.rotation);
+        GameObject effect = Instantiate(impactExplosion, transform.position, transform.rotation);
         Destroy(effect, 3f);
     }
 }

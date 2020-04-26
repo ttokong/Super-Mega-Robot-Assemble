@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class EnemyParameters : MonoBehaviour
 {
+
+    #region PhotonView
+
+    [HideInInspector]
+    public PhotonView PV;
+
+    #endregion
 
     public bool followTarget;
 
@@ -13,7 +21,6 @@ public class EnemyParameters : MonoBehaviour
 
     public float health;
 
-    public float wanderTimer;
 
     [HideInInspector]
     public Transform target;
@@ -24,7 +31,11 @@ public class EnemyParameters : MonoBehaviour
     [HideInInspector]
     public float OGhealth;
 
-    public void TakeDamage(float dmg)
+    [HideInInspector]
+    public EnemyController ec;
+
+    [PunRPC]
+    public void RPC_TakeDamage(float dmg)
     {
         health -= dmg;
     }
@@ -33,8 +44,13 @@ public class EnemyParameters : MonoBehaviour
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
+            PV.RPC("Dead", RpcTarget.All);
         }
     }
 
+    [PunRPC]
+    public void Dead()
+    {
+        Destroy(gameObject);
+    }
 }

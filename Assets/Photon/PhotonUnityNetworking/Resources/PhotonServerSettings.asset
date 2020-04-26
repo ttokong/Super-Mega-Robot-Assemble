@@ -16,9 +16,9 @@ MonoBehaviour:
     AppIdRealtime: 783b6028-d904-47cc-8f5e-579105eaaaba
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 
+    AppVersion: 0
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: asia
     Server: 
     Port: 0
     Protocol: 0
@@ -32,10 +32,20 @@ MonoBehaviour:
   StartInOfflineMode: 0
   RpcList:
   - ClickRpc
+  - Dead
+  - DestroyBullet
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - RPC_AddCharacter
+  - RPC_CreatePlayer
+  - RPC_Fire
+  - RPC_LoadedGameScene
+  - RPC_TakeDamage
+  - DisableButtons
+  - EnableButtons
+  - RPC_PlayerTakeDamage
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
-  DevRegionSetOnce: 0
+  ShowSettings: 1
+  DevRegionSetOnce: 1

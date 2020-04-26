@@ -7,10 +7,6 @@ public class EnemyController : MonoBehaviour
 {
     public float stopRadius;
 
-    public float aggroRadius;
-
-    Transform target;
-
     NavMeshAgent agent;
 
     private EnemyParameters e;
@@ -19,7 +15,6 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LocateTarget();
         InitGame();
     }
 
@@ -27,6 +22,10 @@ public class EnemyController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         e = GetComponent<EnemyParameters>();
+
+        agent.stoppingDistance = stopRadius;
+
+        LocateRandomTarget();
     }
 
     // Update is called once per frame
@@ -37,35 +36,23 @@ public class EnemyController : MonoBehaviour
 
     void FollowTarget()
     {
-        if(e.followTarget)
+        if (e.followTarget)
         {
-            float distance = Vector3.Distance(target.position, transform.position);
-
-            agent.stoppingDistance = stopRadius;
-
-            if (distance <= aggroRadius)
-            {
-                agent.SetDestination(target.position);
-            }
+            agent.SetDestination(e.target.position);
         }
-        else
-        {
-            agent.SetDestination(agent.transform.position);
-        }
-
     }
 
-
-    public void LocateTarget()
+    public void LocateRandomTarget()
     {
-        target = LevelManager.instance.playersOnScene[0].transform;
+        // find gameobject with tag "Player"
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        //targetting the selected random player
+        e.target = players[Random.Range(0, PhotonRoom.room.playersInRoom - 1)].transform;
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, aggroRadius);
-
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, stopRadius);
     }

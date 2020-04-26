@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Photon.Pun;
+using System.IO;
 
 public class PlayerController : PlayerStats
 {
+
 
     void Awake()
     {
@@ -24,6 +27,7 @@ public class PlayerController : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
+        PV = GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }
 
@@ -31,10 +35,17 @@ public class PlayerController : PlayerStats
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        InputDecider();
 
-        StartCoroutine(Shoot());
+        if (PV.IsMine)
+        {
+            Movement();
+            InputDecider();
+
+            DeathTrigger();
+
+            StartCoroutine(Shoot());
+        }
+
     }
 
 
@@ -132,11 +143,18 @@ public class PlayerController : PlayerStats
             if (!shootTrig)
             {
                 shootTrig = true;
-                Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
+                PV.RPC("RPC_Fire", RpcTarget.All);
                 yield return new WaitForSeconds(1/firerate);
                 shootTrig = false;
             }
         }
 
+    }
+
+    [PunRPC]
+    private void RPC_Fire()
+    {
+        Debug.Log("Fire");
+        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
     }
 }

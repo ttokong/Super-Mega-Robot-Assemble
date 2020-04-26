@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1007797582892336944}
   - component: {fileID: 1007797582892336951}
   - component: {fileID: 1007797582892336950}
+  - component: {fileID: 5065544597252853951}
+  - component: {fileID: 4202783108989220647}
   m_Layer: 0
   m_Name: Minion
   m_TagString: Enemy
@@ -34,6 +36,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1007797583059685098}
+  - {fileID: 5756936216707615583}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -55,7 +58,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.75
-  m_Speed: 7
+  m_Speed: 10
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 2000
@@ -108,8 +111,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PV: {fileID: 0}
+  followTarget: 0
+  targetRadiusMin: 5
+  targetRadiusMax: 20
   health: 300
+  target: {fileID: 0}
+  agent: {fileID: 0}
   OGhealth: 0
+  ec: {fileID: 0}
+  actionID: 0
+  attackTimer: 3
+  actionTimer: 3
+  actionComplete: 1
+  firerate: 8
+  enemyBullet: {fileID: 4760877971433636538, guid: 1b6069a55092669439e7d404b9c5b646,
+    type: 3}
+  firePoint: {fileID: 6617157041884362749}
 --- !u!114 &1007797582892336950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +140,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da76ccee59b16f84cb03c7713dd77733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopRadius: 2
-  aggroRadius: 40
+  stopRadius: 4
+--- !u!114 &5065544597252853951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007797582892336949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4202783108989220647}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4202783108989220647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007797582892336949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &1007797583059685097
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,3 +256,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &6617157041884362749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5756936216707615583}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5756936216707615583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617157041884362749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.131, z: 0.722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1007797582892336910}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

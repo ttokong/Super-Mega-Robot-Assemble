@@ -16,16 +16,4 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-    public int players;
-
-    public GameObject[] playerPrefabs;
-
-
-    public void AllocatePlayers()
-    {
-        for (int i = 0; i < players; i++)
-        {
-            LevelManager.instance.SpawnPlayer(i);   
-        }
-    }
 }

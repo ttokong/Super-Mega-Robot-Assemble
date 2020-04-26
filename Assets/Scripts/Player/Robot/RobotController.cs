@@ -12,13 +12,21 @@ public class RobotController : MonoBehaviour
 
     public int playerID;
 
+    public float health;
+    private float OGhealth;
 
+
+    private PhotonView PV;
+    private CharacterController CC;
     private PlayerControls controls;
     private Camera cam;
     public float allowRotation;
     private Vector2 movementInput;
     private Vector3 dir;
 
+    public float speed;
+    private float gravity;
+    public float gravityMultiplier;
 
     void Awake()
     {
@@ -27,15 +35,28 @@ public class RobotController : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();        
     }
 
+    void Start()
+    {
+        InitSequence();
+    }
+
+    void InitSequence()
+    {
+        OGhealth = health;
+        PV = GetComponent<PhotonView>();
+        CC = gameObject.GetComponent<CharacterController>();
+    }
+
     void Update()
     {
+        Movement();
         InputDecider();                             // dont touch this thanks
     }
 
 
     void InputDecider()
     {
-        if (playerID == 1 && playerID == 2)
+        if (playerID == 1 || playerID == 2)
         {
             float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
 
@@ -66,6 +87,23 @@ public class RobotController : MonoBehaviour
         dir = right * movementInput.x + forward * movementInput.y;
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+    }
+
+    void Movement()
+    {
+        gravity -= 9.8f * Time.deltaTime;
+        gravity *= gravityMultiplier;
+
+
+        Vector3 moveDir = dir * (speed * Time.deltaTime);
+        moveDir = new Vector3(moveDir.x, gravity, moveDir.z);
+
+        CC.Move(moveDir);
+
+        if (CC.isGrounded)
+        {
+            gravity = 0;
+        }
     }
 
 

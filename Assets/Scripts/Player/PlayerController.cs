@@ -8,13 +8,6 @@ using System.IO;
 public class PlayerController : PlayerStats
 {
 
-    #region PhotonView
-
-    private PhotonView PV;
-    private AvatarSetup AS;
-
-    #endregion
-
 
     void Awake()
     {
@@ -47,6 +40,8 @@ public class PlayerController : PlayerStats
         {
             Movement();
             InputDecider();
+
+            DeathTrigger();
 
             StartCoroutine(Shoot());
         }

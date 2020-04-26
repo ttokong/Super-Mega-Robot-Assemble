@@ -1,10 +1,20 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerStats : MonoBehaviour
 {
+    #region PhotonView
+
+    [HideInInspector]
+    public PhotonView PV;
+    [HideInInspector]
+    public AvatarSetup AS;
+
+    #endregion
+
 
     public float speed;
 
@@ -53,9 +63,24 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public Camera cam;
 
-    public void TakeDamage(float dmg)
+    [PunRPC]
+    public void RPC_PlayerTakeDamage(float dmg)
     {
-        health -= dmg;
+        health -= dmg; 
+    }
+
+    public void DeathTrigger()
+    {
+        if (health <= 0)
+        {
+            PV.RPC("Dead", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void Dead()
+    {
+        Destroy(gameObject);
     }
 
     public void OnEnable()

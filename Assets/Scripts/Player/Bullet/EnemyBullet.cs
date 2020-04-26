@@ -1,10 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using System.IO;
 
-public class BulletScript : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     private PhotonView PV;
 
@@ -21,7 +20,8 @@ public class BulletScript : MonoBehaviour
     void Start()
     {
         PV = GetComponent<PhotonView>();
-        if(PV.IsMine)
+
+        if (PV.IsMine)
         {
             bullet = gameObject.GetComponent<Rigidbody>();
 
@@ -43,11 +43,11 @@ public class BulletScript : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            if (other.tag != "Player" && other.tag != "Bullet")
+            if (other.tag != "Enemy" && other.tag != "Bullet")
             {
-                if (other.tag == "Enemy")
+                if (other.tag == "Player")
                 {
-                    other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+                    other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
 
                     PV.RPC("DestroyBullet", RpcTarget.All);
                 }

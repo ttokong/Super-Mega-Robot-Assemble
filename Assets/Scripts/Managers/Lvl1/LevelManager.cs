@@ -22,9 +22,5 @@ public class LevelManager : MonoBehaviour
 
     public Transform[] spawnpoints;
 
-    private void Start()
-    {
-
-    }
 
 }

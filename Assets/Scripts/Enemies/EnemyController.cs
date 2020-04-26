@@ -7,8 +7,6 @@ public class EnemyController : MonoBehaviour
 {
     public float stopRadius;
 
-    GameObject target;
-
     NavMeshAgent agent;
 
     private EnemyParameters e;
@@ -38,28 +36,10 @@ public class EnemyController : MonoBehaviour
 
     void FollowTarget()
     {
-        if (!e.Wandering)
+        if (e.followTarget)
         {
-            if (e.followTarget)
-            {
-                if(agent.isStopped == true)
-                {
-                    agent.isStopped = false;
-                }
-
-                agent.SetDestination(target.transform.position);
-            }
-            else
-            {
-                if (agent.isStopped == false)
-                {
-                    agent.isStopped = true;
-                }
-
-            }
+            agent.SetDestination(e.target.position);
         }
-
-
     }
 
     public void LocateRandomTarget()
@@ -68,7 +48,7 @@ public class EnemyController : MonoBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         //targetting the selected random player
-        target = players[Random.Range(0, PhotonRoom.room.playersInRoom - 1)];
+        e.target = players[Random.Range(0, PhotonRoom.room.playersInRoom - 1)].transform;
     }
 
     void OnDrawGizmosSelected()

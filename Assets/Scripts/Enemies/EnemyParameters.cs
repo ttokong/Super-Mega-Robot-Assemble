@@ -21,10 +21,6 @@ public class EnemyParameters : MonoBehaviour
 
     public float health;
 
-    [HideInInspector]
-    public bool Wandering;
-
-    public float wanderTimer;
 
     [HideInInspector]
     public Transform target;

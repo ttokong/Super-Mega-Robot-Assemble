@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public float TeamUltimate;
+
     #region Singleton
 
     // static makes this -buildmanager- accessible from any other script

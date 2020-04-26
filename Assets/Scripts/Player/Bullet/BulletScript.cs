@@ -52,7 +52,7 @@ public class BulletScript : MonoBehaviour
     [PunRPC]
     private void DestroyBullet()
     {
-        Destroy(PV.gameObject);
+        Destroy(gameObject);
 
         GameObject effect = Instantiate(impactExplosion, transform.position, transform.rotation);
         Destroy(effect, 3f);

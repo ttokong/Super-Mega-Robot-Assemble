@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
 
     #endregion
 
+    public GameObject ghost;
 
     public float speed;
 
@@ -81,6 +82,7 @@ public class PlayerStats : MonoBehaviour
     public void Dead()
     {
         Destroy(gameObject);
+        // Instantiate(ghost, gameObject.position, Quaternion.identity);
     }
 
     public void OnEnable()

@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: 0}
   AS: {fileID: 0}
+  ghost: {fileID: 0}
   speed: 10
   health: 100
   ultiPercentage: 0

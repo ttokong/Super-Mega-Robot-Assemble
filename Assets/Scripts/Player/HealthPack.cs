@@ -26,26 +26,35 @@ public class HealthPack : MonoBehaviour
     {
         SpawnPack();
 
-        if (PackCoolDown == 30f)
+        if (PackCoolDown <= 31f && PackSpawned == false)
         {
             // decreases the cd by 1 per second
             PackCoolDown -= Time.deltaTime;
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    /* void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            Debug.Log("fjksubh");
             Playerscript.GetComponent<PlayerStats>().health = +20f;
             PackSpawned = false;
             Pack.SetActive(false);
         }
+    } */
+
+    // triggers when its child object detects ontriggerenter
+    public void PullTrigger(Collider other)
+    {
+        Pack.SetActive(false);
+        //Playerscript.GetComponent<PlayerStats>().health = +20f;
+        PackSpawned = false;
     }
 
     void SpawnPack()
     {
-        if (PackCoolDown == 0 && PackSpawned == false)
+        if (PackCoolDown <= 0 && PackSpawned == false)
         {
             Pack.SetActive(true);
             PackSpawned = true;

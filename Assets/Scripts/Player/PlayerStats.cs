@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
 
     #endregion
 
-    public GameObject ghost;
+    // public GameObject ghost;
 
     public float speed;
 

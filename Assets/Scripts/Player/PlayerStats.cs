@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
 
     public float ultiPercentage;
 
+    public Health healthBar;
 
     public float allowRotation;
 

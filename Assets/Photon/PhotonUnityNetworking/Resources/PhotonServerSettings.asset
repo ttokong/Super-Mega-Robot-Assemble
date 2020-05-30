@@ -46,6 +46,9 @@ MonoBehaviour:
   - DisableButtons
   - EnableButtons
   - RPC_PlayerTakeDamage
+  - Movement
+  - Rotation
+  - RPC_AddRobotPart
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

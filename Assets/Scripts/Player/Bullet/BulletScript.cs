@@ -6,7 +6,6 @@ using System.IO;
 
 public class BulletScript : MonoBehaviour
 {
-    private PhotonView PV;
 
     private float bulletSpeed = 100;
 
@@ -20,8 +19,6 @@ public class BulletScript : MonoBehaviour
 
     void Start()
     {
-        PV = GetComponent<PhotonView>();
-
         bullet = gameObject.GetComponent<Rigidbody>();
 
         bulletSpeed *= bulletSpeedMultiplier;
@@ -40,19 +37,18 @@ public class BulletScript : MonoBehaviour
             {
                 other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
 
-                PV.RPC("DestroyBullet", RpcTarget.All);
+                DestroyBullet();
             }
             else
             {
-                PV.RPC("DestroyBullet", RpcTarget.All);
+                DestroyBullet();
             }
         }
     }
 
-    [PunRPC]
     private void DestroyBullet()
     {
-        Destroy(PV.gameObject);
+        Destroy(gameObject);
 
         GameObject effect = Instantiate(impactExplosion, transform.position, transform.rotation);
         Destroy(effect, 3f);

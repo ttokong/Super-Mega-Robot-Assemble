@@ -40,13 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8771012805933133602}
   - component: {fileID: 2366259693636428049}
-  - component: {fileID: 6898355693435467093}
-  - component: {fileID: 1417999145196700863}
-  - component: {fileID: 7568441389707446270}
   - component: {fileID: -4183917856673613448}
   - component: {fileID: 221051952655740845}
   m_Layer: 0
-  m_Name: PhotonNetworkPlayer
+  m_Name: PhotonNetworkPlayer1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,75 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c98f940cf29424fbed4ef3f39f701b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 0}
   myCharacter: {fileID: 0}
-  myRobotPart: {fileID: 0}
   characterValue: 0
---- !u!136 &6898355693435467093
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081913218769504553}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!143 &1417999145196700863
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081913218769504553}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &7568441389707446270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081913218769504553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb9d178d802ae3b45bfe7bb9d139b4f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PV: {fileID: 0}
-  AS: {fileID: 0}
-  speed: 10
-  health: 100
-  ultiPercentage: 0
-  allowRotation: 0.1
-  gravityMultiplier: 0.65
-  bulletPrefab: {fileID: 3892558652060600971, guid: f6342bba944f9db4b830a5f447108502,
-    type: 3}
-  firePoint: {fileID: 548443295089887632}
-  firerate: 7
-  robotForm: 0
-  gravity: 0
-  dir: {x: 0, y: 0, z: 0}
-  shootTrig: 0
-  shooting: 0
-  movementInput: {x: 0, y: 0}
-  aimInput: {x: 0, y: 0}
-  OGhealth: 0
-  CC: {fileID: 0}
-  cam: {fileID: 0}
 --- !u!114 &-4183917856673613448
 MonoBehaviour:
   m_ObjectHideFlags: 0

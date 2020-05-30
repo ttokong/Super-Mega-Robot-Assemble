@@ -15,6 +15,7 @@ public class GameSetupController : MonoBehaviour
     {
         PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "PhotonNetworkPlayer"), 
         LevelManager.instance.spawnpoints[PlayerInfo.instance.mySelectedCharacter].position, Quaternion.identity);
+
     }
 
     // Update is called once per frame

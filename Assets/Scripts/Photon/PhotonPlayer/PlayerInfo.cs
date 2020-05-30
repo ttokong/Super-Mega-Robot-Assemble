@@ -32,6 +32,8 @@ public class PlayerInfo : MonoBehaviour
 
     public GameObject[] allCharacters;
 
+    public GameObject[] allRobotParts;
+
 
     // Start is called before the first frame update
     void Start()

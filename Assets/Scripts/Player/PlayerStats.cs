@@ -34,6 +34,8 @@ public class PlayerStats : MonoBehaviour
 
     public float firerate;
 
+    public bool robotForm;
+
     [HideInInspector]
     public float gravity;
 

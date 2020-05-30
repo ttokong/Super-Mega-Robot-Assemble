@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c136201315ec4f4ab3a700b5e5fe93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayStart: 1
+  delayStart: 0
   maxPlayers: 2
   menuScene: 0
   multiplayerScene: 1
@@ -899,6 +899,11 @@ MonoBehaviour:
   - {fileID: 1091152444445917532, guid: 14424d5edd8f51d4e81285dd85db2ff7, type: 3}
   - {fileID: 1936895950979243323, guid: a197dc5cc0d3a114d926ac3b5295c1c3, type: 3}
   - {fileID: 7320098006413422274, guid: 1d5630a9212da4741ab19223cddbd108, type: 3}
+  allRobotParts:
+  - {fileID: 9148128588897779115, guid: 547241b6bf1daf24f9029c133d87e1a7, type: 3}
+  - {fileID: 4948973375330869995, guid: 2111f8f6a95d7da49a0fe00e5cfbc9bc, type: 3}
+  - {fileID: 1998369083070707991, guid: 321970924f71bdd41b88b61a62445d0f, type: 3}
+  - {fileID: 673549918182727747, guid: da439280116a96c4a846ce7d0866f532, type: 3}
 --- !u!4 &531973218
 Transform:
   m_ObjectHideFlags: 0

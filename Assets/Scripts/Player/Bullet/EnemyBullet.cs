@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    private PhotonView PV;
-
     private float bulletSpeed = 100;
 
     public float bulletSpeedMultiplier;
@@ -19,7 +17,6 @@ public class EnemyBullet : MonoBehaviour
 
     void Start()
     {
-        PV = GetComponent<PhotonView>();
 
         bullet = gameObject.GetComponent<Rigidbody>();
 
@@ -41,11 +38,11 @@ public class EnemyBullet : MonoBehaviour
             {
                 other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
 
-                PV.RPC("DestroyBullet", RpcTarget.All);
+                DestroyBullet();
             }
             else
             {
-                PV.RPC("DestroyBullet", RpcTarget.All);
+                DestroyBullet();
             }
         }
     }
@@ -53,7 +50,7 @@ public class EnemyBullet : MonoBehaviour
     [PunRPC]
     private void DestroyBullet()
     {
-        Destroy(PV.gameObject);
+        Destroy(gameObject);
 
         GameObject effect = Instantiate(impactExplosion, transform.position, transform.rotation);
         Destroy(effect, 3f);

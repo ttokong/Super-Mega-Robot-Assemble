@@ -16,6 +16,7 @@ public class PlayerController : PlayerStats
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
+        controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
     }
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class PlayerController : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
-        PV = GetComponent<PhotonView>();
+        PV = GetComponentInParent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }
 
@@ -35,15 +36,17 @@ public class PlayerController : PlayerStats
     // Update is called once per frame
     void Update()
     {
-
         if (PV.IsMine)
         {
-            Movement();
-            InputDecider();
+            if(!robotForm)
+            {
+                Movement();
+                InputDecider();
 
-            DeathTrigger();
+                DeathTrigger();
 
-            StartCoroutine(Shoot());
+                StartCoroutine(Shoot());
+            }
         }
 
     }
@@ -150,6 +153,27 @@ public class PlayerController : PlayerStats
         }
 
     }
+
+    void RobotAssemble(InputAction.CallbackContext context)
+    {
+        if(PV.IsMine)
+        {
+            float value = context.ReadValue<float>();
+
+            if (robotForm == false)
+            {
+                if (value >= 0.9)
+                {
+                    gameObject.SetActive(false);
+                    LevelManager.instance.robot.SetActive(true);
+                    GetComponent<AvatarSetup>().PV.RPC("RPC_AddRobotPart", RpcTarget.AllViaServer);
+                    robotForm = true;
+                }
+            }
+
+        }
+    }
+
 
     [PunRPC]
     private void RPC_Fire()

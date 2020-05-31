@@ -1,10 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Photon.Pun;
 
 public class BossBehaviour : EnemyParameters
 {
+
+    private int actionID;
+
+    private float timer;
+    public float actionTimer;
+
+    public bool actionComplete = true;
+
+    public bool attacking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +24,8 @@ public class BossBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        timer = actionTimer;
+        agent = GetComponent<NavMeshAgent>();
         PV = GetComponent<PhotonView>();
         OGhealth = health;
     }
@@ -21,5 +34,72 @@ public class BossBehaviour : EnemyParameters
     void Update()
     {
         DeathTrigger();
+        ChangeAction();
+    }
+
+
+    void ChangeAction()
+    {
+        if (actionComplete)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= actionTimer)
+            {
+                actionID = Random.Range(0, 19);
+                timer = Random.Range(0, 4);         // randomly reduces wait time between each action by 0 to 3 seconds
+                actionComplete = false;
+            }
+        }
+        else if (!actionComplete)
+        {
+            if (actionID >= 0 && actionID <= 9)    //50% chance to wander
+            {
+                Wander();
+            }
+            else if (actionID >= 10 && actionID <= 14)    //25% chance to ground slam
+            {
+                gameObject.GetComponent<BossGroundSlam>().Slam();
+            }
+            else if (actionID >= 15 && actionID <= 19)    //25% chance to charge
+            {
+                gameObject.GetComponent<BossCharge>().Charge();
+            }
+            else
+            {
+                actionComplete = true;
+            }
+        }
+
+    }
+
+    private void Wander()
+    {
+        agent.isStopped = false;
+        Vector3 newPos = RandomNavSphere(transform.position, targetRadiusMax, -1);
+        agent.SetDestination(newPos);
+        actionComplete = true;
+    }
+
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
+        Vector3 randDirection = Random.insideUnitSphere * dist;
+
+        randDirection += origin;
+
+
+        NavMesh.SamplePosition(randDirection, out NavMeshHit navHit, dist, layermask);
+
+        return navHit.position;
+    }
+
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, targetRadiusMax);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, targetRadiusMin);
     }
 }

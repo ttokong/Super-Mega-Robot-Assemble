@@ -9,7 +9,7 @@ public class MinionBehaviour : EnemyParameters
     private float timer;
     private float attTimer;
 
-    public int actionID;
+    private int actionID;
 
 
     public float attackTimer;

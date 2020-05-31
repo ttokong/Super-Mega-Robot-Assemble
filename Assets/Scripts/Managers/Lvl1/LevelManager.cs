@@ -22,5 +22,9 @@ public class LevelManager : MonoBehaviour
 
     public Transform[] spawnpoints;
 
+    public Transform[] robotSpawnPoints;
+
+    public GameObject robot;
+
 
 }

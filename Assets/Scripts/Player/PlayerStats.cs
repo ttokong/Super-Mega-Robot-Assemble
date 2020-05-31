@@ -23,6 +23,7 @@ public class PlayerStats : MonoBehaviour
 
     public float ultiPercentage;
 
+    public Health healthBar;
 
     public float allowRotation;
 
@@ -33,6 +34,8 @@ public class PlayerStats : MonoBehaviour
     public GameObject firePoint;
 
     public float firerate;
+
+    public bool robotForm;
 
     [HideInInspector]
     public float gravity;

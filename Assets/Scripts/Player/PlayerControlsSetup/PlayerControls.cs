@@ -43,30 +43,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ead2332-008f-404b-86f1-cba561521c57"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Punch"",
-                    ""type"": ""Button"",
-                    ""id"": ""fe43920b-8673-4a87-a45c-106638d38e50"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Punch1"",
-                    ""type"": ""Button"",
-                    ""id"": ""f0ef61bb-9667-4cbc-9388-9fcc50eeda96"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Ultimate"",
                     ""type"": ""Button"",
                     ""id"": ""fbce3212-5cce-407f-8a24-3023cdd16a86"",
@@ -94,28 +70,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""f3a2399d-8800-4f5b-8ad4-85e8b7635b4d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Punch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b95428d3-dc13-4fc9-bc7b-3407174a09ec"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Punch1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8bab02ed-a697-4b03-845f-4c8eb3fcbe9c"",
                     ""path"": """",
                     ""interactions"": """",
@@ -139,10 +93,21 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""716002cf-393e-4040-84c8-e5548cde7722"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/g"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Super Mega Robot Assemble"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4627fb85-72f3-4388-90a4-6351a7f84551"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Super Mega Robot Assemble"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -281,17 +246,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""708542ae-cf00-4b8e-989a-063c3534a3c6"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""681fb48f-4005-4494-aab6-1a6914503988"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": ""Press(behavior=2)"",
@@ -345,9 +299,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         m_Gameplay_ShootHold = m_Gameplay.FindAction("ShootHold", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-        m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
-        m_Gameplay_Punch1 = m_Gameplay.FindAction("Punch1", throwIfNotFound: true);
         m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_SuperMegaRobotAssemble = m_Gameplay.FindAction("Super Mega Robot Assemble", throwIfNotFound: true);
@@ -403,9 +354,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Aim;
     private readonly InputAction m_Gameplay_ShootHold;
-    private readonly InputAction m_Gameplay_Jump;
-    private readonly InputAction m_Gameplay_Punch;
-    private readonly InputAction m_Gameplay_Punch1;
     private readonly InputAction m_Gameplay_Ultimate;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_SuperMegaRobotAssemble;
@@ -416,9 +364,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
         public InputAction @ShootHold => m_Wrapper.m_Gameplay_ShootHold;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
-        public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
-        public InputAction @Punch1 => m_Wrapper.m_Gameplay_Punch1;
         public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @SuperMegaRobotAssemble => m_Wrapper.m_Gameplay_SuperMegaRobotAssemble;
@@ -440,15 +385,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ShootHold.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootHold;
                 @ShootHold.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootHold;
                 @ShootHold.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShootHold;
-                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Punch.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch;
-                @Punch.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch;
-                @Punch.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch;
-                @Punch1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch1;
-                @Punch1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch1;
-                @Punch1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPunch1;
                 @Ultimate.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
                 @Ultimate.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
                 @Ultimate.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
@@ -471,15 +407,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ShootHold.started += instance.OnShootHold;
                 @ShootHold.performed += instance.OnShootHold;
                 @ShootHold.canceled += instance.OnShootHold;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Punch.started += instance.OnPunch;
-                @Punch.performed += instance.OnPunch;
-                @Punch.canceled += instance.OnPunch;
-                @Punch1.started += instance.OnPunch1;
-                @Punch1.performed += instance.OnPunch1;
-                @Punch1.canceled += instance.OnPunch1;
                 @Ultimate.started += instance.OnUltimate;
                 @Ultimate.performed += instance.OnUltimate;
                 @Ultimate.canceled += instance.OnUltimate;
@@ -516,9 +443,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShootHold(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnPunch(InputAction.CallbackContext context);
-        void OnPunch1(InputAction.CallbackContext context);
         void OnUltimate(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnSuperMegaRobotAssemble(InputAction.CallbackContext context);

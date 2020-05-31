@@ -30,30 +30,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "9ead2332-008f-404b-86f1-cba561521c57",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Punch",
-                    "type": "Button",
-                    "id": "fe43920b-8673-4a87-a45c-106638d38e50",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Punch1",
-                    "type": "Button",
-                    "id": "f0ef61bb-9667-4cbc-9388-9fcc50eeda96",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Ultimate",
                     "type": "Button",
                     "id": "fbce3212-5cce-407f-8a24-3023cdd16a86",
@@ -81,28 +57,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "f3a2399d-8800-4f5b-8ad4-85e8b7635b4d",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Punch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b95428d3-dc13-4fc9-bc7b-3407174a09ec",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Punch1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8bab02ed-a697-4b03-845f-4c8eb3fcbe9c",
                     "path": "",
                     "interactions": "",
@@ -126,10 +80,21 @@
                 {
                     "name": "",
                     "id": "716002cf-393e-4040-84c8-e5548cde7722",
-                    "path": "",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
+                    "action": "Super Mega Robot Assemble",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4627fb85-72f3-4388-90a4-6351a7f84551",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Super Mega Robot Assemble",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -263,17 +228,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "708542ae-cf00-4b8e-989a-063c3534a3c6",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

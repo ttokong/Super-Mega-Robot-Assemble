@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
 
     #endregion
 
-    // public GameObject ghost;
+    public GameObject ghost;
 
     public float speed;
 
@@ -70,6 +70,12 @@ public class PlayerStats : MonoBehaviour
         health -= dmg; 
     }
 
+    [PunRPC]
+    public void RPC_PlayerHeal(float heal)
+    {
+        health += heal;
+    }
+
     public void DeathTrigger()
     {
         if (health <= 0)
@@ -81,8 +87,10 @@ public class PlayerStats : MonoBehaviour
     [PunRPC]
     public void Dead()
     {
-        Destroy(gameObject);
-        // Instantiate(ghost, gameObject.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        // create a prefab as a gameobject at this transform and setting the new gameobject as a reference
+        GameObject deadplayer = Instantiate(ghost, gameObject.transform.position, Quaternion.identity) as GameObject;
+        deadplayer.GetComponent<GhostScript>().player = gameObject;
     }
 
     public void OnEnable()

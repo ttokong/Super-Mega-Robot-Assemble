@@ -46,6 +46,7 @@ public class PlayerController : PlayerStats
             StartCoroutine(Shoot());
         }
 
+        health = Mathf.Clamp(health, 0f, 100f);
     }
 
 

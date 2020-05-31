@@ -1,22 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class HealthPack : MonoBehaviour
 {
-    public GameObject Playerscript;
-
     public GameObject Pack;
     public bool PackSpawned;
 
+    public float heal;
     public float PackCoolDown;
 
     // Start is called before the first frame update
     void Start()
     {
-        // reference to playerstats script
-        Playerscript.GetComponent<PlayerStats>();
-
+        heal = 20f;
         PackCoolDown = 0f;
         PackSpawned = false;
     }
@@ -47,8 +45,8 @@ public class HealthPack : MonoBehaviour
     // triggers when its child object detects ontriggerenter
     public void PullTrigger(Collider other)
     {
+        other.GetComponent<PhotonView>().RPC("RPC_PlayerHeal", RpcTarget.All, heal);
         Pack.SetActive(false);
-        //Playerscript.GetComponent<PlayerStats>().health = +20f;
         PackSpawned = false;
     }
 

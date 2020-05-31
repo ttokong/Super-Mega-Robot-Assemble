@@ -37,7 +37,6 @@ public class GhostScript : MonoBehaviour
         xradius = radius;
         yradius = radius;
         float x;
-        float y;
         float z;
 
         float angle = 20f;

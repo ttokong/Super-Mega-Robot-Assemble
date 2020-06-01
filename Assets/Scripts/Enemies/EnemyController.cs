@@ -24,8 +24,6 @@ public class EnemyController : MonoBehaviour
         e = GetComponent<EnemyParameters>();
 
         agent.stoppingDistance = stopRadius;
-
-        LocateRandomTarget();
     }
 
     // Update is called once per frame

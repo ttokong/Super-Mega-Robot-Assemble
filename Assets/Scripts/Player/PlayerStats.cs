@@ -8,7 +8,6 @@ public class PlayerStats : MonoBehaviour
 {
     #region PhotonView
 
-    [HideInInspector]
     public PhotonView PV;
     [HideInInspector]
     public AvatarSetup AS;

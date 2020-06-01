@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
-using System.IO;
 
 public class PlayerController : PlayerStats
 {
@@ -18,19 +17,15 @@ public class PlayerController : PlayerStats
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
         controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
         controls.Gameplay.Ultimate.performed += context => Ultimate(context);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         InitSequence();
     }
+
 
     void InitSequence()
     {
         OGhealth = health;
         LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
-        PV = GetComponentInParent<PhotonView>();
+        PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }
 

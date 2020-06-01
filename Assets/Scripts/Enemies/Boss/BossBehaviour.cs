@@ -23,7 +23,7 @@ public class BossBehaviour : EnemyParameters
 
     void InitSequence()
     {
-        timer = actionTimer;
+        timer = Random.Range(0, 4);
         agent = GetComponent<NavMeshAgent>();
         PV = GetComponent<PhotonView>();
         OGhealth = health;
@@ -45,6 +45,7 @@ public class BossBehaviour : EnemyParameters
 
             if (timer >= actionTimer)
             {
+                gameObject.GetComponent<EnemyController>().LocateRandomTarget();
                 actionID = Random.Range(0, 17);
                 timer = Random.Range(0, 4);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;

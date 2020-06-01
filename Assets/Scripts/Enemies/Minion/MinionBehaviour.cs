@@ -30,8 +30,7 @@ public class MinionBehaviour : EnemyParameters
     {
         PV = GetComponent<PhotonView>();
         agent = GetComponent<NavMeshAgent>();
-        timer = actionTimer;
-        attTimer = attackTimer;
+        timer = Random.Range(0, 4);
         OGhealth = health;
     }
 
@@ -50,6 +49,7 @@ public class MinionBehaviour : EnemyParameters
 
             if (timer >= actionTimer)
             {
+                gameObject.GetComponent<EnemyController>().LocateRandomTarget();
                 actionID = Random.Range(0, 19);
                 timer = Random.Range(0 , 4);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;

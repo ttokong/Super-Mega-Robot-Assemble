@@ -94,8 +94,10 @@ public class PlayerStats : MonoBehaviour
     [PunRPC]
     public void Dead()
     {
-        Destroy(gameObject);
-        // Instantiate(ghost, gameObject.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        // create a prefab as a gameobject at this transform and setting the new gameobject as a reference
+        GameObject deadplayer = Instantiate(ghost, gameObject.transform.position, Quaternion.identity) as GameObject;
+        deadplayer.GetComponent<GhostScript>().player = gameObject;
     }
 
     public void OnEnable()

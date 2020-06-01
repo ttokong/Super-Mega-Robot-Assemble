@@ -67,10 +67,13 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public Camera cam;
 
+
+
     [PunRPC]
     public void RPC_PlayerTakeDamage(float dmg)
     {
-        health -= dmg; 
+        health -= dmg;
+        healthBar.SetHealth(health);
     }
 
     public void DeathTrigger()

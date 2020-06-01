@@ -129,9 +129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: 0}
   AS: {fileID: 0}
+  ghost: {fileID: 0}
   speed: 10
   health: 100
   ultiPercentage: 0
+  healthBar: {fileID: 0}
   allowRotation: 0.1
   gravityMultiplier: 0.65
   bulletPrefab: {fileID: 3892558652060600971, guid: f6342bba944f9db4b830a5f447108502,

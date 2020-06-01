@@ -7,6 +7,9 @@ using System.IO;
 public class BulletScript : MonoBehaviour
 {
 
+    [HideInInspector]
+    public GameObject player;
+
     private float bulletSpeed = 100;
 
     public float bulletSpeedMultiplier;
@@ -36,6 +39,8 @@ public class BulletScript : MonoBehaviour
             if (other.tag == "Enemy")
             {
                 other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+                player.GetComponent<PlayerStats>().ultiPercentage += player.GetComponent<PlayerStats>().ultiChargePerShot;
+                LevelManager.instance.transformBar.AddCharge(player.GetComponent<PlayerStats>().ultiChargePerShot / 3);
 
                 DestroyBullet();
             }

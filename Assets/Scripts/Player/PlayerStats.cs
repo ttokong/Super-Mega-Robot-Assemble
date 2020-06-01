@@ -22,8 +22,7 @@ public class PlayerStats : MonoBehaviour
     public float health;
 
     public float ultiPercentage;
-
-    public Health healthBar;
+    public float ultiChargePerShot;
 
     public float allowRotation;
 
@@ -73,7 +72,6 @@ public class PlayerStats : MonoBehaviour
     public void RPC_PlayerTakeDamage(float dmg)
     {
         health -= dmg;
-        healthBar.SetHealth(health);
     }
 
     public void DeathTrigger()
@@ -82,6 +80,9 @@ public class PlayerStats : MonoBehaviour
         {
             PV.RPC("Dead", RpcTarget.All);
         }
+
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetHealth(health);
+        LevelManager.instance.UltimateBars[PlayerInfo.instance.mySelectedCharacter].SetUltimatePercentage(ultiPercentage);
     }
 
     [PunRPC]

@@ -29,7 +29,7 @@ public class PlayerController : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
-        healthBar.SetMaxHealth(health);
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
         PV = GetComponentInParent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }
@@ -195,6 +195,7 @@ public class PlayerController : PlayerStats
     private void RPC_Fire()
     {
         Debug.Log("Fire");
-        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
+        bullet.GetComponent<BulletScript>().player = gameObject;
     }
 }

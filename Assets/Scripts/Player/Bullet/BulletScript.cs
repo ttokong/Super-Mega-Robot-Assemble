@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player" && other.tag != "Bullet")
+        if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Walls" && other.tag != "Items" && other.tag != "Effects")
         {
             if (other.tag == "Enemy")
             {

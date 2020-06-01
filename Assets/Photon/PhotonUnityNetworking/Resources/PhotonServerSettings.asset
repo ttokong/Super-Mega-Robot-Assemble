@@ -47,6 +47,7 @@ MonoBehaviour:
   - EnableButtons
   - RPC_PlayerTakeDamage
   - RPC_PlayerHeal
+  - RPC_AddRobotPart
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

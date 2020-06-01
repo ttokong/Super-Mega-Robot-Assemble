@@ -32,7 +32,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Enemy" && other.tag != "Bullet")
+        if (other.tag != "Enemy" && other.tag != "Bullet" && other.tag != "Walls" && other.tag != "Items" && other.tag != "Effects")
         {
             if (other.tag == "Player")
             {

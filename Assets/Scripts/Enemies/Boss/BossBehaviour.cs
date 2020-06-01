@@ -14,7 +14,6 @@ public class BossBehaviour : EnemyParameters
 
     public bool actionComplete = true;
 
-    public bool attacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,22 +45,22 @@ public class BossBehaviour : EnemyParameters
 
             if (timer >= actionTimer)
             {
-                actionID = Random.Range(0, 19);
+                actionID = Random.Range(0, 17);
                 timer = Random.Range(0, 4);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;
             }
         }
         else if (!actionComplete)
         {
-            if (actionID >= 0 && actionID <= 9)    //50% chance to wander
+            if (actionID >= 0 && actionID <= 5)    //33.33% chance to wander
             {
                 Wander();
             }
-            else if (actionID >= 10 && actionID <= 14)    //25% chance to ground slam
+            else if (actionID >= 6 && actionID <= 11)    //33.33% chance to ground slam
             {
                 gameObject.GetComponent<BossGroundSlam>().Slam();
             }
-            else if (actionID >= 15 && actionID <= 19)    //25% chance to charge
+            else if (actionID >= 12 && actionID <= 17)    //33.33% chance to charge
             {
                 gameObject.GetComponent<BossCharge>().Charge();
             }

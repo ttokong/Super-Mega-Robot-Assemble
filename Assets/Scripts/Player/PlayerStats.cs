@@ -22,8 +22,7 @@ public class PlayerStats : MonoBehaviour
     public float health;
 
     public float ultiPercentage;
-
-    public Health healthBar;
+    public float ultiChargePerShot;
 
     public float allowRotation;
 
@@ -67,10 +66,12 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public Camera cam;
 
+
+
     [PunRPC]
     public void RPC_PlayerTakeDamage(float dmg)
     {
-        health -= dmg; 
+        health -= dmg;
     }
 
     [PunRPC]
@@ -85,15 +86,16 @@ public class PlayerStats : MonoBehaviour
         {
             PV.RPC("Dead", RpcTarget.All);
         }
+
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetHealth(health);
+        LevelManager.instance.UltimateBars[PlayerInfo.instance.mySelectedCharacter].SetUltimatePercentage(ultiPercentage);
     }
 
     [PunRPC]
     public void Dead()
     {
-        gameObject.SetActive(false);
-        // create a prefab as a gameobject at this transform and setting the new gameobject as a reference
-        GameObject deadplayer = Instantiate(ghost, gameObject.transform.position, Quaternion.identity) as GameObject;
-        deadplayer.GetComponent<GhostScript>().player = gameObject;
+        Destroy(gameObject);
+        // Instantiate(ghost, gameObject.position, Quaternion.identity);
     }
 
     public void OnEnable()

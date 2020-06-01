@@ -7,6 +7,9 @@ using System.IO;
 public class BulletScript : MonoBehaviour
 {
 
+    [HideInInspector]
+    public GameObject player;
+
     private float bulletSpeed = 100;
 
     public float bulletSpeedMultiplier;
@@ -31,11 +34,13 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player" && other.tag != "Bullet" && other.tag != "Walls" && other.tag != "Items" && other.tag != "Effects")
+        if (other.tag != "Player" && other.tag != "Bullet")
         {
             if (other.tag == "Enemy")
             {
                 other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+                player.GetComponent<PlayerStats>().ultiPercentage += player.GetComponent<PlayerStats>().ultiChargePerShot;
+                LevelManager.instance.transformBar.AddCharge(player.GetComponent<PlayerStats>().ultiChargePerShot / 3);
 
                 DestroyBullet();
             }

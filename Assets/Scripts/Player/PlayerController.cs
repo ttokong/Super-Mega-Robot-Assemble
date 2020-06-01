@@ -17,6 +17,7 @@ public class PlayerController : PlayerStats
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
         controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
+        controls.Gameplay.Ultimate.performed += context => Ultimate(context);
     }
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class PlayerController : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
         PV = GetComponentInParent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }
@@ -49,7 +51,6 @@ public class PlayerController : PlayerStats
             }
         }
 
-        health = Mathf.Clamp(health, 0f, 100f);
     }
 
 
@@ -175,11 +176,26 @@ public class PlayerController : PlayerStats
         }
     }
 
+    void Ultimate(InputAction.CallbackContext context)
+    {
+        if (PV.IsMine)
+        {
+            float value = context.ReadValue<float>();
+
+
+            if (value >= 0.9) //if button is pressed
+            {
+               
+            }
+        }
+    }
+
 
     [PunRPC]
     private void RPC_Fire()
     {
         Debug.Log("Fire");
-        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
+        bullet.GetComponent<BulletScript>().player = gameObject;
     }
 }

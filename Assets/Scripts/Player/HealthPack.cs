@@ -10,13 +10,13 @@ public class HealthPack : MonoBehaviour
 
     public float heal;
     public float PackCoolDown;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        heal = 20f;
-        PackCoolDown = 0f;
         PackSpawned = false;
+        timer = PackCoolDown;
     }
 
     // Update is called once per frame
@@ -24,10 +24,9 @@ public class HealthPack : MonoBehaviour
     {
         SpawnPack();
 
-        if (PackCoolDown <= 31f && PackSpawned == false)
+        if (timer <= PackCoolDown && PackSpawned == false)
         {
-            // decreases the cd by 1 per second
-            PackCoolDown -= Time.deltaTime;
+            timer += Time.deltaTime;
         }
     }
 
@@ -52,11 +51,11 @@ public class HealthPack : MonoBehaviour
 
     void SpawnPack()
     {
-        if (PackCoolDown <= 0 && PackSpawned == false)
+        if (timer > PackCoolDown && PackSpawned == false)
         {
             Pack.SetActive(true);
             PackSpawned = true;
-            PackCoolDown = 30f;
+            timer = 0;
         }
     }
 

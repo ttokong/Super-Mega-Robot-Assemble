@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 783b6028-d904-47cc-8f5e-579105eaaaba
+    AppIdRealtime: 
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 0
+    AppVersion: 
     UseNameServer: 1
-    FixedRegion: asia
+    FixedRegion: 
     Server: 
     Port: 0
     Protocol: 0
@@ -30,25 +30,7 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList:
-  - ClickRpc
-  - Dead
-  - DestroyBullet
-  - DestroyRpc
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-  - RPC_AddCharacter
-  - RPC_CreatePlayer
-  - RPC_Fire
-  - RPC_LoadedGameScene
-  - RPC_TakeDamage
-  - DisableButtons
-  - EnableButtons
-  - RPC_PlayerTakeDamage
-  - RPC_PlayerHeal
-  - RPC_AddRobotPart
-  - SetTarget
+  RpcList: []
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
-  DevRegionSetOnce: 1
+  ShowSettings: 0
+  DevRegionSetOnce: 0

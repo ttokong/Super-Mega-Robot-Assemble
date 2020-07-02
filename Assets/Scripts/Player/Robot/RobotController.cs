@@ -6,12 +6,8 @@ using Photon.Realtime;
 
 public class RobotController : MonoBehaviour
 {
-    public GameObject Legs;
-    public GameObject Arms_L;
-    public GameObject Arms_R;
-    public GameObject Torso;
+    public GameObject[] robotParts;
 
-    public int playerID;
 
     public float health;
     private float OGhealth;
@@ -19,7 +15,6 @@ public class RobotController : MonoBehaviour
 
     private PhotonView PV;
     private CharacterController CC;
-    public PlayerController PC;
     private PlayerControls controls;
     private Camera cam;
     public float allowRotation;
@@ -53,7 +48,7 @@ public class RobotController : MonoBehaviour
     {
         //if (PV.IsMine)
         //{
-            if (PhotonRoom.room.myNumberInRoom == 1)
+            if (PhotonRoom.room.myNumberInRoom == 2)
             {
                 Movement();
             }
@@ -95,11 +90,11 @@ public class RobotController : MonoBehaviour
         dir = right * movementInput.x + forward * movementInput.y;
         if (PhotonRoom.room.myNumberInRoom == 1)
         {
-            Legs.transform.rotation = Quaternion.Slerp(Legs.transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+            robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
         }
         else if (PhotonRoom.room.myNumberInRoom == 2)
         {
-            Torso.transform.rotation = Quaternion.Slerp(Torso.transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+            robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
         }
 
         

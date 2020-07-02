@@ -163,7 +163,7 @@ public class PlayerController : PlayerStats
                 {
                     gameObject.SetActive(false);
                     LevelManager.instance.robot.SetActive(true);
-                    GetComponent<AvatarSetup>().PV.RPC("RPC_AddRobotPart", RpcTarget.AllViaServer);
+                    //GetComponent<AvatarSetup>().PV.RPC("RPC_AddRobotPart", RpcTarget.AllViaServer);
                     robotForm = true;
                 }
             }

@@ -36,31 +36,27 @@ public class AvatarSetup : MonoBehaviour
         myCharacter = Instantiate(PlayerInfo.instance.allCharacters[whichCharacter], transform.position, transform.rotation, transform);
     }
 
-    [PunRPC]
+    /*[PunRPC]
     void RPC_AddRobotPart()
     {
         if(characterValue == 0)
         {
             myRobotPart = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Torso"),
-            LevelManager.instance.robotSpawnPoints[characterValue].position, Quaternion.identity);
+            LevelManager.instance.robotSpawnPoints[0].position, Quaternion.identity);
         }
         else if (characterValue == 1)
         {
             myRobotPart = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Legs"),
-            LevelManager.instance.robotSpawnPoints[characterValue].position, Quaternion.identity);
+            LevelManager.instance.robotSpawnPoints[0].position, Quaternion.identity);
         }
         else if (characterValue == 2)
         {
-            myRobotPart = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Arm_L"),
-            LevelManager.instance.robotSpawnPoints[characterValue].position, Quaternion.identity);
-        }
-        else if (characterValue == 3)
-        {
-            myRobotPart = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Arm_R"), 
-            LevelManager.instance.robotSpawnPoints[characterValue].position, Quaternion.identity);
+            myRobotPart = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Arms"),
+            LevelManager.instance.robotSpawnPoints[0].position, Quaternion.identity);
         }
 
-        myRobotPart.transform.parent = LevelManager.instance.robotSpawnPoints[characterValue];
-        myRobotPart.GetComponent<RobotController>().PC = gameObject.GetComponent<PlayerController>();   
-    }
+        myRobotPart.transform.parent = LevelManager.instance.robot.transform;
+        LevelManager.instance.robot.GetComponent<RobotController>().robotParts[characterValue] = myRobotPart;
+        LevelManager.instance.robot.GetComponent<RobotController>().PC = gameObject.GetComponent<PlayerController>();
+    }*/
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-public class PlayerController : PlayerStats
+public class TankPlayer : PlayerStats
 {
 
+    public GameObject CCRadius;
 
     void Awake()
     {
@@ -35,7 +36,7 @@ public class PlayerController : PlayerStats
     {
         if (PV.IsMine)
         {
-            if(!robotForm)
+            if (!robotForm)
             {
                 Movement();
                 InputDecider();
@@ -43,6 +44,8 @@ public class PlayerController : PlayerStats
                 DeathTrigger();
 
                 StartCoroutine(Shoot());
+
+                TankCC();
             }
         }
 
@@ -86,7 +89,7 @@ public class PlayerController : PlayerStats
         forward.Normalize();
         right.Normalize();
 
-        dir = right * movementInput.x + forward * movementInput.y; 
+        dir = right * movementInput.x + forward * movementInput.y;
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
 
@@ -125,7 +128,7 @@ public class PlayerController : PlayerStats
 
         CC.Move(moveDir);
 
-        if(CC.isGrounded)
+        if (CC.isGrounded)
         {
             gravity = 0;
         }
@@ -140,13 +143,13 @@ public class PlayerController : PlayerStats
     // when shooting projectiles
     IEnumerator Shoot()
     {
-        if(shooting)
+        if (shooting)
         {
             if (!shootTrig)
             {
                 shootTrig = true;
                 PV.RPC("RPC_Fire", RpcTarget.All);
-                yield return new WaitForSeconds(1/firerate);
+                yield return new WaitForSeconds(1 / firerate);
                 shootTrig = false;
             }
         }
@@ -156,7 +159,7 @@ public class PlayerController : PlayerStats
     // transformation into robot
     void RobotAssemble(InputAction.CallbackContext context)
     {
-        if(PV.IsMine)
+        if (PV.IsMine)
         {
             float value = context.ReadValue<float>();
 
@@ -184,11 +187,19 @@ public class PlayerController : PlayerStats
 
             if (value >= 0.9) //if button is pressed
             {
-               
+
             }
         }
     }
 
+    // activates tank skill to CC minions
+    void TankCC()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PV.RPC("RPC_TankCC", RpcTarget.All);
+        }
+    }
 
     [PunRPC]
     private void RPC_Fire()
@@ -197,4 +208,11 @@ public class PlayerController : PlayerStats
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
         bullet.GetComponent<BulletScript>().player = gameObject;
     }
+
+    [PunRPC]
+    private void RPC_TankCC()
+    {
+        CCRadius.SetActive(true);
+    }
+
 }

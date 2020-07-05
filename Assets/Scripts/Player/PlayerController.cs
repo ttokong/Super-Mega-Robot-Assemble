@@ -17,6 +17,7 @@ public class PlayerController : PlayerStats
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
         controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
         controls.Gameplay.Ultimate.performed += context => Ultimate(context);
+        controls.Gameplay.Pause.performed += context => Pause(context);
         InitSequence();
     }
 
@@ -185,6 +186,19 @@ public class PlayerController : PlayerStats
         }
     }
 
+    void Pause(InputAction.CallbackContext context)
+    {
+        if (PV.IsMine)
+        {
+            float value = context.ReadValue<float>();
+
+
+            if (value >= 0.9) //if button is pressed
+            {
+
+            }
+        }
+    }
 
     [PunRPC]
     private void RPC_Fire()
@@ -193,4 +207,6 @@ public class PlayerController : PlayerStats
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
         bullet.GetComponent<BulletScript>().player = gameObject;
     }
+
+
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 1.0
     UseNameServer: 1
-    FixedRegion: asia
+    FixedRegion: Asia
     Server: 
     Port: 0
     Protocol: 0
@@ -39,7 +39,6 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPC_AddCharacter
-  - RPC_AddRobotPart
   - RPC_CreatePlayer
   - RPC_Fire
   - RPC_LoadedGameScene
@@ -48,4 +47,4 @@ MonoBehaviour:
   - RPC_TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 1
+  DevRegionSetOnce: 0

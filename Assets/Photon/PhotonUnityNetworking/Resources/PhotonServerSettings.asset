@@ -46,6 +46,7 @@ MonoBehaviour:
   - RPC_PlayerTakeDamage
   - RPC_TakeDamage
   - RPC_TankCC
+  - RPC_stunMinions
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

@@ -141,6 +141,7 @@ MonoBehaviour:
   firePoint: {fileID: 548443295089887632}
   firerate: 7
   robotForm: 0
+  multipleTargetCamera: {fileID: 0}
   gravity: 0
   dir: {x: 0, y: 0, z: 0}
   shootTrig: 0

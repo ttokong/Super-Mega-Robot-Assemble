@@ -18,12 +18,14 @@ public class MinionBehaviour : EnemyParameters
 
     public bool actionComplete = true;
 
+    public EnemyHealthBar enemyHealthBar;
 
 
     // Start is called before the first frame update
     void Start()
     {
         InitSequence();
+        enemyHealthBar.SetMaxHealth(OGhealth);
     }
 
     void InitSequence()
@@ -39,6 +41,8 @@ public class MinionBehaviour : EnemyParameters
     {
         DeathTrigger();
         ChangeAction();
+
+        enemyHealthBar.SetHealth(health);
     }
 
     void ChangeAction()

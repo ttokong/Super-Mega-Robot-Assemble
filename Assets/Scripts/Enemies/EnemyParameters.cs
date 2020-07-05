@@ -34,6 +34,11 @@ public class EnemyParameters : MonoBehaviour
     [HideInInspector]
     public EnemyController ec;
 
+    void Start()
+    {
+
+    }
+
     [PunRPC]
     public void RPC_TakeDamage(float dmg)
     {

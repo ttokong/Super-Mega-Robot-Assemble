@@ -7,11 +7,11 @@ using Photon.Pun;
 public class PlayerController : PlayerStats
 {
 
-
     void Awake()
     {
         cam = Camera.main;
         controls = new PlayerControls();
+        multipleTargetCamera = GetComponent<MultipleTargetCamera>();
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
@@ -28,6 +28,9 @@ public class PlayerController : PlayerStats
         LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
         PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
+        
+        // adds the gameobject this script is attached to as a target in the multiple target camera script
+        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
 

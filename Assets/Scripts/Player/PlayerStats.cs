@@ -35,6 +35,8 @@ public class PlayerStats : MonoBehaviour
 
     public bool robotForm;
 
+    public MultipleTargetCamera multipleTargetCamera;
+
     [HideInInspector]
     public float gravity;
 

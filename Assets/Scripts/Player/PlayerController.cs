@@ -19,7 +19,7 @@ public class PlayerController : PlayerStats
         controls.Gameplay.Ultimate.performed += context => Ultimate(context);
         InitSequence();
     }
-
+    
 
     void InitSequence()
     {
@@ -51,7 +51,6 @@ public class PlayerController : PlayerStats
 
     void InputDecider()
     {
-
         float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
         float aimSpeed = new Vector2(aimInput.x, aimInput.y).sqrMagnitude;
 
@@ -94,6 +93,8 @@ public class PlayerController : PlayerStats
 
     void AimRotation()
     {
+        Joystick js = Joystick.current;
+        Mouse mouse = Mouse.current;
 
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
@@ -106,9 +107,26 @@ public class PlayerController : PlayerStats
 
         dir = right * movementInput.x + forward * movementInput.y;
 
-        Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+        if (js == null)
+        {
+            Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 350f))
+            {
+                Vector3 mouseDir = hit.point - transform.position;
+                Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+                transform.rotation = Quaternion.Slerp(transform.rotation, qDir, 0.15F);
+
+            }
+        }
+        else
+        {
+            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+        }
+
     }
 
 

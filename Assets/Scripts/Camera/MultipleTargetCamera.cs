@@ -21,7 +21,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
         Vector3 newPosition = centerPoint + offset;
 
-        transform.position = centerPoint;
+        transform.position = Vector3.Lerp(transform.position, newPosition,.05f);
     }
 
     Vector3 GetCenterPoint()

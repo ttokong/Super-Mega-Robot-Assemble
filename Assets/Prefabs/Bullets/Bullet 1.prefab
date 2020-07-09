@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  bulletSpeedMultiplier: 0
+  bulletSpeedMultiplier: 40
   damage: 50
   impactExplosion: {fileID: 1690631632978393224, guid: 2b5a12ad59dd9d84fa70868b2a40c3a5,
     type: 3}

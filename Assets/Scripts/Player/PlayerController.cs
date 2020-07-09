@@ -11,7 +11,7 @@ public class PlayerController : PlayerStats
     {
         cam = Camera.main;
         controls = new PlayerControls();
-        multipleTargetCamera = GetComponent<MultipleTargetCamera>();
+        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);

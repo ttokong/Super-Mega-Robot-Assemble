@@ -7,19 +7,20 @@ using Photon.Pun;
 public class PlayerController : PlayerStats
 {
 
-
     void Awake()
     {
         cam = Camera.main;
         controls = new PlayerControls();
+        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
         controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
         controls.Gameplay.Ultimate.performed += context => Ultimate(context);
+        controls.Gameplay.Pause.performed += context => Pause(context);
         InitSequence();
     }
-
+    
 
     void InitSequence()
     {
@@ -27,6 +28,9 @@ public class PlayerController : PlayerStats
         LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
         PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
+        
+        // adds the gameobject this script is attached to as a target in the multiple target camera script
+        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
 
@@ -51,7 +55,6 @@ public class PlayerController : PlayerStats
     // check for which input is being used by player and calls for appropriate functions
     void InputDecider()
     {
-
         float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
         float aimSpeed = new Vector2(aimInput.x, aimInput.y).sqrMagnitude;
 
@@ -95,6 +98,8 @@ public class PlayerController : PlayerStats
     // aim rotation of player
     void AimRotation()
     {
+        Joystick js = Joystick.current;
+        Mouse mouse = Mouse.current;
 
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
@@ -107,9 +112,26 @@ public class PlayerController : PlayerStats
 
         dir = right * movementInput.x + forward * movementInput.y;
 
-        Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+        if (js == null)
+        {
+            Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 350f))
+            {
+                Vector3 mouseDir = hit.point - transform.position;
+                Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+                transform.rotation = Quaternion.Slerp(transform.rotation, qDir, 0.15F);
+
+            }
+        }
+        else
+        {
+            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+        }
+
     }
 
 
@@ -189,6 +211,19 @@ public class PlayerController : PlayerStats
         }
     }
 
+    void Pause(InputAction.CallbackContext context)
+    {
+        if (PV.IsMine)
+        {
+            float value = context.ReadValue<float>();
+
+
+            if (value >= 0.9) //if button is pressed
+            {
+
+            }
+        }
+    }
 
     [PunRPC]
     private void RPC_Fire()
@@ -197,4 +232,6 @@ public class PlayerController : PlayerStats
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
         bullet.GetComponent<BulletScript>().player = gameObject;
     }
+
+
 }

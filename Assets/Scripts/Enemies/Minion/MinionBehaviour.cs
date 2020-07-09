@@ -18,6 +18,8 @@ public class MinionBehaviour : EnemyParameters
 
     public bool actionComplete = true;
 
+    public EnemyHealthBar enemyHealthBar;
+
     public bool stunned = false;
     public float stunnedCD = 5f;
 
@@ -25,6 +27,7 @@ public class MinionBehaviour : EnemyParameters
     void Start()
     {
         InitSequence();
+        enemyHealthBar.SetMaxHealth(OGhealth);
     }
 
     void InitSequence()
@@ -44,6 +47,8 @@ public class MinionBehaviour : EnemyParameters
         {
             ChangeAction();
         }
+        
+        enemyHealthBar.SetHealth(health);
     }
 
     void ChangeAction()

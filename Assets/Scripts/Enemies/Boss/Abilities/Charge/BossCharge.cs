@@ -28,7 +28,6 @@ public class BossCharge : MonoBehaviour
 
     public void Charge()
     {
-        Debug.Log("Charge");
         if (chargeTime <= chargeUpDuration)
         {
             bb.agent.isStopped = true;

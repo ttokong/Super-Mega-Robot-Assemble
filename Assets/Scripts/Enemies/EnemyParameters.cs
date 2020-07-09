@@ -34,10 +34,26 @@ public class EnemyParameters : MonoBehaviour
     [HideInInspector]
     public EnemyController ec;
 
+    void Start()
+    {
+
+    }
+
     [PunRPC]
     public void RPC_TakeDamage(float dmg)
     {
-        health -= dmg;
+        if (gameObject.GetComponent<BossBehaviour>())
+        {
+            if (gameObject.GetComponent<BossCharge>().charging == false)
+            {
+                health -= dmg;
+            }
+        }
+        else
+        {
+            health -= dmg;
+        }
+
     }
 
     public void DeathTrigger()

@@ -18,20 +18,21 @@ public class MinionBehaviour : EnemyParameters
 
     public bool actionComplete = true;
 
+    public EnemyHealthBar enemyHealthBar;
 
 
     // Start is called before the first frame update
     void Start()
     {
         InitSequence();
+        enemyHealthBar.SetMaxHealth(OGhealth);
     }
 
     void InitSequence()
     {
         PV = GetComponent<PhotonView>();
         agent = GetComponent<NavMeshAgent>();
-        timer = actionTimer;
-        attTimer = attackTimer;
+        timer = Random.Range(0, 4);
         OGhealth = health;
     }
 
@@ -40,6 +41,8 @@ public class MinionBehaviour : EnemyParameters
     {
         DeathTrigger();
         ChangeAction();
+
+        enemyHealthBar.SetHealth(health);
     }
 
     void ChangeAction()
@@ -50,6 +53,7 @@ public class MinionBehaviour : EnemyParameters
 
             if (timer >= actionTimer)
             {
+                gameObject.GetComponent<EnemyController>().LocateRandomTarget();
                 actionID = Random.Range(0, 19);
                 timer = Random.Range(0 , 4);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;

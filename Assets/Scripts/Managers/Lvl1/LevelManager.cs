@@ -26,5 +26,10 @@ public class LevelManager : MonoBehaviour
 
     public GameObject robot;
 
+    public Health[] HealthBars;
+
+    public UltimateCharge[] UltimateBars;
+
+    public TransformBar transformBar;
 
 }

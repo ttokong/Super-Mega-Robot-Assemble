@@ -8,7 +8,6 @@ public class PlayerStats : MonoBehaviour
 {
     #region PhotonView
 
-    [HideInInspector]
     public PhotonView PV;
     [HideInInspector]
     public AvatarSetup AS;
@@ -22,7 +21,7 @@ public class PlayerStats : MonoBehaviour
     public float health;
 
     public float ultiPercentage;
-
+    public float ultiChargePerShot;
 
     public float allowRotation;
 
@@ -35,6 +34,8 @@ public class PlayerStats : MonoBehaviour
     public float firerate;
 
     public bool robotForm;
+
+    public MultipleTargetCamera multipleTargetCamera;
 
     [HideInInspector]
     public float gravity;
@@ -66,10 +67,18 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public Camera cam;
 
+
+
     [PunRPC]
     public void RPC_PlayerTakeDamage(float dmg)
     {
-        health -= dmg; 
+        health -= dmg;
+    }
+
+    [PunRPC]
+    public void RPC_PlayerHeal(float heal)
+    {
+        health += heal;
     }
 
     public void DeathTrigger()
@@ -78,13 +87,18 @@ public class PlayerStats : MonoBehaviour
         {
             PV.RPC("Dead", RpcTarget.All);
         }
+
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetHealth(health);
+        LevelManager.instance.UltimateBars[PlayerInfo.instance.mySelectedCharacter].SetUltimatePercentage(ultiPercentage);
     }
 
     [PunRPC]
     public void Dead()
     {
-        Destroy(gameObject);
-        // Instantiate(ghost, gameObject.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        // create a prefab as a gameobject at this transform and setting the new gameobject as a reference
+        GameObject deadplayer = Instantiate(ghost, gameObject.transform.position, Quaternion.identity) as GameObject;
+        deadplayer.GetComponent<GhostScript>().player = gameObject;
     }
 
     public void OnEnable()

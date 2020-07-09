@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 783b6028-d904-47cc-8f5e-579105eaaaba
+    AppIdRealtime: f68a4618-1332-4fcd-8e99-7f187804f53e
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 0
+    AppVersion: 
     UseNameServer: 1
     FixedRegion: asia
     Server: 
@@ -42,13 +42,9 @@ MonoBehaviour:
   - RPC_CreatePlayer
   - RPC_Fire
   - RPC_LoadedGameScene
-  - RPC_TakeDamage
-  - DisableButtons
-  - EnableButtons
+  - RPC_PlayerHeal
   - RPC_PlayerTakeDamage
-  - Movement
-  - Rotation
-  - RPC_AddRobotPart
+  - RPC_TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -494,7 +494,7 @@ MonoBehaviour:
   followTarget: 0
   targetRadiusMin: 5
   targetRadiusMax: 20
-  health: 300
+  health: 3
   target: {fileID: 0}
   agent: {fileID: 0}
   OGhealth: 0

@@ -1,0 +1,590 @@
+fileFormatVersion: 2
+guid: dec920eddcb19a442b5f3f0ef3de4084
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 961182943789877211
+    second: UltiBar_0
+  - first:
+      213: 3244212594129661964
+    second: UltiBar_1
+  - first:
+      213: -954297135732239704
+    second: UltiBar_2
+  - first:
+      213: -4247641061008976726
+    second: UltiBar_3
+  - first:
+      213: 1621368207309148742
+    second: UltiBar_4
+  - first:
+      213: -5791104146179028968
+    second: UltiBar_5
+  - first:
+      213: -8325671284538373485
+    second: UltiBar_6
+  - first:
+      213: 6050705360172791059
+    second: UltiBar_7
+  - first:
+      213: -6402913105279816
+    second: UltiBar_8
+  - first:
+      213: -1883248157410535999
+    second: UltiBar_9
+  - first:
+      213: -138230205928913392
+    second: UltiBar_10
+  - first:
+      213: 2446333987331563533
+    second: UltiBar_11
+  - first:
+      213: 1538049971264185678
+    second: UltiBar_12
+  - first:
+      213: 8349308740361427753
+    second: UltiBar_13
+  - first:
+      213: 2051250008020857466
+    second: UltiBar_14
+  - first:
+      213: 2271896560279721300
+    second: UltiBar_15
+  - first:
+      213: 8806944037787643237
+    second: UltiBar_16
+  - first:
+      213: -1512275354770772548
+    second: UltiBar_17
+  - first:
+      213: -996346981826348933
+    second: UltiBar_18
+  - first:
+      213: -7624611316064520760
+    second: UltiBar_19
+  - first:
+      213: 488680308705538599
+    second: UltiBar_20
+  - first:
+      213: -3475468787520788000
+    second: UltiBar_21
+  - first:
+      213: -4305148217251508851
+    second: UltiBar_22
+  - first:
+      213: 6157051431177922198
+    second: UltiBar_23
+  - first:
+      213: -1961514517763105620
+    second: UltiBar_24
+  - first:
+      213: 3999370261100264420
+    second: UltiBar_25
+  - first:
+      213: -7314159488182238726
+    second: UltiBar_26
+  - first:
+      213: -3771422123817702710
+    second: UltiBar_27
+  - first:
+      213: -2105469651970335443
+    second: UltiBar_28
+  - first:
+      213: -6370770915523065736
+    second: UltiBar_29
+  - first:
+      213: 7921563608247306637
+    second: UltiBar_30
+  - first:
+      213: -8303064877156818513
+    second: UltiBar_31
+  - first:
+      213: -2575446668201790808
+    second: UltiBar_32
+  - first:
+      213: 3695328067220193620
+    second: UltiBar_33
+  - first:
+      213: 3391507079011683154
+    second: UltiBar_34
+  - first:
+      213: -2642755782822393141
+    second: UltiBar_35
+  - first:
+      213: 6346420453763281421
+    second: UltiBar_36
+  - first:
+      213: -362076526187849631
+    second: UltiBar_37
+  - first:
+      213: -8915310522519933
+    second: UltiBar_38
+  - first:
+      213: -3592774571642576302
+    second: UltiBar_39
+  - first:
+      213: -1195216042916454098
+    second: UltiBar_40
+  - first:
+      213: 9019013332814752349
+    second: UltiBar_41
+  - first:
+      213: 6647971589561007858
+    second: UltiBar_42
+  - first:
+      213: 3835877501489935544
+    second: UltiBar_43
+  - first:
+      213: -8135247832941096271
+    second: UltiBar_44
+  - first:
+      213: 8337280969700786036
+    second: UltiBar_45
+  - first:
+      213: 9092743071058572518
+    second: UltiBar_46
+  - first:
+      213: 676134196334387135
+    second: UltiBar_47
+  - first:
+      213: 680324739744088997
+    second: UltiBar_48
+  - first:
+      213: 8826098257617255091
+    second: UltiBar_49
+  - first:
+      213: 237250330881547796
+    second: UltiBar_50
+  - first:
+      213: -9066336797611659195
+    second: UltiBar_51
+  - first:
+      213: 8620209207486311679
+    second: UltiBar_52
+  - first:
+      213: 8677696942976291933
+    second: UltiBar_53
+  - first:
+      213: -3368610277499315154
+    second: UltiBar_54
+  - first:
+      213: 1306984557090965303
+    second: UltiBar_55
+  - first:
+      213: -2111357860308738932
+    second: UltiBar_56
+  - first:
+      213: 5457968565163215580
+    second: UltiBar_57
+  - first:
+      213: 1460680559270369348
+    second: UltiBar_58
+  - first:
+      213: -1147161001156055702
+    second: UltiBar_59
+  - first:
+      213: -5712029440014556469
+    second: UltiBar_60
+  - first:
+      213: 5188597955227635536
+    second: UltiBar_61
+  - first:
+      213: 897202207545442997
+    second: UltiBar_62
+  - first:
+      213: 2744815883203901756
+    second: UltiBar_63
+  - first:
+      213: -164923572752718949
+    second: UltiBar_64
+  - first:
+      213: 761859073500445803
+    second: UltiBar_65
+  - first:
+      213: -5360925026643932607
+    second: UltiBar_66
+  - first:
+      213: -3873289222518934491
+    second: UltiBar_67
+  - first:
+      213: 5184004200397981326
+    second: UltiBar_68
+  - first:
+      213: -7929022507318451842
+    second: UltiBar_69
+  - first:
+      213: 8967417242905863909
+    second: UltiBar_70
+  - first:
+      213: -72294516163212146
+    second: UltiBar_71
+  - first:
+      213: -8779289232789457571
+    second: UltiBar_72
+  - first:
+      213: 2457381661885668925
+    second: UltiBar_73
+  - first:
+      213: 1172682715553068167
+    second: UltiBar_1
+  - first:
+      213: -9073387396797833248
+    second: UltiBar_2
+  - first:
+      213: -478900599864789247
+    second: UltiBar_15
+  - first:
+      213: 4291667254637192920
+    second: UltiBar_37
+  - first:
+      213: -8164246927261402335
+    second: UltiBar_39
+  - first:
+      213: 8784413454198125
+    second: UltiBar_43
+  - first:
+      213: 2776039406340410510
+    second: UltiBar_45
+  - first:
+      213: 6334147079431132403
+    second: UltiBar_74
+  - first:
+      213: -5769041552644004214
+    second: UltiBar_75
+  - first:
+      213: 5804912898244566336
+    second: UltiBar_76
+  - first:
+      213: -1722856190478892856
+    second: UltiBar_77
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UltiBar_1
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 858
+        width: 276
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784f7c677b4364010800000000000000
+      internalID: 1172682715553068167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_2
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 862
+        width: 48
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efdb584c3ad41280800000000000000
+      internalID: -9073387396797833248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_3
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 854
+        width: 106
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa45231c5f85d05c0800000000000000
+      internalID: -4247641061008976726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_4
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 854
+        width: 276
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64216ce4bc1408610800000000000000
+      internalID: 1621368207309148742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_10
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 447
+        width: 380
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 016c06e2c58e41ef0800000000000000
+      internalID: -138230205928913392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_19
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 526
+        width: 192
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5fc8ba760ff2690800000000000000
+      internalID: -7624611316064520760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_21
+      rect:
+        serializedVersion: 2
+        x: 1658
+        y: 567
+        width: 165
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e9add33d87a4cfc0800000000000000
+      internalID: -3475468787520788000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_41
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 359
+        width: 1111
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a6fe667d8f92d70800000000000000
+      internalID: 9019013332814752349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_43
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 308
+        width: 1111
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d656f73a0653f1000800000000000000
+      internalID: 8784413454198125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_47
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 244
+        width: 1127
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf5101287c126900800000000000000
+      internalID: 676134196334387135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar_60
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 191
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc2eb59ec7bcab0b0800000000000000
+      internalID: -5712029440014556469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 436af5640c69632448d62f0d1b7a9eab
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

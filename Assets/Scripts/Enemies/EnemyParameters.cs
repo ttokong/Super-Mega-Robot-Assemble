@@ -19,7 +19,7 @@ public class EnemyParameters : MonoBehaviour
     public float targetRadiusMin;
     public float targetRadiusMax;
 
-    public float health;
+    public int health;
 
 
     [HideInInspector]
@@ -29,7 +29,7 @@ public class EnemyParameters : MonoBehaviour
     public NavMeshAgent agent;
 
     [HideInInspector]
-    public float OGhealth;
+    public int OGhealth;
 
     [HideInInspector]
     public EnemyController ec;
@@ -40,7 +40,7 @@ public class EnemyParameters : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_TakeDamage(float dmg)
+    public void RPC_TakeDamage(int dmg)
     {
         if (gameObject.GetComponent<BossBehaviour>())
         {

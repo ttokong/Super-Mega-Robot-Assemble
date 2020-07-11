@@ -171,7 +171,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4e8a662a45051544aa85567194cbfe3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,5 +220,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pack: {fileID: 5857293206061875282}
   PackSpawned: 0
-  heal: 0
-  PackCoolDown: 0
+  heal: 2
+  PackCoolDown: 30

@@ -45,6 +45,7 @@ MonoBehaviour:
   - RPC_PlayerHeal
   - RPC_PlayerTakeDamage
   - RPC_TakeDamage
+  - RPC_SetUltCharge
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -18,10 +18,13 @@ public class PlayerStats : MonoBehaviour
 
     public float speed;
 
-    public float health;
+    public int health;
 
-    public float ultiPercentage;
-    public float ultiChargePerShot;
+    public int Iframe;
+    private bool invincible;
+
+    public int ultiPercentage;
+    public int ultiChargePerShot;
 
     public float allowRotation;
 
@@ -56,7 +59,7 @@ public class PlayerStats : MonoBehaviour
     public Vector2 aimInput;
 
     [HideInInspector]
-    public float OGhealth;
+    public int OGhealth;
 
     [HideInInspector]
     public CharacterController CC;
@@ -70,15 +73,66 @@ public class PlayerStats : MonoBehaviour
 
 
     [PunRPC]
-    public void RPC_PlayerTakeDamage(float dmg)
+    public void RPC_PlayerTakeDamage(int dmg)
     {
-        health -= dmg;
+        if (!invincible)
+        {
+            health -= dmg;
+
+            foreach (Health hp in LevelManager.instance.HealthBars)
+            {
+                if (hp.playerID == PlayerInfo.instance.mySelectedCharacter)
+                {
+                    hp.TakeDamage();
+                    hp.SetHealth(health);
+                }
+            }
+
+            StartCoroutine(IframeCalc());
+        }
+        else
+            return;
+    }
+
+    IEnumerator IframeCalc()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(Iframe);
+        invincible = false;
+
     }
 
     [PunRPC]
-    public void RPC_PlayerHeal(float heal)
+    public void RPC_PlayerHeal(int heal)
     {
         health += heal;
+        if (health > OGhealth)
+        {
+            health = OGhealth;
+        }
+
+        foreach (Health hp in LevelManager.instance.HealthBars)
+        {
+            if (hp.playerID == PlayerInfo.instance.mySelectedCharacter)
+            {
+                hp.SetHealth(health);
+            }
+        }
+    }
+
+    [PunRPC]
+    public void RPC_SetUltCharge(int UltCharge)
+    {
+        Mathf.Clamp(ultiPercentage += UltCharge, 0, 4);
+
+
+        foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
+        {
+            if (ub.playerID == PlayerInfo.instance.mySelectedCharacter)
+            {
+                ub.SetUltimatePercentage(ultiPercentage);
+            }
+        }
     }
 
     public void DeathTrigger()
@@ -87,9 +141,6 @@ public class PlayerStats : MonoBehaviour
         {
             PV.RPC("Dead", RpcTarget.All);
         }
-
-        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetHealth(health);
-        LevelManager.instance.UltimateBars[PlayerInfo.instance.mySelectedCharacter].SetUltimatePercentage(ultiPercentage);
     }
 
     [PunRPC]

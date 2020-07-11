@@ -21,6 +21,12 @@ public class EnemyParameters : MonoBehaviour
 
     public int health;
 
+    [HideInInspector]
+    public MultipleTargetCamera multipleTargetCamera;
+
+    [HideInInspector]
+    public Camera cam;
+
 
     [HideInInspector]
     public Transform target;
@@ -68,5 +74,6 @@ public class EnemyParameters : MonoBehaviour
     public void Dead()
     {
         Destroy(gameObject);
+        multipleTargetCamera.targets.Remove(gameObject.transform);
     }
 }

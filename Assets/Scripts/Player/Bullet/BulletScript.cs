@@ -41,7 +41,6 @@ public class BulletScript : MonoBehaviour
                 other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
 
                 player.GetComponent<PhotonView>().RPC("RPC_SetUltCharge", RpcTarget.All, player.GetComponent<PlayerStats>().ultiChargePerShot);
-                //LevelManager.instance.transformBar.AddCharge(player.GetComponent<PlayerStats>().ultiChargePerShot / 3);
 
                 DestroyBullet();
             }

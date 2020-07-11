@@ -133,6 +133,8 @@ public class PlayerStats : MonoBehaviour
                 ub.SetUltimatePercentage(ultiPercentage);
             }
         }
+
+        LevelManager.instance.transformBar.AddCharge(ultiChargePerShot + 2);
     }
 
     public void DeathTrigger()

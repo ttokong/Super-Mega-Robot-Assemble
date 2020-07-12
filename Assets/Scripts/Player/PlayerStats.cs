@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     public int Iframe;
     private bool invincible;
 
-    public int ultiPercentage;
+    public int ultiCharge;
     public int ultiChargePerShot;
 
     public float allowRotation;
@@ -123,14 +123,19 @@ public class PlayerStats : MonoBehaviour
     [PunRPC]
     public void RPC_SetUltCharge(int UltCharge)
     {
-        Mathf.Clamp(ultiPercentage += UltCharge, 0, 4);
+        Mathf.Clamp(ultiCharge += UltCharge, 0, 4);
+
+        if (ultiCharge > 4)
+        {
+            ultiCharge = 4;
+        }
 
 
         foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
         {
             if (ub.playerID == PlayerInfo.instance.mySelectedCharacter)
             {
-                ub.SetUltimatePercentage(ultiPercentage);
+                ub.SetUltimatePercentage(ultiCharge);
             }
         }
 

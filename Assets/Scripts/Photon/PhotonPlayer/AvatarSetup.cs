@@ -15,7 +15,7 @@ public class AvatarSetup : MonoBehaviour
     #endregion
 
     public GameObject myCharacter;
-    public GameObject myRobotPart;
+    //public GameObject myRobotPart;
     public int characterValue;
 
     // Start is called before the first frame update

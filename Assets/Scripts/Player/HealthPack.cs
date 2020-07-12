@@ -8,7 +8,7 @@ public class HealthPack : MonoBehaviour
     public GameObject Pack;
     public bool PackSpawned;
 
-    public float heal;
+    public int heal;
     public float PackCoolDown;
     private float timer;
 
@@ -44,9 +44,15 @@ public class HealthPack : MonoBehaviour
     // triggers when its child object detects ontriggerenter
     public void PullTrigger(Collider other)
     {
-        other.GetComponent<PhotonView>().RPC("RPC_PlayerHeal", RpcTarget.All, heal);
-        Pack.SetActive(false);
-        PackSpawned = false;
+        if (other.tag == "Player")
+        {
+            if (other.GetComponent<PlayerStats>().health < other.GetComponent<PlayerStats>().OGhealth)
+            {
+                other.GetComponent<PhotonView>().RPC("RPC_PlayerHeal", RpcTarget.All, heal);
+                Pack.SetActive(false);
+                PackSpawned = false;
+            }
+        }
     }
 
     void SpawnPack()

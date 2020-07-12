@@ -494,16 +494,18 @@ MonoBehaviour:
   followTarget: 0
   targetRadiusMin: 5
   targetRadiusMax: 20
-  health: 300
+  health: 3
+  multipleTargetCamera: {fileID: 0}
+  cam: {fileID: 0}
   target: {fileID: 0}
   agent: {fileID: 0}
   OGhealth: 0
   ec: {fileID: 0}
   attackTimer: 1
-  actionTimer: 3
+  timeBetweenActions: 2
   actionComplete: 1
   enemyHealthBar: {fileID: 5452069864403648650}
-  firerate: 3
+  firerate: 2
   enemyBullet: {fileID: 4760877971433636538, guid: 1b6069a55092669439e7d404b9c5b646,
     type: 3}
   firePoint: {fileID: 3032826160315753040}

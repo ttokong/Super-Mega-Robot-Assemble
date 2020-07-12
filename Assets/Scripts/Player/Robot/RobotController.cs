@@ -12,6 +12,7 @@ public class RobotController : PlayerStats
     void Awake()
     {
         cam = Camera.main;
+        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         controls = new PlayerControls();
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
@@ -27,6 +28,8 @@ public class RobotController : PlayerStats
         OGhealth = health;
         //PV = GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
+
+        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     void Update()

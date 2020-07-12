@@ -9,7 +9,7 @@ public class EnemyBullet : MonoBehaviour
 
     public float bulletSpeedMultiplier;
 
-    public float damage;
+    public int damage;
 
     public GameObject impactExplosion;
 
@@ -32,7 +32,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Enemy" && other.tag != "Bullet")
+        if (other.tag != "Enemy" && other.tag != "Bullet" && other.tag != "Ghost")
         {
             if (other.tag == "Player")
             {

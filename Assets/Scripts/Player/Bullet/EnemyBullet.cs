@@ -48,7 +48,7 @@ public class EnemyBullet : MonoBehaviour
     }
 
     [PunRPC]
-    private void DestroyBullet()
+    public void DestroyBullet()
     {
         Destroy(gameObject);
 

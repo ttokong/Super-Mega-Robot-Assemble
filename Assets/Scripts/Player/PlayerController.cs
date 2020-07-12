@@ -214,7 +214,7 @@ public class PlayerController : PlayerStats
                     {
                         // tank
                         case 0:
-
+                            this.GetComponent<TankSkill>().TankShield();
                             break;
 
                         // dps

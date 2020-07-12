@@ -133,7 +133,7 @@ MonoBehaviour:
   speed: 16
   health: 5
   Iframe: 1
-  ultiPercentage: 0
+  ultiCharge: 0
   ultiChargePerShot: 1
   allowRotation: 0.1
   gravityMultiplier: 0.65

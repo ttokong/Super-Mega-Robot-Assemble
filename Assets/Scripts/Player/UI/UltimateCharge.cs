@@ -5,15 +5,48 @@ using UnityEngine.UI;
 
 public class UltimateCharge : MonoBehaviour
 {
-    public Slider UltimateSlider;
+    public GameObject[] ultBars;
 
-    private void Awake()
-    {
-        UltimateSlider.maxValue = 100f;        
-    }
+    public int playerID;
 
-    public void SetUltimatePercentage(float ultiPercentage)
+    public void SetUltimatePercentage(int ultiPercentage)
     {
-        UltimateSlider.value = ultiPercentage;
+        switch (ultiPercentage)
+        {
+            case 4:
+                ultBars[3].SetActive(true);
+                ultBars[2].SetActive(true);
+                ultBars[1].SetActive(true);
+                ultBars[0].SetActive(true);
+                break;
+
+            case 3:
+                ultBars[3].SetActive(false);
+                ultBars[2].SetActive(true);
+                ultBars[1].SetActive(true);
+                ultBars[0].SetActive(true);
+                break;
+
+            case 2:
+                ultBars[3].SetActive(false);
+                ultBars[2].SetActive(false);
+                ultBars[1].SetActive(true);
+                ultBars[0].SetActive(true);
+                break;
+
+            case 1:
+                ultBars[3].SetActive(false);
+                ultBars[2].SetActive(false);
+                ultBars[1].SetActive(false);
+                ultBars[0].SetActive(true);
+                break;
+
+            case 0:
+                ultBars[3].SetActive(false);
+                ultBars[2].SetActive(false);
+                ultBars[1].SetActive(false);
+                ultBars[0].SetActive(false);
+                break;
+        }
     }
 }

@@ -23,20 +23,24 @@ public class BossBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        cam = Camera.main;
+        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         timer = Random.Range(0, 4);
         agent = GetComponent<NavMeshAgent>();
         PV = GetComponent<PhotonView>();
         OGhealth = health;
+        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
         DeathTrigger();
-        ChangeAction();
+
+        PV.RPC("ChangeAction", RpcTarget.All);
     }
 
-
+    [PunRPC]
     void ChangeAction()
     {
         if (actionComplete)

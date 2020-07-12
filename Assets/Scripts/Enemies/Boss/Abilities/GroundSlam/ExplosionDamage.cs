@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class ExplosionDamage : MonoBehaviour
 {
-    public float damage;
+    public int damage;
     private CapsuleCollider CC;
 
     private void Start()

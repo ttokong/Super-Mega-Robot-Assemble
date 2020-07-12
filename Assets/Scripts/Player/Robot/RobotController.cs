@@ -1,35 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RobotController : MonoBehaviour
+public class RobotController : PlayerStats
 {
     public GameObject[] robotParts;
-
-
-    public float health;
-    private float OGhealth;
-
-
-    private PhotonView PV;
-    private CharacterController CC;
-    private PlayerControls controls;
-    private Camera cam;
-    public float allowRotation;
-    private Vector2 movementInput;
-    private Vector3 dir;
-
-    public float speed;
-    private float gravity;
-    public float gravityMultiplier;
 
     void Awake()
     {
         cam = Camera.main;
+        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         controls = new PlayerControls();
-        controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();        
+        controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
     }
 
     void Start()
@@ -42,6 +28,8 @@ public class RobotController : MonoBehaviour
         OGhealth = health;
         //PV = GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
+
+        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     void Update()
@@ -77,6 +65,8 @@ public class RobotController : MonoBehaviour
 
     void Rotation()                 //this part makes u rotate to face the direction of movement
     {
+        Joystick js = Joystick.current;
+        Mouse mouse = Mouse.current;
 
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
@@ -88,6 +78,28 @@ public class RobotController : MonoBehaviour
         right.Normalize();
 
         dir = right * movementInput.x + forward * movementInput.y;
+
+        /*
+        if (js == null)
+        {
+            Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 350f))
+            {
+                Vector3 mouseDir = hit.point - transform.position;
+                Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, qDir, 0.15F);
+
+            }
+        }
+        else
+        {
+            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+        }*/
+
         if (PhotonRoom.room.myNumberInRoom == 1)
         {
             robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
@@ -115,16 +127,5 @@ public class RobotController : MonoBehaviour
         {
             gravity = 0;
         }
-    }
-
-
-    public void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    public void OnDisable()
-    {
-        controls.Disable();
     }
 }

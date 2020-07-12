@@ -5,18 +5,39 @@ using UnityEngine.InputSystem;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RobotController : PlayerStats
+public class RobotController : MonoBehaviour
 {
+
+    public float allowRotation;
     public GameObject[] robotParts;
+    public int health;
+    public float gravityMultiplier;
+    public float speed;
+    public GameObject crosshair;
+
+    private PhotonView PV;
+    private float gravity;
+    private Camera cam;
+    private MultipleTargetCamera multipleTargetCamera;
+    private PlayerControls controls;
+    private Vector2 movementInput;
+    private Vector2 aimInput;
+    private CharacterController CC;
+    private int OGhealth;
+    private Vector3 dir;
 
     void Awake()
     {
         cam = Camera.main;
         multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
+
         controls = new PlayerControls();
+
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Pause.performed += context => Pause(context);
     }
+
 
     void Start()
     {
@@ -26,24 +47,23 @@ public class RobotController : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
-        //PV = GetComponent<PhotonView>();
-        CC = gameObject.GetComponent<CharacterController>();
+        PV = GetComponent<PhotonView>();
+        CC = GetComponent<CharacterController>();
 
         multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     void Update()
     {
-        //if (PV.IsMine)
-        //{
-            if (PhotonRoom.room.myNumberInRoom == 2)
+        if (PV.IsMine)
+        {
+            if (PlayerInfo.instance.mySelectedCharacter == 2)
             {
                 Movement();
             }
 
-
             InputDecider();                             // dont touch this thanks
-        //}
+        }
 
     }
 
@@ -51,19 +71,56 @@ public class RobotController : PlayerStats
     void InputDecider()
     {
         float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
+        float aimSpeed = new Vector2(aimInput.x, aimInput.y).sqrMagnitude;
 
-        if (currentSpeed > allowRotation)                   //if u exceed a certain speed u will rotate basically
+        if (PlayerInfo.instance.mySelectedCharacter == 2)
         {
-            Rotation();
+            if (currentSpeed > allowRotation)                   //if u exceed a certain speed u will rotate basically
+            {
+                Rotation();
+            }
+            else
+            {
+                dir = Vector3.zero;                             //if not moving then dont rotate
+            }
         }
         else
         {
-            dir = Vector3.zero;                             //if not moving then dont rotate
-        }
+            if (aimSpeed > allowRotation)
+            {
+                AimRotation();
+            }
+            else if (aimSpeed > allowRotation)
+            {
+                AimRotation();
+            }
+            else
+            {
+                dir = Vector3.zero;                             //if not moving then dont rotate
+            }
+        }    
     }
 
+    // rotation of player character
+    void Rotation()
+    {
 
-    void Rotation()                 //this part makes u rotate to face the direction of movement
+        Vector3 forward = cam.transform.forward;
+        Vector3 right = cam.transform.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        dir = right * movementInput.x + forward * movementInput.y;
+
+        robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+
+    }
+
+    void AimRotation()
     {
         Joystick js = Joystick.current;
         Mouse mouse = Mouse.current;
@@ -79,37 +136,59 @@ public class RobotController : PlayerStats
 
         dir = right * movementInput.x + forward * movementInput.y;
 
-        /*
-        if (js == null)
+
+        if (PlayerInfo.instance.mySelectedCharacter == 0)                //tank
         {
-            Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 350f))
+            if (js == null)
             {
-                Vector3 mouseDir = hit.point - transform.position;
-                Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
+                Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 350f))
+                {
+                    Vector3 mouseDir = hit.point - transform.position;
+                    Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, qDir, 0.15F);
+                    robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, qDir, 0.15F);
 
+                }
+            }
+            else
+            {
+                Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+
+                robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
             }
         }
-        else
+        else if (PlayerInfo.instance.mySelectedCharacter == 1)           //dps
         {
-            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+            if (js == null)
+            {
+                Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
+                RaycastHit hit;
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
-        }*/
+                if (Physics.Raycast(ray, out hit, 350f))
+                {
+                    Vector3 mouseDir = hit.point - transform.position;
+                    Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
 
-        if (PhotonRoom.room.myNumberInRoom == 1)
-        {
-            robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+                    robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, qDir, 0.15F);
+
+                    crosshair.transform.position = hit.point;
+                }
+            }
+            else
+            {
+                Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+
+                robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+            }
         }
-        else if (PhotonRoom.room.myNumberInRoom == 2)
+        else if (PlayerInfo.instance.mySelectedCharacter == 2)           //support
         {
-            robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+            robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
         }
 
-        
+
     }
 
     void Movement()
@@ -119,6 +198,7 @@ public class RobotController : PlayerStats
 
 
         Vector3 moveDir = dir * (speed * Time.deltaTime);
+        Debug.Log(dir);
         moveDir = new Vector3(moveDir.x, gravity, moveDir.z);
 
         CC.Move(moveDir);
@@ -127,5 +207,30 @@ public class RobotController : PlayerStats
         {
             gravity = 0;
         }
+    }
+
+
+    void Pause(InputAction.CallbackContext context)
+    {
+        if (PV.IsMine)
+        {
+            float value = context.ReadValue<float>();
+
+
+            if (value >= 0.9) //if button is pressed
+            {
+
+            }
+        }
+    }
+
+    public void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    public void OnDisable()
+    {
+        controls.Disable();
     }
 }

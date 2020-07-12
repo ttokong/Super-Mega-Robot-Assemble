@@ -188,10 +188,7 @@ public class PlayerController : PlayerStats
             {
                 if (value >= 0.9)
                 {
-                    gameObject.SetActive(false);
-                    LevelManager.instance.robot.SetActive(true);
-                    //GetComponent<AvatarSetup>().PV.RPC("RPC_AddRobotPart", RpcTarget.AllViaServer);
-                    robotForm = true;
+                    PV.RPC("RPC_SuperRobotMegaAssemble", RpcTarget.All);
                 }
             }
 
@@ -225,6 +222,14 @@ public class PlayerController : PlayerStats
 
             }
         }
+    }
+
+    [PunRPC]
+    private void RPC_SuperRobotMegaAssemble()
+    {
+        gameObject.SetActive(false);
+        LevelManager.instance.robot.SetActive(true);
+        robotForm = true;
     }
 
     [PunRPC]

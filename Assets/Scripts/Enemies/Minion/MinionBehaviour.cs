@@ -11,7 +11,6 @@ public class MinionBehaviour : EnemyParameters
 
     private int actionID;
 
-
     public float attackTimer;
 
     public float timeBetweenActions;

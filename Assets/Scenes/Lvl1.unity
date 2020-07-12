@@ -2208,9 +2208,9 @@ MonoBehaviour:
   AS: {fileID: 0}
   ghost: {fileID: 0}
   speed: 8
-  health: 50
-  Iframe: 1
-  ultiPercentage: 0
+  health: 0
+  Iframe: 0
+  ultiCharge: 0
   ultiChargePerShot: 0
   allowRotation: 0.1
   gravityMultiplier: 0.65
@@ -3012,7 +3012,7 @@ MonoBehaviour:
   followTarget: 0
   targetRadiusMin: 8
   targetRadiusMax: 25
-  health: 80
+  health: 0
   multipleTargetCamera: {fileID: 0}
   cam: {fileID: 0}
   target: {fileID: 0}

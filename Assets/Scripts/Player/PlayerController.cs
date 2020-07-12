@@ -208,7 +208,35 @@ public class PlayerController : PlayerStats
 
             if (value >= 0.9) //if button is pressed
             {
-               
+                if (ultiCharge == 4)
+                {
+                    switch (PlayerInfo.instance.mySelectedCharacter)
+                    {
+                        // tank
+                        case 0:
+
+                            break;
+
+                        // dps
+                        case 1:
+                            this.GetComponent<DPSSkill>().DPS();
+                            break;
+
+                        // healer
+                        case 2:
+                            this.GetComponent<HealerSkill>().Healing();
+                            break;
+                    }
+
+                    ultiCharge = 0;
+                    foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
+                    {
+                        if (ub.playerID == PlayerInfo.instance.mySelectedCharacter)
+                        {
+                            ub.SetUltimatePercentage(ultiCharge);
+                        }
+                    }
+                }
             }
         }
     }

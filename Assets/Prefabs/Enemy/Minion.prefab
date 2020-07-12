@@ -474,7 +474,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -494,7 +494,8 @@ MonoBehaviour:
   followTarget: 0
   targetRadiusMin: 5
   targetRadiusMax: 20
-  health: 3
+  bulletHit: 0
+  health: 8
   multipleTargetCamera: {fileID: 0}
   cam: {fileID: 0}
   target: {fileID: 0}
@@ -505,6 +506,8 @@ MonoBehaviour:
   timeBetweenActions: 2
   actionComplete: 1
   enemyHealthBar: {fileID: 5452069864403648650}
+  stunned: 0
+  stunnedCD: 5
   firerate: 2
   enemyBullet: {fileID: 4760877971433636538, guid: 1b6069a55092669439e7d404b9c5b646,
     type: 3}

@@ -19,6 +19,8 @@ public class EnemyParameters : MonoBehaviour
     public float targetRadiusMin;
     public float targetRadiusMax;
 
+    public bool bulletHit = false;
+
     public int health;
 
     [HideInInspector]
@@ -62,12 +64,20 @@ public class EnemyParameters : MonoBehaviour
 
     }
 
+    // private bool BTswitch = false;
+
     public void DeathTrigger()
     {
         if (health <= 0)
         {
             PV.RPC("Dead", RpcTarget.All);
         }
+
+        /*if (bulletHit == true && BTswitch == false)
+        {
+            StartCoroutine(bulletTrigger());
+        }*/
+
     }
 
     [PunRPC]
@@ -76,4 +86,13 @@ public class EnemyParameters : MonoBehaviour
         Destroy(gameObject);
         multipleTargetCamera.targets.Remove(gameObject.transform);
     }
+
+    /*IEnumerator bulletTrigger()
+    {
+        BTswitch = true;
+        yield return new WaitForSeconds(1f);
+        bulletHit = false;
+        BTswitch = false;
+    }*/
+
 }

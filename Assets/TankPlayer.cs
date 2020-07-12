@@ -4,35 +4,30 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-public class PlayerController : PlayerStats
+public class TankPlayer : PlayerStats
 {
+
+    public GameObject CCRadius;
 
     void Awake()
     {
         cam = Camera.main;
         controls = new PlayerControls();
-        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.ShootHold.performed += context => RapidFire(context);
         controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
         controls.Gameplay.Ultimate.performed += context => Ultimate(context);
-        controls.Gameplay.Pause.performed += context => Pause(context);
         InitSequence();
     }
-    
+
 
     void InitSequence()
     {
         OGhealth = health;
-        LevelManager.instance.HealthBars[0].SetIcon(PlayerInfo.instance.mySelectedCharacter);
-        Debug.Log(PlayerInfo.instance.mySelectedCharacter);
-
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
         PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
-        
-        // adds the gameobject this script is attached to as a target in the multiple target camera script
-        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
 
@@ -41,7 +36,7 @@ public class PlayerController : PlayerStats
     {
         if (PV.IsMine)
         {
-            if(!robotForm)
+            if (!robotForm)
             {
                 Movement();
                 InputDecider();
@@ -49,6 +44,8 @@ public class PlayerController : PlayerStats
                 DeathTrigger();
 
                 StartCoroutine(Shoot());
+
+                TankCC();
             }
         }
 
@@ -57,6 +54,7 @@ public class PlayerController : PlayerStats
     // check for which input is being used by player and calls for appropriate functions
     void InputDecider()
     {
+
         float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
         float aimSpeed = new Vector2(aimInput.x, aimInput.y).sqrMagnitude;
 
@@ -91,7 +89,7 @@ public class PlayerController : PlayerStats
         forward.Normalize();
         right.Normalize();
 
-        dir = right * movementInput.x + forward * movementInput.y; 
+        dir = right * movementInput.x + forward * movementInput.y;
 
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
 
@@ -100,8 +98,6 @@ public class PlayerController : PlayerStats
     // aim rotation of player
     void AimRotation()
     {
-        Joystick js = Joystick.current;
-        Mouse mouse = Mouse.current;
 
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
@@ -114,26 +110,9 @@ public class PlayerController : PlayerStats
 
         dir = right * movementInput.x + forward * movementInput.y;
 
-        if (js == null)
-        {
-            Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 350f))
-            {
-                Vector3 mouseDir = hit.point - transform.position;
-                Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
+        Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, qDir, 0.15F);
-
-            }
-        }
-        else
-        {
-            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
-        }
-
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
     }
 
 
@@ -149,7 +128,7 @@ public class PlayerController : PlayerStats
 
         CC.Move(moveDir);
 
-        if(CC.isGrounded)
+        if (CC.isGrounded)
         {
             gravity = 0;
         }
@@ -164,13 +143,13 @@ public class PlayerController : PlayerStats
     // when shooting projectiles
     IEnumerator Shoot()
     {
-        if(shooting)
+        if (shooting)
         {
             if (!shootTrig)
             {
                 shootTrig = true;
                 PV.RPC("RPC_Fire", RpcTarget.All);
-                yield return new WaitForSeconds(1/firerate);
+                yield return new WaitForSeconds(1 / firerate);
                 shootTrig = false;
             }
         }
@@ -180,7 +159,7 @@ public class PlayerController : PlayerStats
     // transformation into robot
     void RobotAssemble(InputAction.CallbackContext context)
     {
-        if(PV.IsMine)
+        if (PV.IsMine)
         {
             float value = context.ReadValue<float>();
 
@@ -208,22 +187,17 @@ public class PlayerController : PlayerStats
 
             if (value >= 0.9) //if button is pressed
             {
-               
+
             }
         }
     }
 
-    void Pause(InputAction.CallbackContext context)
+    // activates tank skill to CC minions
+    void TankCC()
     {
-        if (PV.IsMine)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            float value = context.ReadValue<float>();
-
-
-            if (value >= 0.9) //if button is pressed
-            {
-
-            }
+            PV.RPC("RPC_TankCC", RpcTarget.All);
         }
     }
 
@@ -235,5 +209,10 @@ public class PlayerController : PlayerStats
         bullet.GetComponent<BulletScript>().player = gameObject;
     }
 
+    [PunRPC]
+    private void RPC_TankCC()
+    {
+        CCRadius.SetActive(true);
+    }
 
 }

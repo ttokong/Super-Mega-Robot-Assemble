@@ -20,6 +20,8 @@ public class MinionBehaviour : EnemyParameters
 
     public EnemyHealthBar enemyHealthBar;
 
+    public bool stunned = false;
+    public float stunnedCD = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,11 @@ public class MinionBehaviour : EnemyParameters
 
         PV.RPC("ChangeAction", RpcTarget.All);
 
+        if (!stunned)
+        {
+            ChangeAction();
+        }
+        
         enemyHealthBar.SetHealth(health);
     }
 
@@ -81,6 +88,19 @@ public class MinionBehaviour : EnemyParameters
             else
             {
                 actionComplete = true;
+            }
+        }
+
+        if (!stunned)
+        {
+            stunnedCD = 5f;
+        }
+        else if (stunned)
+        {
+            stunnedCD -= Time.deltaTime;
+            if (stunnedCD <= 0f)
+            {
+                stunned = false;
             }
         }
 

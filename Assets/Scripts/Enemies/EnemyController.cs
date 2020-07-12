@@ -20,9 +20,11 @@ public class EnemyController : MonoBehaviour
 
     void InitGame()
     {
+        // references to navmeshagent
         agent = GetComponent<NavMeshAgent>();
         e = GetComponent<EnemyParameters>();
 
+        // sets the distance for enemies to stop from the player
         agent.stoppingDistance = stopRadius;
     }
 

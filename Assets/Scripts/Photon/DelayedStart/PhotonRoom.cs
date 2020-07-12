@@ -214,7 +214,25 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private void RPC_CreatePlayer(int selectedCharacter)
     {
         Debug.Log("Player Created");
-        //PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "PhotonNetworkPlayer"), transform.position, Quaternion.identity, 0);
+
+        switch (selectedCharacter)
+        {
+            case 0:
+                PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Tank"), LevelManager.instance.spawnpoints[0].position, Quaternion.identity);
+                break;
+
+
+            case 1:
+                PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "DPS"),
+                    LevelManager.instance.spawnpoints[1].position, Quaternion.identity);
+                break;
+
+
+            case 2:
+                PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Support"),
+                    LevelManager.instance.spawnpoints[2].position, Quaternion.identity);
+                break;
+        }
 
     }
 }

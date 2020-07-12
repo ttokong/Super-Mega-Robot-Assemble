@@ -7,9 +7,10 @@ TagManager:
   - Ground
   - Enemy
   - Bullet
+  - Effects
   - Walls
   - Items
-  - Effects
+  - Ghost
   layers:
   - Default
   - TransparentFX

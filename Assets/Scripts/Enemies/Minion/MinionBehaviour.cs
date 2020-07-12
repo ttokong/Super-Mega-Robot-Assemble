@@ -14,7 +14,7 @@ public class MinionBehaviour : EnemyParameters
 
     public float attackTimer;
 
-    public float actionTimer;
+    public float timeBetweenActions;
 
     public bool actionComplete = true;
 
@@ -32,16 +32,21 @@ public class MinionBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        cam = Camera.main;
+        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         PV = GetComponent<PhotonView>();
         agent = GetComponent<NavMeshAgent>();
         timer = Random.Range(0, 4);
         OGhealth = health;
+        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
         DeathTrigger();
+
+        PV.RPC("ChangeAction", RpcTarget.All);
 
         if (!stunned)
         {
@@ -51,17 +56,18 @@ public class MinionBehaviour : EnemyParameters
         enemyHealthBar.SetHealth(health);
     }
 
+    [PunRPC]
     void ChangeAction()
     {
         if(actionComplete)
         {
             timer += Time.deltaTime;
 
-            if (timer >= actionTimer)
+            if (timer >= timeBetweenActions)
             {
                 gameObject.GetComponent<EnemyController>().LocateRandomTarget();
                 actionID = Random.Range(0, 19);
-                timer = Random.Range(0 , 4);         // randomly reduces wait time between each action by 0 to 3 seconds
+                timer = Random.Range(0 , timeBetweenActions);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;
             }
         }

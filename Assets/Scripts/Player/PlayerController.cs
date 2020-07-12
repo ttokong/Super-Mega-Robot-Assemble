@@ -25,7 +25,9 @@ public class PlayerController : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
-        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
+        LevelManager.instance.HealthBars[0].SetIcon(PlayerInfo.instance.mySelectedCharacter);
+        Debug.Log(PlayerInfo.instance.mySelectedCharacter);
+
         PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
         

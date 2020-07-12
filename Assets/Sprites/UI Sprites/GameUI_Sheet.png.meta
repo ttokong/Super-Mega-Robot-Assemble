@@ -1,0 +1,1046 @@
+fileFormatVersion: 2
+guid: fbb5f30b8bc15754c8b818adeb9f7316
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6251685091947358342
+    second: Background
+  - first:
+      213: -3035623562885979326
+    second: HealthBar3Segment_01
+  - first:
+      213: -4408421923699118377
+    second: HealthBar3Segment_02
+  - first:
+      213: 386749149469345460
+    second: HealthBar3Segment_03
+  - first:
+      213: -97477041692332752
+    second: HealthBar5Segment_01
+  - first:
+      213: -7633869441145058744
+    second: HealthBar5Segment_02
+  - first:
+      213: -7425739496319519997
+    second: HealthBar5Segment_03
+  - first:
+      213: -6705929786262334421
+    second: HealthBar5Segment_04
+  - first:
+      213: -8633978410653526098
+    second: HealthBar5Segment_05
+  - first:
+      213: 4749215540647508033
+    second: HealthBar3Segment_01
+  - first:
+      213: -7076688401038951351
+    second: Background
+  - first:
+      213: 1254571424436297812
+    second: HealthBarFlash
+  - first:
+      213: -9181918179790558752
+    second: HealthBar3Segment_02
+  - first:
+      213: -5480661760760743240
+    second: HealthBar3Segment_03
+  - first:
+      213: 6282639836266969158
+    second: GameUI_Sheet_5
+  - first:
+      213: 3455025336491260103
+    second: HealthBar5Segment_01
+  - first:
+      213: 4447758098448081463
+    second: HealthBar5Segment_02
+  - first:
+      213: -4494891637631275532
+    second: HealthBar5Segment_03
+  - first:
+      213: -5604905611243141296
+    second: HealthBar5Segment_04
+  - first:
+      213: -7759675391292786313
+    second: HealthBar5Segment_05
+  - first:
+      213: -890412343198045066
+    second: HealthBarBackGround
+  - first:
+      213: -6228424633637814914
+    second: AvatarBox
+  - first:
+      213: 8952218636464990640
+    second: HealthBar01
+  - first:
+      213: -8157237120330919665
+    second: HealthBar02
+  - first:
+      213: 4755864014590444705
+    second: BarColumnDark
+  - first:
+      213: 4674065016474788078
+    second: BarColumnDark01
+  - first:
+      213: -1426805152213941895
+    second: BarColumnDark02
+  - first:
+      213: 6539298379002738181
+    second: BarColumnDark03
+  - first:
+      213: -7295723775839589585
+    second: BarColumnLight
+  - first:
+      213: 2400872958955080080
+    second: BarColumnLight01
+  - first:
+      213: 2890903843085757691
+    second: BarColumnLight02
+  - first:
+      213: 5436466986031354120
+    second: BarColumnLight03
+  - first:
+      213: 7600879912274034250
+    second: BarColumnDark04
+  - first:
+      213: 7980546259623960086
+    second: BarColumnDark05
+  - first:
+      213: 274171944956266153
+    second: BarColumnLight04
+  - first:
+      213: -5579517315394711307
+    second: BarColumnLight05
+  - first:
+      213: 3366852108161732166
+    second: UltiHealthBarBackGround
+  - first:
+      213: -4774190358745577662
+    second: UltiBar
+  - first:
+      213: 7811327720311328291
+    second: UltiBar01
+  - first:
+      213: -8881056428751216558
+    second: UltiBar02
+  - first:
+      213: -6664402531942799673
+    second: UltiBar03
+  - first:
+      213: -6632735200979451522
+    second: UltiBar04
+  - first:
+      213: 1294851189648159909
+    second: UltiBarDeactivated
+  - first:
+      213: 5426873591583866914
+    second: BarColumnDark06
+  - first:
+      213: -422849114021737496
+    second: BarColumnDark07
+  - first:
+      213: 5558849321755301282
+    second: BarColumnDark08
+  - first:
+      213: 4012568238517587473
+    second: UiComplete
+  - first:
+      213: -6251685091947358342
+    second: UIBackPanel
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HealthBarFlash
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 779
+        width: 272
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450a1e24012296110800000000000000
+      internalID: 1254571424436297812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar3Segment_01
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 789
+        width: 83
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1483f0e2f5a98e140800000000000000
+      internalID: 4749215540647508033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar3Segment_02
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 785
+        width: 99
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e9e1e83016439080800000000000000
+      internalID: -9181918179790558752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar3Segment_03
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 782
+        width: 104
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8baf9c79a27c0f3b0800000000000000
+      internalID: -5480661760760743240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameUI_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 756
+        width: 260
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648396ce4ab603750800000000000000
+      internalID: 6282639836266969158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar5Segment_01
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 731
+        width: 45
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c8398fec37b2ff20800000000000000
+      internalID: 3455025336491260103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar5Segment_02
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 730
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7326dd0ec6c99bd30800000000000000
+      internalID: 4447758098448081463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar5Segment_03
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 731
+        width: 61
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd2d1bdedfee91c0800000000000000
+      internalID: -4494891637631275532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar5Segment_04
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 729
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057424aea006732b0800000000000000
+      internalID: -5604905611243141296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar5Segment_05
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 729
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77937a91858105490800000000000000
+      internalID: -7759675391292786313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBarBackGround
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 695
+        width: 272
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cae0401be94a3f0800000000000000
+      internalID: -890412343198045066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AvatarBox
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 623
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7db9b99bc03099a0800000000000000
+      internalID: -6228424633637814914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar01
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 653
+        width: 260
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9a0224b6bac3c70800000000000000
+      internalID: 8952218636464990640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthBar02
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 607
+        width: 260
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f019b06de0cabce80800000000000000
+      internalID: -8157237120330919665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 550
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a40ab5af19300240800000000000000
+      internalID: 4755864014590444705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark01
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 550
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee06f044e5d9dd040800000000000000
+      internalID: 4674065016474788078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark02
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 550
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 971479a0648f23ce0800000000000000
+      internalID: -1426805152213941895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark03
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 550
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506feb0aa3140ca50800000000000000
+      internalID: 6539298379002738181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnLight
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 550
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2ba5b951e160ca90800000000000000
+      internalID: -7295723775839589585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnLight01
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 550
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099cb5d5c3d915120800000000000000
+      internalID: 2400872958955080080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnLight02
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 550
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc20f68abd8e1820800000000000000
+      internalID: 2890903843085757691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnLight03
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 550
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801998f8be5327b40800000000000000
+      internalID: 5436466986031354120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark04
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 493
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4efe7f4200cb7960800000000000000
+      internalID: 7600879912274034250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark05
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 493
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e55765a8890ce60800000000000000
+      internalID: 7980546259623960086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnLight04
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 493
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a60f7a6eed0ec300800000000000000
+      internalID: 274171944956266153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnLight05
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 493
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0d1cd20929192b0800000000000000
+      internalID: -5579517315394711307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiHealthBarBackGround
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 420
+        width: 211
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e414e672679be20800000000000000
+      internalID: 3366852108161732166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 367
+        width: 200
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24700e8d92baebdb0800000000000000
+      internalID: -4774190358745577662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar01
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 368
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e8159ec29676c60800000000000000
+      internalID: 7811327720311328291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar02
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 368
+        width: 60
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250a51e5b3620c480800000000000000
+      internalID: -8881056428751216558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar03
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 368
+        width: 59
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6e55be4394383a0800000000000000
+      internalID: -6664402531942799673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBar04
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 367
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e710468f97ac3f3a0800000000000000
+      internalID: -6632735200979451522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UltiBarDeactivated
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 308
+        width: 200
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a478fbeb4c38f110800000000000000
+      internalID: 1294851189648159909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark06
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 240
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2200e4b57c0205b40800000000000000
+      internalID: 5426873591583866914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark07
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 240
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eb452d98fcb12af0800000000000000
+      internalID: -422849114021737496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BarColumnDark08
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 240
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5552f8100052d40800000000000000
+      internalID: 5558849321755301282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UiComplete
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 69
+        width: 476
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e0bddad818fa730800000000000000
+      internalID: 4012568238517587473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIBackPanel
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 840
+        width: 476
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a775fde188d8d39a0800000000000000
+      internalID: -6251685091947358342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

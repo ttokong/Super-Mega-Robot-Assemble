@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         //targetting the selected random player
-        e.target = players[Random.Range(0, PhotonRoom.room.playersInRoom - 1)].transform;
+        e.target = players[Random.Range(0, players.Length - 1)].transform;
     }
 
     void OnDrawGizmosSelected()

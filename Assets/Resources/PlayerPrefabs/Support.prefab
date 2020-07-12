@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 221051952655740845}
   - component: {fileID: 164716636941358310}
   m_Layer: 0
-  m_Name: PhotonNetworkPlayer
+  m_Name: Support
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: 0}
   myCharacter: {fileID: 0}
-  myRobotPart: {fileID: 0}
   characterValue: 0
 --- !u!136 &6898355693435467093
 CapsuleCollider:

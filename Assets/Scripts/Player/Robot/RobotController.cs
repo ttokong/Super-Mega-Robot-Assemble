@@ -37,6 +37,7 @@ public class RobotController : MonoBehaviour
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Pause.performed += context => Pause(context);
         controls.Gameplay.Ultimate.performed += context => Ultimate(context);
+        controls.Gameplay.ShootHold.performed += context => RapidFire(context);
     }
 
 
@@ -56,8 +57,8 @@ public class RobotController : MonoBehaviour
 
     void Update()
     {
-        if (PV.IsMine)
-        {
+        //if (PV.IsMine)
+       // {
             if (LevelManager.instance.transformBar.currentCharge > 0)
             {
                 LevelManager.instance.transformBar.currentCharge -= Time.deltaTime;
@@ -76,7 +77,7 @@ public class RobotController : MonoBehaviour
             }
 
             InputDecider();                             // dont touch this thanks
-        }
+        //}
 
     }
 
@@ -184,6 +185,10 @@ public class RobotController : MonoBehaviour
                     Vector3 mouseDir = hit.point - transform.position;
                     Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
 
+                    GetComponent<LaserScript>().ShootLaserFromTargetPosition
+                            (GetComponent<LaserScript>().firepoint.transform.position, hit.point - GetComponent<LaserScript>().firepoint.transform.position, 
+                            GetComponent<LaserScript>().laserMaxLength);
+
                     robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, qDir, 0.15F);
 
                     crosshair.transform.position = hit.point;
@@ -204,7 +209,19 @@ public class RobotController : MonoBehaviour
 
     }
 
+    void RapidFire(InputAction.CallbackContext context)
+    {
+        if (PV.IsMine && PlayerInfo.instance.mySelectedCharacter == 1)
+        {
+            float value = context.ReadValue<float>();
 
+
+            if (value >= 0.9) //if button is pressed
+            {
+                GetComponent<LaserScript>().ShootBeam();
+            }
+        }
+    }
 
     void Movement()
     {
@@ -240,7 +257,7 @@ public class RobotController : MonoBehaviour
                 }
                 else if (PlayerInfo.instance.mySelectedCharacter == 1)
                 {
-
+                    GetComponent<Mortar>().Shoot();
                 }
                 else if (PlayerInfo.instance.mySelectedCharacter == 2)
                 {

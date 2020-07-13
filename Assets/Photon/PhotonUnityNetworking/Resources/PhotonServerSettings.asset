@@ -52,6 +52,9 @@ MonoBehaviour:
   - LocateRandomTarget
   - RPC_MoveToLocation
   - RPC_ShieldBash
+  - ShootBeam
+  - Shoot
+  - RPC_LaunchMortar
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

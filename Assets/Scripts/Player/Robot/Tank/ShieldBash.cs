@@ -18,6 +18,7 @@ public class ShieldBash : MonoBehaviour
 
     private bool charging;
 
+
     private void Start()
     {
         cd = cooldown;

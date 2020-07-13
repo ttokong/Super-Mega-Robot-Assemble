@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class LaserScript : MonoBehaviour
 {
-
-    public bool shooting;
+    public GameObject groundExplosion;
+    public Transform target;
     public GameObject firepoint;
     public LineRenderer laserLineRenderer;
     public float laserWidth = 0.1f;
     public float laserMaxLength = 5f;
 
+    public float skillCd;
+    private float cd = 0;
+
     void Start()
     {
+        cd = skillCd;
         Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
         laserLineRenderer.SetPositions(initLaserPositions);
 
@@ -23,18 +28,30 @@ public class LaserScript : MonoBehaviour
 
     void Update()
     {
-        if (shooting)
+        cd += Time.deltaTime;
+    }
+
+
+    IEnumerator LaserCo()
+    {
+        laserLineRenderer.enabled = true;
+        yield return new WaitForSeconds(2f);
+        laserLineRenderer.enabled = false;
+        GameObject effect = Instantiate(groundExplosion, target.position, Quaternion.identity);
+        Destroy(effect, 5f);
+        cd = 0;
+    }
+
+    public void ShootBeam()
+    {
+        if (cd >= skillCd)
         {
-            ShootLaserFromTargetPosition(firepoint.transform.position, Vector3.forward, laserMaxLength);
-            laserLineRenderer.enabled = true;
-        }
-        else
-        {
-            laserLineRenderer.enabled = false;
+            GetComponent<PhotonView>().RPC("LaserCo", RpcTarget.All);
+            StartCoroutine(LaserCo());
         }
     }
 
-    void ShootLaserFromTargetPosition(Vector3 targetPosition, Vector3 direction, float length)
+    public void ShootLaserFromTargetPosition(Vector3 targetPosition, Vector3 direction, float length)
     {
         Ray ray = new Ray(targetPosition, direction);
         RaycastHit raycastHit;

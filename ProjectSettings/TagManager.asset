@@ -11,6 +11,9 @@ TagManager:
   - Walls
   - Items
   - Ghost
+  - Shield
+  - Hitbox
+  - Robot
   layers:
   - Default
   - TransparentFX

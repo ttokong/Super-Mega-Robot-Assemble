@@ -11,7 +11,7 @@ public class GameSetupController : MonoBehaviour
         CreatePlayer(); // create a networked player object for each player that loads into the multiplayer scenes
     }
 
-    private void CreatePlayer()
+    public void CreatePlayer()
     {
 
         switch (PlayerInfo.instance.mySelectedCharacter)

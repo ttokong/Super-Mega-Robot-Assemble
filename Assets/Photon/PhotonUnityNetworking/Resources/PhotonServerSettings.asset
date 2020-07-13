@@ -16,9 +16,9 @@ MonoBehaviour:
     AppIdRealtime: f68a4618-1332-4fcd-8e99-7f187804f53e
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 
+    AppVersion: 1.0
     UseNameServer: 1
-    FixedRegion: asia
+    FixedRegion: 
     Server: 
     Port: 0
     Protocol: 0
@@ -49,6 +49,9 @@ MonoBehaviour:
   - ChangeAction
   - RPC_stunMinions
   - RPC_SuperRobotMegaAssemble
+  - LocateRandomTarget
+  - RPC_MoveToLocation
+  - RPC_ShieldBash
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

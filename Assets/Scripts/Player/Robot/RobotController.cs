@@ -36,6 +36,7 @@ public class RobotController : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Pause.performed += context => Pause(context);
+        controls.Gameplay.Ultimate.performed += context => Ultimate(context);
     }
 
 
@@ -57,6 +58,18 @@ public class RobotController : MonoBehaviour
     {
         if (PV.IsMine)
         {
+            if (LevelManager.instance.transformBar.currentCharge > 0)
+            {
+                LevelManager.instance.transformBar.currentCharge -= Time.deltaTime;
+                LevelManager.instance.transformBar.SetCharge();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                GameObject.Find("GameSetupController").GetComponent<GameSetupController>().CreatePlayer();
+                gameObject.transform.position = new Vector3(0, 0, 0);
+            }
+
             if (PlayerInfo.instance.mySelectedCharacter == 2)
             {
                 Movement();
@@ -139,7 +152,7 @@ public class RobotController : MonoBehaviour
 
         if (PlayerInfo.instance.mySelectedCharacter == 0)                //tank
         {
-            if (js == null)
+            if (js == null) 
             {
                 Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
                 RaycastHit hit;
@@ -191,6 +204,8 @@ public class RobotController : MonoBehaviour
 
     }
 
+
+
     void Movement()
     {
         gravity -= 9.8f * Time.deltaTime;
@@ -209,6 +224,32 @@ public class RobotController : MonoBehaviour
         }
     }
 
+    // player's personal ultimate
+    void Ultimate(InputAction.CallbackContext context)
+    {
+        if (PV.IsMine)
+        {
+            float value = context.ReadValue<float>();
+
+
+            if (value >= 0.9) //if button is pressed
+            {
+                if (PlayerInfo.instance.mySelectedCharacter == 0)
+                {
+                    GetComponentInChildren<ShieldBash>().Bash();
+                }
+                else if (PlayerInfo.instance.mySelectedCharacter == 1)
+                {
+
+                }
+                else if (PlayerInfo.instance.mySelectedCharacter == 2)
+                {
+
+                }
+            }
+        }
+    }
+
 
     void Pause(InputAction.CallbackContext context)
     {
@@ -221,6 +262,7 @@ public class RobotController : MonoBehaviour
             {
 
             }
+
         }
     }
 

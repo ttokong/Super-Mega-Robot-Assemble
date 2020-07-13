@@ -37,11 +37,10 @@ public class BossBehaviour : EnemyParameters
     {
         DeathTrigger();
 
-        PV.RPC("ChangeAction", RpcTarget.All);
+        RngDecider();
     }
 
-    [PunRPC]
-    void ChangeAction()
+    void RngDecider()
     {
         if (actionComplete)
         {
@@ -49,7 +48,7 @@ public class BossBehaviour : EnemyParameters
 
             if (timer >= actionTimer)
             {
-                gameObject.GetComponent<EnemyController>().LocateRandomTarget();
+                PV.RPC("LocateRandomTarget", RpcTarget.All);
                 actionID = Random.Range(0, 17);
                 timer = Random.Range(0, 4);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;
@@ -57,33 +56,47 @@ public class BossBehaviour : EnemyParameters
         }
         else if (!actionComplete)
         {
-            if (actionID >= 0 && actionID <= 5)    //33.33% chance to wander
-            {
-                Wander();
-            }
-            else if (actionID >= 6 && actionID <= 11)    //33.33% chance to ground slam
-            {
-                gameObject.GetComponent<BossGroundSlam>().Slam();
-            }
-            else if (actionID >= 12 && actionID <= 17)    //33.33% chance to charge
-            {
-                gameObject.GetComponent<BossCharge>().Charge();
-            }
-            else
-            {
-                actionComplete = true;
-            }
+            PV.RPC("ChangeAction", RpcTarget.All, actionID);
         }
 
+    }
+
+    [PunRPC]
+    void ChangeAction(int id)
+    {
+        if (id >= 0 && id <= 5)    //33.33% chance to wander
+        {
+            Wander();
+        }
+        else if (id >= 6 && id <= 11)    //33.33% chance to ground slam
+        {
+            gameObject.GetComponent<BossGroundSlam>().Slam();
+        }
+        else if (id >= 12 && id <= 17)    //33.33% chance to charge
+        {
+            gameObject.GetComponent<BossCharge>().Charge();
+        }
+        else
+        {
+            actionComplete = true;
+        }
     }
 
     private void Wander()
     {
         agent.isStopped = false;
         Vector3 newPos = RandomNavSphere(transform.position, targetRadiusMax, -1);
-        agent.SetDestination(newPos);
+        PV.RPC("RPC_MoveToLocation", RpcTarget.All, newPos);
+    }
+
+    [PunRPC]
+    void RPC_MoveToLocation(Vector3 _pos)
+    {
+        agent.SetDestination(_pos);
         actionComplete = true;
     }
+
+
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {

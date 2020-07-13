@@ -50,6 +50,14 @@ public class PlayerController : PlayerStats
 
                 StartCoroutine(Shoot());
             }
+            else if (robotForm)
+            {
+                //gameObject.SetActive(false);
+                multipleTargetCamera.targets.Remove(gameObject.transform);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
+                LevelManager.instance.robot.SetActive(true);
+            }
         }
 
     }
@@ -184,7 +192,7 @@ public class PlayerController : PlayerStats
         {
             float value = context.ReadValue<float>();
 
-            if (robotForm == false)
+            if (robotForm == false && LevelManager.instance.transformBar.currentCharge >= LevelManager.instance.transformBar.maxCharge)
             {
                 if (value >= 0.9)
                 {
@@ -227,9 +235,11 @@ public class PlayerController : PlayerStats
     [PunRPC]
     private void RPC_SuperRobotMegaAssemble()
     {
-        gameObject.SetActive(false);
-        LevelManager.instance.robot.SetActive(true);
-        robotForm = true;
+        PlayerController[] player = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController p in player)
+        {
+            p.robotForm = true;
+        }
     }
 
     [PunRPC]

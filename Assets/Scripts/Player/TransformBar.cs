@@ -17,7 +17,8 @@ public class TransformBar: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("IncreaseCharge", 0f, 5.25f);
+        SetCharge();
+
     }
 
 
@@ -62,12 +63,6 @@ public class TransformBar: MonoBehaviour
         }
     }
 
-    void IncreaseCharge()
-    {
-        currentCharge++;
-        SetCharge();
-
-    }
 
     public void AddCharge(float teamUltCharge)
     {
@@ -75,7 +70,7 @@ public class TransformBar: MonoBehaviour
         SetCharge();
     }
 
-    void SetCharge ()
+    public void SetCharge ()
     {
         Fill.fillAmount = currentCharge / maxCharge;
     }

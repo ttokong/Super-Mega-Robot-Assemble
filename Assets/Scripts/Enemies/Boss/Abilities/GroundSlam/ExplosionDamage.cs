@@ -27,5 +27,10 @@ public class ExplosionDamage : MonoBehaviour
         {
             other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
         }
+        if (other.tag == "Robot")
+        {
+            LevelManager.instance.transformBar.currentCharge -= 1;
+            LevelManager.instance.transformBar.SetCharge();
+        }
     }
 }

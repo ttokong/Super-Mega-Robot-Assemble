@@ -16,6 +16,8 @@ public class BossCharge : MonoBehaviour
     private BossBehaviour bb;
     private Vector3 dir;
 
+    public int damage;
+
     public bool charging = false;
 
     public GameObject ChargeEffect;
@@ -65,19 +67,15 @@ public class BossCharge : MonoBehaviour
         GameObject effect = Instantiate(ChargeEffect, transform.position, transform.rotation, gameObject.transform) as GameObject;
         yield return new WaitForSeconds(.2f);
         charging = true;
-        //bb.agent.isStopped = false;
-        //bb.agent.SetDestination(endTarget);
+
         Destroy(effect, 2f);
-        //bb.agent.speed *= chargeSpeedMultiplier;
-        //bb.agent.acceleration *= chargeSpeedMultiplier;
+
         hitZone.localScale = new Vector3(1, 1, 0);
         yield return new WaitForSeconds(1f);
 
         //finished charging
         charging = false;
-        //bb.agent.speed /= chargeSpeedMultiplier;
-        //bb.agent.acceleration /= chargeSpeedMultiplier;
-        //bb.agent.isStopped = true;
+
         chargeTime = 0;
         bb.actionComplete = true;
         chargeCheck = false;
@@ -90,12 +88,17 @@ public class BossCharge : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 0.15F);
     }
 
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && charging == true)
         {
             other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
         }
-    }*/
+        if (other.tag == "Robot" && charging == true)
+        {
+            LevelManager.instance.transformBar.currentCharge -= 1;
+            LevelManager.instance.transformBar.SetCharge();
+        }
+    }
 }

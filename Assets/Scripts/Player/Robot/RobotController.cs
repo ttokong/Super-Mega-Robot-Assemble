@@ -26,16 +26,26 @@ public class RobotController : MonoBehaviour
     private int OGhealth;
     private Vector3 dir;
 
-    private Rigidbody rb;
+    public bool IsDashing = false;
+    public bool IsAddingCharge = false;
     public float dashSpeed;
-    public float dashDuration;
+    public int dashCharges;
+    public float dashChargesCD;
+    public float dashCD;
+    public bool dashCDing = false;
+    public Transform OGtarget;
+    public Vector3 currentTarget;
+
+    /* public Rigidbody rb;
+    public float dashSpeed;
+    public float dashDuration; */
 
     void Awake()
     {
         cam = Camera.main;
         multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
 
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
 
         controls = new PlayerControls();
 
@@ -82,6 +92,31 @@ public class RobotController : MonoBehaviour
             }
 
             InputDecider();                             // dont touch this thanks
+
+            // when dash button is pressed, check whether there are still dash charges and whether it is still CDing or not
+            if (IsDashing)
+            {
+                if (dashCharges > 0 && dashCDing == false)
+                {
+                    StartCoroutine(Dash());
+                    dashCharges--;
+                    //IsDashing = false;
+                    currentTarget = new Vector3(OGtarget.position.x, OGtarget.position.y, OGtarget.position.z);
+                    transform.position = Vector3.Lerp(transform.position, currentTarget, dashSpeed);
+
+                }
+                else
+                {
+                    IsDashing = false;
+                }
+            }
+
+            // adds a charge of dash after a CD if it goes below 3
+            if (dashCharges < 3 && IsAddingCharge == false)
+            {
+                StartCoroutine(AddDashCharges());
+                IsAddingCharge = true;
+            }
         }
 
     }
@@ -251,8 +286,8 @@ public class RobotController : MonoBehaviour
                 }
                 else if (PlayerInfo.instance.mySelectedCharacter == 2)
                 {
-                    Debug.Log("dkawh");
-                    StartCoroutine(RobotDash());
+                    IsDashing = true;
+                    // StartCoroutine(RobotDash());
                 }
             }
         }
@@ -274,12 +309,32 @@ public class RobotController : MonoBehaviour
         }
     }
 
-    IEnumerator RobotDash()
+    // makes sure players are unable to spam dashes
+    IEnumerator Dash()
     {
+        dashCDing = true;
+        yield return new WaitForSeconds(dashCD);
+        IsDashing = false;
+        dashCDing = false;
+    }
+
+    // adds a charge of dash after a CD if it goes below 3
+    IEnumerator AddDashCharges()
+    {
+        yield return new WaitForSeconds(dashChargesCD);
+        dashCharges++;
+        IsAddingCharge = false;
+    }
+
+    /* IEnumerator RobotDash()
+    {
+        Debug.Log("dkawh");
         rb.AddForce(Vector3.forward * dashSpeed);
 
         yield return new WaitForSeconds(dashDuration);
-    }
+
+        rb.velocity = Vector3.zero;
+    } */
 
     public void OnEnable()
     {

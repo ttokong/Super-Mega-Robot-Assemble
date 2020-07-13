@@ -26,10 +26,16 @@ public class RobotController : MonoBehaviour
     private int OGhealth;
     private Vector3 dir;
 
+    private Rigidbody rb;
+    public float dashSpeed;
+    public float dashDuration;
+
     void Awake()
     {
         cam = Camera.main;
         multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
+
+        rb = GetComponent<Rigidbody>();
 
         controls = new PlayerControls();
 
@@ -234,6 +240,7 @@ public class RobotController : MonoBehaviour
 
             if (value >= 0.9) //if button is pressed
             {
+
                 if (PlayerInfo.instance.mySelectedCharacter == 0)
                 {
                     GetComponentInChildren<ShieldBash>().Bash();
@@ -244,7 +251,8 @@ public class RobotController : MonoBehaviour
                 }
                 else if (PlayerInfo.instance.mySelectedCharacter == 2)
                 {
-
+                    Debug.Log("dkawh");
+                    StartCoroutine(RobotDash());
                 }
             }
         }
@@ -264,6 +272,13 @@ public class RobotController : MonoBehaviour
             }
 
         }
+    }
+
+    IEnumerator RobotDash()
+    {
+        rb.AddForce(Vector3.forward * dashSpeed);
+
+        yield return new WaitForSeconds(dashDuration);
     }
 
     public void OnEnable()

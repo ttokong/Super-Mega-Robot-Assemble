@@ -142,7 +142,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3892558652060600971, guid: f6342bba944f9db4b830a5f447108502,
     type: 3}
   firePoint: {fileID: 548443295089887632}
-  firerate: 7
+  firerate: 5
   robotForm: 0
   multipleTargetCamera: {fileID: 0}
   gravity: 0

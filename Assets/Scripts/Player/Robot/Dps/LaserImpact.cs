@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-
-public class ExplosionDamage : MonoBehaviour
+public class LaserImpact : MonoBehaviour
 {
     public int damage;
+
     private CapsuleCollider CC;
 
     private void Start()
@@ -23,9 +23,9 @@ public class ExplosionDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Enemy")
         {
-            other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
+            other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
         }
         if (other.tag == "Robot")
         {

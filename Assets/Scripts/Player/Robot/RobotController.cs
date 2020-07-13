@@ -118,7 +118,6 @@ public class RobotController : MonoBehaviour
                 StartCoroutine(AddDashCharges());
                 IsAddingCharge = true;
             }
-        }
 
     }
 

@@ -2496,7 +2496,6 @@ GameObject:
   - component: {fileID: 562159908}
   - component: {fileID: 562159906}
   - component: {fileID: 562159903}
-  - component: {fileID: 562159906}
   - component: {fileID: 562159905}
   - component: {fileID: 562159904}
   m_Layer: 2
@@ -2737,7 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetArea: {fileID: 339330612}
-  gravityScale: -10
+  gravityScale: 0
   rockPrefab: {fileID: 3008411486642049372, guid: 5974687a8a0487f4a8f52864983cfa46,
     type: 3}
   firePoint: {fileID: 1046340786}

@@ -32,23 +32,28 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Enemy" && other.tag != "Bullet" && other.tag != "Ghost")
+        if (other.tag != "Enemy" && other.tag != "Bullet" && 
+            other.tag != "Ghost" && other.tag != "Hitbox")
         {
             if (other.tag == "Player")
             {
                 other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
-
-                DestroyBullet();
             }
-            else
+            if (other.tag == "Shield")
             {
-                DestroyBullet();
+                other.GetComponent<Shield>().timesHit++;
             }
+            if (other.tag == "Robot")
+            {
+                LevelManager.instance.transformBar.currentCharge -= 1;
+                LevelManager.instance.transformBar.SetCharge();
+            }
+            DestroyBullet();
         }
     }
 
     [PunRPC]
-    private void DestroyBullet()
+    public void DestroyBullet()
     {
         Destroy(gameObject);
 

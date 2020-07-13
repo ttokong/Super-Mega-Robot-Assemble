@@ -125,7 +125,7 @@ public class PlayerStats : MonoBehaviour
     {
         Mathf.Clamp(ultiCharge += UltCharge, 0, 4);
 
-        if (ultiCharge > 4)
+        if (ultiCharge >= 4)
         {
             ultiCharge = 4;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
@@ -42,13 +43,23 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void LocateRandomTarget()
     {
         // find gameobject with tag "Player"
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        //targetting the selected random player
-        e.target = players[Random.Range(0, players.Length - 1)].transform;
+
+
+        if (players.Length == 0)
+        {
+            e.target = GameObject.FindGameObjectWithTag("Robot").transform;
+        }
+        else
+        {
+            //targetting the selected random player
+            e.target = players[Random.Range(0, players.Length - 1)].transform;
+        }
     }
 
     void OnDrawGizmosSelected()

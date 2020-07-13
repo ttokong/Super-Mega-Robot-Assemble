@@ -50,6 +50,14 @@ public class PlayerController : PlayerStats
 
                 StartCoroutine(Shoot());
             }
+            else if (robotForm)
+            {
+                //gameObject.SetActive(false);
+                multipleTargetCamera.targets.Remove(gameObject.transform);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
+                LevelManager.instance.robot.SetActive(true);
+            }
         }
 
     }
@@ -184,14 +192,11 @@ public class PlayerController : PlayerStats
         {
             float value = context.ReadValue<float>();
 
-            if (robotForm == false)
+            if (robotForm == false && LevelManager.instance.transformBar.currentCharge >= LevelManager.instance.transformBar.maxCharge)
             {
                 if (value >= 0.9)
                 {
-                    gameObject.SetActive(false);
-                    LevelManager.instance.robot.SetActive(true);
-                    //GetComponent<AvatarSetup>().PV.RPC("RPC_AddRobotPart", RpcTarget.AllViaServer);
-                    robotForm = true;
+                    PV.RPC("RPC_SuperRobotMegaAssemble", RpcTarget.All);
                 }
             }
 
@@ -208,7 +213,35 @@ public class PlayerController : PlayerStats
 
             if (value >= 0.9) //if button is pressed
             {
-               
+                if (ultiCharge == 4)
+                {
+                    switch (PlayerInfo.instance.mySelectedCharacter)
+                    {
+                        // tank
+                        case 0:
+                            this.GetComponent<TankSkill>().TankShield();
+                            break;
+
+                        // dps
+                        case 1:
+                            this.GetComponent<DPSSkill>().DPS();
+                            break;
+
+                        // healer
+                        case 2:
+                            this.GetComponent<HealerSkill>().Healing();
+                            break;
+                    }
+
+                    ultiCharge = 0;
+                    foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
+                    {
+                        if (ub.playerID == PlayerInfo.instance.mySelectedCharacter)
+                        {
+                            ub.SetUltimatePercentage(ultiCharge);
+                        }
+                    }
+                }
             }
         }
     }
@@ -224,6 +257,16 @@ public class PlayerController : PlayerStats
             {
 
             }
+        }
+    }
+
+    [PunRPC]
+    private void RPC_SuperRobotMegaAssemble()
+    {
+        PlayerController[] player = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController p in player)
+        {
+            p.robotForm = true;
         }
     }
 

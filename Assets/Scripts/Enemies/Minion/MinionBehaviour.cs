@@ -11,7 +11,6 @@ public class MinionBehaviour : EnemyParameters
 
     private int actionID;
 
-
     public float attackTimer;
 
     public float timeBetweenActions;
@@ -46,18 +45,12 @@ public class MinionBehaviour : EnemyParameters
     {
         DeathTrigger();
 
-        PV.RPC("ChangeAction", RpcTarget.All);
+        RngDecider();
 
-        if (!stunned)
-        {
-            ChangeAction();
-        }
-        
         enemyHealthBar.SetHealth(health);
     }
 
-    [PunRPC]
-    void ChangeAction()
+    void RngDecider()
     {
         if(actionComplete)
         {
@@ -65,7 +58,7 @@ public class MinionBehaviour : EnemyParameters
 
             if (timer >= timeBetweenActions)
             {
-                gameObject.GetComponent<EnemyController>().LocateRandomTarget();
+                PV.RPC("LocateRandomTarget", RpcTarget.All);
                 actionID = Random.Range(0, 19);
                 timer = Random.Range(0 , timeBetweenActions);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;
@@ -73,44 +66,43 @@ public class MinionBehaviour : EnemyParameters
         }
         else if (!actionComplete)
         {
-            if (actionID >= 0 && actionID <= 9)    //50% chance to wander
-            {
-                Wander();
-            }
-            else if (actionID >= 10 && actionID <= 14)    //25% chance to attack
-            {
-                Attack();
-            }
-            else if (actionID >= 15 && actionID <= 19)    //25% chance to follow target
-            {
-                Follow();
-            }
-            else
-            {
-                actionComplete = true;
-            }
+            PV.RPC("ChangeAction", RpcTarget.All, actionID);
         }
 
-        if (!stunned)
-        {
-            stunnedCD = 5f;
-        }
-        else if (stunned)
-        {
-            stunnedCD -= Time.deltaTime;
-            if (stunnedCD <= 0f)
-            {
-                stunned = false;
-            }
-        }
+    }
 
+    [PunRPC]
+    void ChangeAction(int id)
+    {
+        if (id >= 0 && id <= 9)    //50% chance to wander
+        {
+            Wander();
+        }
+        else if (id >= 10 && id <= 14)    //25% chance to attack
+        {
+            Attack();
+        }
+        else if (id >= 15 && id <= 19)    //25% chance to follow target
+        {
+            Follow();
+        }
+        else
+        {
+            actionComplete = true;
+        }
     }
 
     private void Wander()
     {
         agent.isStopped = false;
         Vector3 newPos = RandomNavSphere(transform.position, targetRadiusMax, -1);
-        agent.SetDestination(newPos);
+        PV.RPC("RPC_MoveToLocation", RpcTarget.All, newPos);
+    }
+
+    [PunRPC]
+    void RPC_MoveToLocation(Vector3 _pos)
+    {
+        agent.SetDestination(_pos);
         actionComplete = true;
     }
 

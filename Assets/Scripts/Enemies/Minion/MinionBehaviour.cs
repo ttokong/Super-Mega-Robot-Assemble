@@ -18,6 +18,7 @@ public class MinionBehaviour : EnemyParameters
     public bool actionComplete = true;
 
     public EnemyHealthBar enemyHealthBar;
+    public GameObject minionSpawner;
 
     public bool stunned = false;
     public float stunnedCD = 5f;
@@ -33,6 +34,7 @@ public class MinionBehaviour : EnemyParameters
     {
         cam = Camera.main;
         multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
+        minionSpawner = GameObject.FindWithTag("LevelManager");
         PV = GetComponent<PhotonView>();
         agent = GetComponent<NavMeshAgent>();
         timer = Random.Range(0, 4);
@@ -46,6 +48,8 @@ public class MinionBehaviour : EnemyParameters
         DeathTrigger();
 
         RngDecider();
+
+        BodyCount();
 
         enemyHealthBar.SetHealth(health);
     }
@@ -189,6 +193,13 @@ public class MinionBehaviour : EnemyParameters
             return; 
     }
 
+    void BodyCount()
+    {
+        if (health <= 0)
+        {
+            minionSpawner.GetComponent<MinionSpawner>().minionCount--;
+        }
+    }
 
     void OnDrawGizmosSelected()
     {

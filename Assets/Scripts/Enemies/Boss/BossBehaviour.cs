@@ -14,6 +14,7 @@ public class BossBehaviour : EnemyParameters
 
     public bool actionComplete = true;
 
+    public BossHealthBar bossHealthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class BossBehaviour : EnemyParameters
         agent = GetComponent<NavMeshAgent>();
         PV = GetComponent<PhotonView>();
         OGhealth = health;
+        bossHealthBar.SetMaxHealth(OGhealth);
         multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
@@ -38,6 +40,8 @@ public class BossBehaviour : EnemyParameters
         DeathTrigger();
 
         RngDecider();
+
+        UpdateHealth();
     }
 
     void RngDecider()
@@ -80,6 +84,11 @@ public class BossBehaviour : EnemyParameters
         {
             actionComplete = true;
         }
+    }
+
+    void UpdateHealth()
+    {
+        bossHealthBar.SetHealth(health);
     }
 
     private void Wander()

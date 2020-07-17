@@ -26,7 +26,6 @@ public class MinionBehaviour : EnemyParameters
     void Start()
     {
         InitSequence();
-        enemyHealthBar.SetMaxHealth(OGhealth);
     }
 
     void InitSequence()
@@ -37,6 +36,7 @@ public class MinionBehaviour : EnemyParameters
         agent = GetComponent<NavMeshAgent>();
         timer = Random.Range(0, 4);
         OGhealth = health;
+        enemyHealthBar.SetMaxHealth(OGhealth);
         multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
@@ -47,7 +47,7 @@ public class MinionBehaviour : EnemyParameters
 
         RngDecider();
 
-        enemyHealthBar.SetHealth(health);
+        UpdateHealth();
     }
 
     void RngDecider()
@@ -118,6 +118,10 @@ public class MinionBehaviour : EnemyParameters
         return navHit.position;
     }
 
+    void UpdateHealth()
+    {
+        enemyHealthBar.SetHealth(health);
+    }
 
     private void Attack()
     {

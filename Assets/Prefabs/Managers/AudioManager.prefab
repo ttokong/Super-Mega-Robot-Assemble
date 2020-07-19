@@ -43,4 +43,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad19a2d53e4fd6b44877d3d984a79c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: MainMenuTheme
+    clip: {fileID: 8300000, guid: ff70ca2d9b3e1fd499a539dde77b8d6b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Level1
+    clip: {fileID: 8300000, guid: 1620c6d57b5b90949bdaf9dc945172fd, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Charging
+    clip: {fileID: 8300000, guid: 22031d9e992b8454eac7f29b0cd00c56, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GroundSlam
+    clip: {fileID: 8300000, guid: b798069470672f54aa20606a8d6d93cb, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: cd563613124a682449966edf2a372efd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LaserGun
+    clip: {fileID: 8300000, guid: 330d09edde031104e8bf098ff029b628, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}

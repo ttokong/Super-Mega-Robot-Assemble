@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    //public GameObject lobby;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,8 +36,17 @@ public class AudioManager : MonoBehaviour
     
     void Start()
     {
-        Play("BackgroundMusic");
+        Play("MainMenuTheme");
     }
+
+    /* private void Update()
+    {
+        // checks whether GameObject lobby is active or not
+        if (lobby.gameObject.activeSelf == true)
+        {
+            Play.("CharacterSelection");
+        }
+    } */
 
     public void Play (string name)
     {

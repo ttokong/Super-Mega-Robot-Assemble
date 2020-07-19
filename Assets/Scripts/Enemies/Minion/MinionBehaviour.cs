@@ -169,6 +169,7 @@ public class MinionBehaviour : EnemyParameters
     [PunRPC]
     private void RPC_Fire()
     {
+        FindObjectOfType<AudioManager>().Play("LaserGun");
         Instantiate(enemyBullet, firePoint.transform.position, transform.rotation);
     }
 

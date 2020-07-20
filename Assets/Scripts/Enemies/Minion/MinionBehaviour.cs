@@ -32,12 +32,10 @@ public class MinionBehaviour : EnemyParameters
     void InitSequence()
     {
         cam = Camera.main;
-        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         PV = GetComponent<PhotonView>();
         agent = GetComponent<NavMeshAgent>();
         timer = Random.Range(0, 4);
         OGhealth = health;
-        multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     // Update is called once per frame

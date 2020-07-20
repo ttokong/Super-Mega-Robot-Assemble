@@ -255,7 +255,14 @@ public class PlayerController : PlayerStats
 
             if (value >= 0.9) //if button is pressed
             {
-
+                if (PauseMenu.gameIsPaused)
+                {
+                    PauseMenu.gameIsPaused = false;
+                }
+                else if (!PauseMenu.gameIsPaused)
+                {
+                    PauseMenu.gameIsPaused = true;
+                }
             }
         }
     }

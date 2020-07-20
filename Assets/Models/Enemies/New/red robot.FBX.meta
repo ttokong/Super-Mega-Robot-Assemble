@@ -2,8 +2,51 @@ fileFormatVersion: 2
 guid: e12618e16182c7c44b87e90347b86cb0
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
-  externalObjects: {}
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 3dc67aa0c0cc57e4a8b728d827aad2b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye
+    second: {fileID: 2100000, guid: 2b3590313e544b748a50f4892a888569, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eye ring
+    second: {fileID: 2100000, guid: 514939258a46cd34ba8b2f663ed71025, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: head
+    second: {fileID: 2100000, guid: eb0d2daead427f34ca02b704f3f90275, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: left weapon
+    second: {fileID: 2100000, guid: 2ebcb1c86d51b77448141db2d940557f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: legs
+    second: {fileID: 2100000, guid: 7893b1fee2d50fd468374a8338f14ebd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: right weapon
+    second: {fileID: 2100000, guid: 767459c9d3a0a3044ae39d2ef99b3e00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: screws
+    second: {fileID: 2100000, guid: 7c9cf1b836ccd3f4ea00bcbed7660b92, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

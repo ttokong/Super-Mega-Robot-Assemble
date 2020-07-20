@@ -10,7 +10,7 @@ public class BossBehaviour : EnemyParameters
     private int actionID;
 
     private float timer;
-    public float actionTimer;
+    public float timeBetweenAttacks;
 
     public bool actionComplete = true;
 
@@ -24,12 +24,13 @@ public class BossBehaviour : EnemyParameters
     void InitSequence()
     {
         cam = Camera.main;
-        multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         timer = Random.Range(0, 4);
         agent = GetComponent<NavMeshAgent>();
         PV = GetComponent<PhotonView>();
         OGhealth = health;
-        multipleTargetCamera.targets.Add(gameObject.transform);
+
+        //multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
+        //multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class BossBehaviour : EnemyParameters
         {
             timer += Time.deltaTime;
 
-            if (timer >= actionTimer)
+            if (timer >= timeBetweenAttacks)
             {
                 PV.RPC("LocateRandomTarget", RpcTarget.All);
                 actionID = Random.Range(0, 17);

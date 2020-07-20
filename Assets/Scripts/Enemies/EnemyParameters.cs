@@ -23,8 +23,8 @@ public class EnemyParameters : MonoBehaviour
 
     public int health;
 
-    [HideInInspector]
-    public MultipleTargetCamera multipleTargetCamera;
+    //[HideInInspector]
+    //public MultipleTargetCamera multipleTargetCamera;
 
     [HideInInspector]
     public Camera cam;
@@ -84,7 +84,7 @@ public class EnemyParameters : MonoBehaviour
     public void Dead()
     {
         Destroy(gameObject);
-        multipleTargetCamera.targets.Remove(gameObject.transform);
+        //multipleTargetCamera.targets.Remove(gameObject.transform);
     }
 
     /*IEnumerator bulletTrigger()

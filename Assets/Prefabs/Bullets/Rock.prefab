@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 26456192290199394}
   - component: {fileID: 1317378594245327571}
   - component: {fileID: 7452988839553627220}
+  - component: {fileID: 4747503741242691405}
   - component: {fileID: 8698028728515052140}
   - component: {fileID: 8402937542177441855}
   m_Layer: 0
@@ -95,6 +96,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4747503741242691405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008411486642049372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5107de715d7bb3d4da60a1ae4d2bc2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: 8
+  impactEffect: {fileID: 214710108194734604, guid: 78b3a5d2800c28942a37c4b5665d7b9f,
+    type: 3}
+  dmg: 0
 --- !u!54 &8698028728515052140
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103,14 +120,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3008411486642049372}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!96 &8402937542177441855
 TrailRenderer:
   serializedVersion: 2

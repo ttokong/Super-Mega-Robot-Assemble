@@ -8,6 +8,7 @@ public class Mortar : MonoBehaviour
 
     public GameObject targetArea;
 
+    public float damage;
     public float gravityScale;
 
     public GameObject rockPrefab;
@@ -60,6 +61,7 @@ public class Mortar : MonoBehaviour
 
         GameObject rock = Instantiate(rockPrefab, firePoint.position, firePoint.rotation) as GameObject;
         rock.GetComponent<Rigidbody>().velocity = CalcBallisticVelocityVector(firePoint, targetArea.transform, shootAngle);
+        rock.GetComponent<MortarBullet>().dmg = damage; 
         cd = 0;
     }
 }

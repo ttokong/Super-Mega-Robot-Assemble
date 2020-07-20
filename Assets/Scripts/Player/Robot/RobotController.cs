@@ -319,9 +319,15 @@ public class RobotController : MonoBehaviour
 
             if (value >= 0.9) //if button is pressed
             {
-
+                if (PauseMenu.gameIsPaused)
+                {
+                    PauseMenu.gameIsPaused = false;
+                }
+                else if (!PauseMenu.gameIsPaused)
+                {
+                    PauseMenu.gameIsPaused = true;
+                }
             }
-
         }
     }
 
@@ -351,6 +357,7 @@ public class RobotController : MonoBehaviour
 
         rb.velocity = Vector3.zero;
     } */
+
 
     public void OnEnable()
     {

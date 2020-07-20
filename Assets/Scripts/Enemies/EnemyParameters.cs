@@ -83,6 +83,7 @@ public class EnemyParameters : MonoBehaviour
     [PunRPC]
     public void Dead()
     {
+        FindObjectOfType<AudioManager>().Play("EnemyDeath");
         Destroy(gameObject);
         //multipleTargetCamera.targets.Remove(gameObject.transform);
     }

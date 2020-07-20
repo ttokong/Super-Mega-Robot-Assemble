@@ -281,6 +281,7 @@ public class PlayerController : PlayerStats
     private void RPC_Fire()
     {
         Debug.Log("Fire");
+        FindObjectOfType<AudioManager>().Play("LaserGun");
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
         bullet.GetComponent<BulletScript>().player = gameObject;
     }

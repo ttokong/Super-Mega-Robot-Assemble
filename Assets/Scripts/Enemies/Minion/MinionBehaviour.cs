@@ -26,7 +26,6 @@ public class MinionBehaviour : EnemyParameters
     void Start()
     {
         InitSequence();
-        enemyHealthBar.SetMaxHealth(OGhealth);
     }
 
     void InitSequence()
@@ -36,6 +35,7 @@ public class MinionBehaviour : EnemyParameters
         agent = GetComponent<NavMeshAgent>();
         timer = Random.Range(0, 4);
         OGhealth = health;
+        enemyHealthBar.SetMaxHealth(OGhealth);
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class MinionBehaviour : EnemyParameters
 
         RngDecider();
 
-        enemyHealthBar.SetHealth(health);
+        UpdateHealth();
     }
 
     void RngDecider()
@@ -116,6 +116,10 @@ public class MinionBehaviour : EnemyParameters
         return navHit.position;
     }
 
+    void UpdateHealth()
+    {
+        enemyHealthBar.SetHealth(health);
+    }
 
     private void Attack()
     {
@@ -163,6 +167,7 @@ public class MinionBehaviour : EnemyParameters
     [PunRPC]
     private void RPC_Fire()
     {
+        FindObjectOfType<AudioManager>().Play("LaserGun");
         Instantiate(enemyBullet, firePoint.transform.position, transform.rotation);
     }
 

@@ -51,6 +51,7 @@ public class BossGroundSlam : MonoBehaviour
         for (int i = 1; i < invokeCount; i++)
         {
             slamExplosion[i] = Instantiate(SlamEffect) as GameObject;
+            FindObjectOfType<AudioManager>().Play("GroundSlam");
             StartCoroutine(cameraShake.Shake(.15f , .2f));              // triggers camera shake with duration and magnitude
 
             Destroy(slamExplosion[i], 4.9f);

@@ -64,6 +64,7 @@ public class BossCharge : MonoBehaviour
 
         //here the boss will move
         yield return new WaitForSeconds(.5f);
+        FindObjectOfType<AudioManager>().Play("Charging");
         GameObject effect = Instantiate(ChargeEffect, transform.position, transform.rotation, gameObject.transform) as GameObject;
         yield return new WaitForSeconds(.2f);
         charging = true;

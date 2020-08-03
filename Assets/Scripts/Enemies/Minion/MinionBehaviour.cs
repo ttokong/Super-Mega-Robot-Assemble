@@ -20,7 +20,7 @@ public class MinionBehaviour : EnemyParameters
     public EnemyHealthBar enemyHealthBar;
 
     public bool stunned = false;
-    public float stunnedCD = 5f;
+    public float stunnedCD = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +43,17 @@ public class MinionBehaviour : EnemyParameters
     {
         DeathTrigger();
 
-        RngDecider();
+        if (!stunned)
+        {
+            RngDecider();
 
-        UpdateHealth();
+            UpdateHealth();
+        }
+
+        if (stunned)
+        {
+            StartCoroutine(stunCD());
+        }
     }
 
     void RngDecider()
@@ -192,6 +200,11 @@ public class MinionBehaviour : EnemyParameters
             return; 
     }
 
+    IEnumerator stunCD()
+    {
+        yield return new WaitForSeconds(stunnedCD);
+        stunned = false;
+    }
 
     void OnDrawGizmosSelected()
     {

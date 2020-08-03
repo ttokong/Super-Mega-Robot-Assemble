@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: f004a3d927e7ef741b80ae700d387235,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1538,12 +1538,12 @@ PrefabInstance:
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538717574964696185, guid: 04f665e83f2848340861541385e54848,
         type: 3}
@@ -3307,7 +3307,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &562159900
 GameObject:
@@ -6570,12 +6570,12 @@ PrefabInstance:
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538717574964696185, guid: 04f665e83f2848340861541385e54848,
         type: 3}
@@ -7188,12 +7188,12 @@ PrefabInstance:
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538717574964696185, guid: 04f665e83f2848340861541385e54848,
         type: 3}
@@ -7318,7 +7318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &1228748466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8373,12 +8373,12 @@ PrefabInstance:
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538717574964696185, guid: 04f665e83f2848340861541385e54848,
         type: 3}
@@ -9862,12 +9862,12 @@ PrefabInstance:
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538717574964696185, guid: 04f665e83f2848340861541385e54848,
         type: 3}
@@ -11288,7 +11288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1782938358
 GameObject:
@@ -12869,12 +12869,12 @@ PrefabInstance:
     - target: {fileID: 4568217057939234609, guid: f912d328dac74f8439a2b9131cb6f415,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4568217057939234609, guid: f912d328dac74f8439a2b9131cb6f415,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f912d328dac74f8439a2b9131cb6f415, type: 3}
@@ -15682,7 +15682,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5881137675842279764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baf7c94ac2c804e4d9bd67e19742fe67, type: 3}
   m_Name: 
@@ -16991,12 +16991,12 @@ PrefabInstance:
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6064296316696377779, guid: 04f665e83f2848340861541385e54848,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538717574964696185, guid: 04f665e83f2848340861541385e54848,
         type: 3}

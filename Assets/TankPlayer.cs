@@ -25,7 +25,7 @@ public class TankPlayer : PlayerStats
     void InitSequence()
     {
         OGhealth = health;
-        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetMaxHealth(health);
+        LevelManager.instance.HealthBars[PlayerInfo.instance.mySelectedCharacter].SetHealth(health);
         PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
     }

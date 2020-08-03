@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8258389332028850234}
   - component: {fileID: 8258389332028850233}
+  - component: {fileID: 5881137675842279765}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +48,31 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  robotSpawnPoints:
   - {fileID: 0}
-  robotSpawnPoints: []
   robot: {fileID: 0}
+  HealthBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UltimateBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  transformBar: {fileID: 0}
+--- !u!114 &5881137675842279765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258389332028850232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386b3111ca9222844bed00302804647c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minion: {fileID: 8952721306023334552, guid: 04f665e83f2848340861541385e54848, type: 3}
+  xPos: 0
+  zPos: 0
+  minionCount: 0

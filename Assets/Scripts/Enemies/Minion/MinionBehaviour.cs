@@ -84,6 +84,7 @@ public class MinionBehaviour : EnemyParameters
         {
             Follow();
         }
+        //add evade feature
         else
         {
             actionComplete = true;

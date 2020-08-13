@@ -15,6 +15,10 @@ public class SettingsMenu : MonoBehaviour
     // stores an array of available resolutions
     Resolution[] resolutions;
 
+    public Toggle skipTutorial;
+    int check;
+    bool checkSpace = true;
+
     void Start()
     {
         resolutions = Screen.resolutions;
@@ -43,6 +47,8 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        skipTutorialCheck();
     }
 
     public void SetResolution (int resolutionIndex)
@@ -64,6 +70,45 @@ public class SettingsMenu : MonoBehaviour
     public void SetFullscreen (bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+    }
+
+    void skipTutorialCheck()
+    {
+        check = PlayerPrefs.GetInt("skipTutorial");
+
+        if (check == 0)
+        {
+            skipTutorial.isOn = false;
+            checkSpace = false;
+            Debug.Log("off");
+        }
+        else
+        {
+            skipTutorial.isOn = true;
+            Debug.Log("on");
+        }
+    }
+
+    
+    public void skipingTutorial()
+    {
+        if (!checkSpace)
+        {
+            check = PlayerPrefs.GetInt("skipTutorial");
+
+            if (check == 0)
+            {
+                PlayerPrefs.SetInt("skipTutorial", 1);
+                Debug.Log("set on");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("skipTutorial", 0);
+                Debug.Log("set off");
+            }
+        }
+
+        checkSpace = false;
     }
 
 }

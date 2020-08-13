@@ -82,6 +82,7 @@ public class PlayerSelectionManager : MonoBehaviour
                         rootMenu.GetComponent<MenuController>().SelectCharacter(inputEnabled, PlayerIndex, currentSelection);
                         rootMenu.GetComponent<MenuController>().CharactersSelectCheck[currentSelection] = true;
                         canSelect = false;
+                        rootMenu.GetComponent<MenuController>().ReadyPlayer(inputEnabled, PlayerIndex, currentSelection);
                     }
                     else if (rootMenu.GetComponent<MenuController>().CharactersSelectCheck[currentSelection] == true)
                     {
@@ -91,11 +92,6 @@ public class PlayerSelectionManager : MonoBehaviour
             }
             else if (!canSelect)
             {
-                if (context.performed && value >= 0.9) //if X button is pressed AKA select
-                {
-                    rootMenu.GetComponent<MenuController>().ReadyPlayer(inputEnabled, PlayerIndex, currentSelection);
-                }
-
 
                 if (context.performed && value <= -0.9) //if O button is pressed AKA back
                 {

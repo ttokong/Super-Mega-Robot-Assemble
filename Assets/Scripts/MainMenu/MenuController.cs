@@ -8,8 +8,7 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     private GameObject[] readyPanel;
-    [SerializeField]
-    private GameObject[] readyButton;
+
     [SerializeField]
     private Text waitingForPlayers;
 
@@ -27,7 +26,6 @@ public class MenuController : MonoBehaviour
         PlayerManager.instance.SetPlayerCharacter(playerIndex, characterID);
         //PlayerManager.instance.SetPlayerPrefab(PlayerIndex, playerprefabs[SelectedCharacter]);
         readyPanel[characterID].SetActive(true);
-        readyButton[characterID].gameObject.SetActive(true);
     }
 
     public void ReadyPlayer(bool inputEnabled, int playerIndex, int characterID)
@@ -36,7 +34,6 @@ public class MenuController : MonoBehaviour
 
         waitingForPlayers.text = "Waiting for Players " + (playerIndex + 1) + "/" + PlayerManager.instance.MaxPlayers;
         PlayerManager.instance.ReadyPlayer(playerIndex);
-        readyButton[characterID].gameObject.SetActive(false);
 
     }
     
@@ -46,7 +43,6 @@ public class MenuController : MonoBehaviour
 
         PlayerManager.instance.UnreadyPlayer(playerIndex);
         readyPanel[characterID].SetActive(false);
-        readyButton[characterID].gameObject.SetActive(false);
     }
 
     /*

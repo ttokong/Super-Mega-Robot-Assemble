@@ -36,9 +36,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""ShootHold"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""7361e798-fa95-411e-a7a6-2c618a28ce98"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -87,7 +87,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4627fb85-72f3-4388-90a4-6351a7f84551"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -120,8 +120,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b8504b0a-cb11-48f7-b77a-d55d45227a73"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ShootHold"",
@@ -193,6 +193,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""UISelection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1385a096-053f-492f-bb25-90ea3c26e4da"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d9fc5cd-a3db-4647-8a6b-67c961ea0a0e"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

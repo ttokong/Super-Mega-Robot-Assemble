@@ -93,6 +93,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnShoot(CallbackContext context)
     {
+
         if (pc != null && !pc.robotForm)
         {
             pc.RapidFire(context.ReadValue<float>());

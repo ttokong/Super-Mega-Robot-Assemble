@@ -72,6 +72,8 @@ public class DPSBullet : MonoBehaviour
     {
         if (enemy.GetComponent<MinionBehaviour>().bulletHit == false)
         {
+            enemy.GetComponent<MinionBehaviour>().stunned = true;
+            enemy.GetComponent<MinionBehaviour>().agent.isStopped = true;
             // enemy.GetComponent<EnemyParameters>().bulletHit = true;
             enemy.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
         }

@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4478443810781421298}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 2538541096182489670}
   - component: {fileID: 4578443747445238424}
   - component: {fileID: 5452069864403648650}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 8166155047450408226}
   - component: {fileID: 5582131021194515769}
   - component: {fileID: 7296229309309909143}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1490,7 +1490,7 @@ GameObject:
   - component: {fileID: 4037091726833666056}
   - component: {fileID: 3654808938782421139}
   - component: {fileID: 3101721417768815827}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 6064296316696377779}
   - component: {fileID: 8188353618511520644}
   - component: {fileID: 7438304235949043519}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1878,7 +1878,7 @@ GameObject:
   - component: {fileID: 8952721306023334555}
   - component: {fileID: 8197147359443106525}
   - component: {fileID: 7828648326327041943}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Minion
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1894,7 +1894,7 @@ Transform:
   m_GameObject: {fileID: 8952721306023334552}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -12.56, y: 0.01, z: 2.35}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 7284760870104360436}
   - {fileID: 4478443810781421298}

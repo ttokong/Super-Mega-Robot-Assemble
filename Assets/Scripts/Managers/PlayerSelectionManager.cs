@@ -40,7 +40,7 @@ public class PlayerSelectionManager : MonoBehaviour
             var index = playerInput.playerIndex;
             SetPlayerIndex();
             playerSelection = playerSelections.FirstOrDefault(m => m.GetPlayerIndex() == index);
-            playerConfig = GameObject.Find("LobbyController").GetComponent<PlayerManager>().GetPlayerConfigurations().ToArray();
+            playerConfig = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerManager>().GetPlayerConfigurations().ToArray();
             playerConfig[index].Input.onActionTriggered += Input_OnActionTriggered;
         }
 

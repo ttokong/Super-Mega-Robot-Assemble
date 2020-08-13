@@ -85,6 +85,7 @@ public class SettingsMenu : MonoBehaviour
         else
         {
             skipTutorial.isOn = true;
+            checkSpace = false;
             Debug.Log("on");
         }
     }

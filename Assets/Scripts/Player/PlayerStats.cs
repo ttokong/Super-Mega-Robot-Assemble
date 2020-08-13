@@ -1,18 +1,14 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerStats : MonoBehaviour
 {
-    #region PhotonView
-
-    public PhotonView PV;
     [HideInInspector]
-    public AvatarSetup AS;
+    public PlayerConfiguration playerconfig;
 
-    #endregion
+    public int PlayerIndex;
 
     public GameObject ghost;
 
@@ -65,14 +61,13 @@ public class PlayerStats : MonoBehaviour
     public CharacterController CC;
 
     [HideInInspector]
-    public PlayerControls controls;
-
-    [HideInInspector]
     public Camera cam;
 
+    public void InitializePlayer(PlayerConfiguration pc)
+    {
+        playerconfig = pc;
+    }
 
-
-    [PunRPC]
     public void RPC_PlayerTakeDamage(int dmg)
     {
         if (!invincible)
@@ -81,7 +76,7 @@ public class PlayerStats : MonoBehaviour
 
             foreach (Health hp in LevelManager.instance.HealthBars)
             {
-                if (hp.playerID == PlayerInfo.instance.mySelectedCharacter)
+                if (hp.playerID == playerconfig.SelectedCharacter)
                 {
                     hp.TakeDamage();
                     hp.SetHealth(health);
@@ -102,7 +97,7 @@ public class PlayerStats : MonoBehaviour
 
     }
 
-    [PunRPC]
+
     public void RPC_PlayerHeal(int heal)
     {
         health += heal;
@@ -113,14 +108,13 @@ public class PlayerStats : MonoBehaviour
 
         foreach (Health hp in LevelManager.instance.HealthBars)
         {
-            if (hp.playerID == PlayerInfo.instance.mySelectedCharacter)
+            if (hp.playerID == playerconfig.SelectedCharacter)
             {
                 hp.SetHealth(health);
             }
         }
     }
 
-    [PunRPC]
     public void RPC_SetUltCharge(int UltCharge)
     {
         Mathf.Clamp(ultiCharge += UltCharge, 0, 4);
@@ -133,7 +127,7 @@ public class PlayerStats : MonoBehaviour
 
         foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
         {
-            if (ub.playerID == PlayerInfo.instance.mySelectedCharacter)
+            if (ub.playerID == playerconfig.SelectedCharacter)
             {
                 ub.SetUltimatePercentage(ultiCharge);
             }
@@ -146,11 +140,10 @@ public class PlayerStats : MonoBehaviour
     {
         if (health <= 0)
         {
-            PV.RPC("Dead", RpcTarget.All);
+            Dead();
         }
     }
 
-    [PunRPC]
     public void Dead()
     {
         gameObject.SetActive(false);
@@ -159,13 +152,4 @@ public class PlayerStats : MonoBehaviour
         deadplayer.GetComponent<GhostScript>().player = gameObject;
     }
 
-    public void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    public void OnDisable()
-    {
-        controls.Disable();
-    }
 }

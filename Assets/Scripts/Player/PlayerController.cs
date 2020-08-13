@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Photon.Pun;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : PlayerStats
 {
@@ -10,25 +10,25 @@ public class PlayerController : PlayerStats
     void Awake()
     {
         cam = Camera.main;
-        controls = new PlayerControls();
         multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
-        controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.ShootHold.performed += context => RapidFire(context);
-        controls.Gameplay.SuperMegaRobotAssemble.performed += context => RobotAssemble(context);
-        controls.Gameplay.Ultimate.performed += context => Ultimate(context);
-        controls.Gameplay.Pause.performed += context => Pause(context);
         InitSequence();
     }
-    
+
+    private void Start()
+    {
+        LevelManager.instance.HealthBars[0].SetIcon(playerconfig.SelectedCharacter);
+    }
+
+    public int GetPlayerIndex()
+    {
+        return PlayerIndex;
+    }
+
 
     void InitSequence()
     {
         OGhealth = health;
-        LevelManager.instance.HealthBars[0].SetIcon(PlayerInfo.instance.mySelectedCharacter);
-        Debug.Log(PlayerInfo.instance.mySelectedCharacter);
 
-        PV = gameObject.GetComponent<PhotonView>();
         CC = gameObject.GetComponent<CharacterController>();
         
         // adds the gameobject this script is attached to as a target in the multiple target camera script
@@ -39,27 +39,25 @@ public class PlayerController : PlayerStats
     // Update is called once per frame
     void Update()
     {
-        if (PV.IsMine)
+        if(!robotForm)
         {
-            if(!robotForm)
-            {
-                Movement();
-                InputDecider();
+            Movement();
+            InputDecider();
 
-                DeathTrigger();
+            DeathTrigger();
 
-                StartCoroutine(Shoot());
-            }
-            else if (robotForm)
-            {
-                //gameObject.SetActive(false);
-                multipleTargetCamera.targets.Remove(gameObject.transform);
-                gameObject.SetActive(false);
-                Destroy(gameObject, 5f);
-                LevelManager.instance.robot.SetActive(true);
-            }
+            StartCoroutine(Shoot());
         }
-
+        else if (robotForm)
+        {
+            //gameObject.SetActive(false);
+            multipleTargetCamera.targets.Remove(gameObject.transform);
+            gameObject.SetActive(false);
+            Destroy(gameObject, 5f);
+            LevelManager.instance.robot.SetActive(true);
+            LevelManager.instance.robot.GetComponent<RobotController>().InitializeRobot(playerconfig);
+            LevelManager.instance.robot.GetComponent<PlayerInputHandler>().InitializeRobot(playerconfig);
+        }
     }
 
     // check for which input is being used by player and calls for appropriate functions
@@ -108,8 +106,6 @@ public class PlayerController : PlayerStats
     // aim rotation of player
     void AimRotation()
     {
-        Joystick js = Joystick.current;
-        Mouse mouse = Mouse.current;
 
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
@@ -122,26 +118,15 @@ public class PlayerController : PlayerStats
 
         dir = right * movementInput.x + forward * movementInput.y;
 
-        if (js == null)
-        {
-            Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 350f))
-            {
-                Vector3 mouseDir = hit.point - transform.position;
-                Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
+        Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, qDir, 0.15F);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
 
-            }
-        }
-        else
-        {
-            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+    }
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
-        }
-
+    public void GetRotationVector(Vector2 rotationv)
+    {
+        aimInput = rotationv;
     }
 
 
@@ -163,9 +148,13 @@ public class PlayerController : PlayerStats
         }
     }
 
-    void RapidFire(InputAction.CallbackContext context)
+    public void GetMovementVector(Vector2 movementv)
     {
-        float value = context.ReadValue<float>();
+        movementInput = movementv;
+    }
+
+    public void RapidFire(float value)
+    {
         shooting = value >= 0.9f; //if value is more than 0.9, shooting = true, else false.
     }
 
@@ -177,7 +166,7 @@ public class PlayerController : PlayerStats
             if (!shootTrig)
             {
                 shootTrig = true;
-                PV.RPC("RPC_Fire", RpcTarget.All);
+                RPC_Fire();
                 yield return new WaitForSeconds(1/firerate);
                 shootTrig = false;
             }
@@ -186,88 +175,75 @@ public class PlayerController : PlayerStats
     }
 
     // transformation into robot
-    void RobotAssemble(InputAction.CallbackContext context)
+    public void RobotAssemble(float value)
     {
-        if(PV.IsMine)
+
+        if (robotForm == false && LevelManager.instance.transformBar.currentCharge >= LevelManager.instance.transformBar.maxCharge)
         {
-            float value = context.ReadValue<float>();
-
-            if (robotForm == false && LevelManager.instance.transformBar.currentCharge >= LevelManager.instance.transformBar.maxCharge)
+            if (value >= 0.9)
             {
-                if (value >= 0.9)
-                {
-                    PV.RPC("RPC_SuperRobotMegaAssemble", RpcTarget.All);
-                }
+                RPC_SuperRobotMegaAssemble();
             }
-
         }
+
     }
 
     // player's personal ultimate
-    void Ultimate(InputAction.CallbackContext context)
+    public void Ultimate(float value)
     {
-        if (PV.IsMine)
+
+
+        if (value >= 0.9) //if button is pressed
         {
-            float value = context.ReadValue<float>();
-
-
-            if (value >= 0.9) //if button is pressed
+            if (ultiCharge == 4)
             {
-                if (ultiCharge == 4)
+                switch (playerconfig.SelectedCharacter)
                 {
-                    switch (PlayerInfo.instance.mySelectedCharacter)
+                    // tank
+                    case 0:
+                        this.GetComponent<TankSkill>().TankShield();
+                        break;
+
+                    // dps
+                    case 1:
+                        this.GetComponent<DPSSkill>().DPS();
+                        break;
+
+                    // healer
+                    case 2:
+                        this.GetComponent<HealerSkill>().Healing();
+                        break;
+                }
+
+                ultiCharge = 0;
+                foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
+                {
+                    if (ub.playerID == playerconfig.SelectedCharacter)
                     {
-                        // tank
-                        case 0:
-                            this.GetComponent<TankSkill>().TankShield();
-                            break;
-
-                        // dps
-                        case 1:
-                            this.GetComponent<DPSSkill>().DPS();
-                            break;
-
-                        // healer
-                        case 2:
-                            this.GetComponent<HealerSkill>().Healing();
-                            break;
-                    }
-
-                    ultiCharge = 0;
-                    foreach (UltimateCharge ub in LevelManager.instance.UltimateBars)
-                    {
-                        if (ub.playerID == PlayerInfo.instance.mySelectedCharacter)
-                        {
-                            ub.SetUltimatePercentage(ultiCharge);
-                        }
+                        ub.SetUltimatePercentage(ultiCharge);
                     }
                 }
             }
         }
     }
 
-    void Pause(InputAction.CallbackContext context)
+    public void Pause(float value)
     {
-        if (PV.IsMine)
+
+
+        if (value >= 0.9) //if button is pressed
         {
-            float value = context.ReadValue<float>();
-
-
-            if (value >= 0.9) //if button is pressed
+            if (PauseMenu.gameIsPaused)
             {
-                if (PauseMenu.gameIsPaused)
-                {
-                    PauseMenu.gameIsPaused = false;
-                }
-                else if (!PauseMenu.gameIsPaused)
-                {
-                    PauseMenu.gameIsPaused = true;
-                }
+                PauseMenu.gameIsPaused = false;
+            }
+            else if (!PauseMenu.gameIsPaused)
+            {
+                PauseMenu.gameIsPaused = true;
             }
         }
     }
 
-    [PunRPC]
     private void RPC_SuperRobotMegaAssemble()
     {
         PlayerController[] player = FindObjectsOfType<PlayerController>();
@@ -277,7 +253,6 @@ public class PlayerController : PlayerStats
         }
     }
 
-    [PunRPC]
     private void RPC_Fire()
     {
         Debug.Log("Fire");

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 
 public class ExplosionDamage : MonoBehaviour
@@ -25,7 +24,7 @@ public class ExplosionDamage : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
+            other.GetComponent<PlayerStats>().RPC_PlayerTakeDamage(damage);
         }
         if (other.tag == "Robot")
         {

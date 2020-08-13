@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class LaserScript : MonoBehaviour
 {
@@ -46,7 +45,6 @@ public class LaserScript : MonoBehaviour
     {
         if (cd >= skillCd)
         {
-            GetComponent<PhotonView>().RPC("LaserCo", RpcTarget.All);
             StartCoroutine(LaserCo());
         }
     }

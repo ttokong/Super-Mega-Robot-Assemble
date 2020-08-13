@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class MortarBullet : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class MortarBullet : MonoBehaviour
     public GameObject impactEffect;
 
     [HideInInspector]
-    public float dmg;
+    public int dmg;
 
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +35,7 @@ public class MortarBullet : MonoBehaviour
         {
             if (col && col.tag == "Enemy")
             { // if object has the right tag...
-                col.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, dmg);
+                col.GetComponent<EnemyParameters>().RPC_TakeDamage(dmg);
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class ShieldBash : MonoBehaviour
 {
@@ -46,7 +45,7 @@ public class ShieldBash : MonoBehaviour
             else if (chargeTime > chargeUpDuration)
             {
                 hitBox.SetActive(true);
-                GetComponent<PhotonView>().RPC("RPC_ShieldBash", RpcTarget.All);
+                RPC_ShieldBash();
                 StartCoroutine(BashCo());
                 chargeTime = 0;
                 cd = 0;
@@ -61,7 +60,7 @@ public class ShieldBash : MonoBehaviour
     {
         if (c.tag == "Enemy")
         {
-            c.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage * damageMultiplier);
+            c.GetComponent<EnemyParameters>().RPC_TakeDamage(damage * damageMultiplier);
         }
     }
     IEnumerator BashCo()
@@ -71,7 +70,6 @@ public class ShieldBash : MonoBehaviour
         hitBox.SetActive(false);
     }
 
-    [PunRPC]
     void RPC_ShieldBash()
     {
         GetComponent<Shield>().timesHit = 0;

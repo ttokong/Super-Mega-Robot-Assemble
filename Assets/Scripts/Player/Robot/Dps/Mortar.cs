@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class Mortar : MonoBehaviour
 {
 
     public GameObject targetArea;
 
-    public float damage;
+    public int damage;
     public float gravityScale;
 
     public GameObject rockPrefab;
@@ -51,11 +50,10 @@ public class Mortar : MonoBehaviour
     {
         if (cd >= skillCd)
         {
-            GetComponent<PhotonView>().RPC("RPC_LaunchMortar", RpcTarget.All);  
+            RPC_LaunchMortar();  
         }
     }
 
-    [PunRPC]
     void RPC_LaunchMortar()
     {
 

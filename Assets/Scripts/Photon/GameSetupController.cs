@@ -1,39 +1,28 @@
 ﻿using System.IO;
 using UnityEngine;
-using Photon.Pun;
 
 public class GameSetupController : MonoBehaviour
 {
+    private PlayerConfiguration[] playerconfigs;
+
+    public GameObject[] avatarPrefabs;
 
     // this script will be added to any multiplayer scene
     void Start()
     {
+        playerconfigs = PlayerManager.instance.GetPlayerConfigurations().ToArray();
         CreatePlayer(); // create a networked player object for each player that loads into the multiplayer scenes
     }
 
     public void CreatePlayer()
     {
 
-        switch (PlayerInfo.instance.mySelectedCharacter)
+        for (int i = 0; i < playerconfigs.Length; i++)
         {
-            case 0:
-                PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Tank"), LevelManager.instance.spawnpoints[0].position, Quaternion.identity);
-                break;
-
-
-            case 1:
-                PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "DPS"),
-                    LevelManager.instance.spawnpoints[1].position, Quaternion.identity);
-                break;
-
-
-            case 2:
-                PhotonNetwork.Instantiate(Path.Combine("PlayerPrefabs", "Support"),
-                    LevelManager.instance.spawnpoints[2].position, Quaternion.identity);
-                break;
+            GameObject player = Instantiate(avatarPrefabs[playerconfigs[i].SelectedCharacter], LevelManager.instance.spawnpoints[playerconfigs[i].SelectedCharacter].position, Quaternion.identity);
+            player.GetComponent<PlayerStats>().InitializePlayer(playerconfigs[i]);
+            player.GetComponent<PlayerInputHandler>().InitializePlayer(playerconfigs[i]);
         }
-
-
     }
 
     // Update is called once per frame

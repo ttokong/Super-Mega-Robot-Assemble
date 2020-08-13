@@ -1876,7 +1876,6 @@ GameObject:
   - component: {fileID: 8952721306023334557}
   - component: {fileID: 8952721306023334554}
   - component: {fileID: 8952721306023334555}
-  - component: {fileID: 8197147359443106525}
   - component: {fileID: 7828648326327041943}
   m_Layer: 2
   m_Name: Minion
@@ -1960,7 +1959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779c1bcfa49e1746abe20344fc3984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 0}
   followTarget: 0
   targetRadiusMin: 5
   targetRadiusMax: 20
@@ -1994,28 +1992,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopRadius: 4
---- !u!114 &8197147359443106525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952721306023334552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 0
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!65 &7828648326327041943
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,11 +9,6 @@ public class MainMenu : MonoBehaviour
     public GameObject lobby;
     public GameObject mainMenu;
 
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
     public void OpenLobby()
     {
         lobby.SetActive(true);

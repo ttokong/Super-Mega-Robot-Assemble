@@ -38,42 +38,42 @@ public class TutorialManager : MonoBehaviour
         if (popUpIndex == 0)
         {
             // checks whether any input of this specific button is received
-            if(gp.leftStick.IsActuated())
+            if (gp.leftStick.IsActuated() || (Input.GetKeyDown(KeyCode.A)))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 1)
         {
-            if (gp.rightStick.IsActuated())
+            if (gp.rightStick.IsActuated() || (Input.GetKeyDown(KeyCode.A)))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 2)
         {
-            if (gp.rightTrigger.wasPressedThisFrame)
+            if (gp.rightTrigger.wasPressedThisFrame || (Input.GetKeyDown(KeyCode.A)))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 3)
         {
-            if (gp.rightShoulder.wasPressedThisFrame)
+            if (gp.rightShoulder.wasPressedThisFrame || (Input.GetKeyDown(KeyCode.A)))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 4)
         {
-            if (gp.leftTrigger.wasPressedThisFrame)
+            if (gp.leftTrigger.wasPressedThisFrame || (Input.GetKeyDown(KeyCode.A)))
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 5)
         {
-            if (gp.rightShoulder.wasPressedThisFrame)
+            if (gp.rightShoulder.wasPressedThisFrame || (Input.GetKeyDown(KeyCode.A)))
             {
                 popUpIndex++;
             }

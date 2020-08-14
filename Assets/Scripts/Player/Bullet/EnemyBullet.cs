@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +36,7 @@ public class EnemyBullet : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
+                other.GetComponent<PlayerStats>().RPC_PlayerTakeDamage(damage);
             }
             if (other.tag == "Shield")
             {
@@ -52,7 +51,6 @@ public class EnemyBullet : MonoBehaviour
         }
     }
 
-    [PunRPC]
     public void DestroyBullet()
     {
         Destroy(gameObject);

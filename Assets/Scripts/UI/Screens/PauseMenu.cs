@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -13,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     {
         gameIsPaused = false;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,9 +40,5 @@ public class PauseMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-
-        Debug.Log("Left Room");
-        PhotonRoom.room.playersInRoom--;
-        PhotonNetwork.LeaveRoom();
     }
 }

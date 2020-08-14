@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using System.IO;
 
 public class BulletScript : MonoBehaviour
@@ -38,9 +37,9 @@ public class BulletScript : MonoBehaviour
         {
             if (other.tag == "Enemy")
             {
-                other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+                other.GetComponent<EnemyParameters>().RPC_TakeDamage(damage);
 
-                player.GetComponent<PhotonView>().RPC("RPC_SetUltCharge", RpcTarget.All, player.GetComponent<PlayerStats>().ultiChargePerShot);
+                player.GetComponent<PlayerStats>().RPC_SetUltCharge(player.GetComponent<PlayerStats>().ultiChargePerShot);
 
                 DestroyBullet();
             }

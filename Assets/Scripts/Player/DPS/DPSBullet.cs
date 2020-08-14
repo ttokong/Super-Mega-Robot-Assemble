@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class DPSBullet : MonoBehaviour
 {
@@ -75,7 +74,7 @@ public class DPSBullet : MonoBehaviour
             enemy.GetComponent<MinionBehaviour>().stunned = true;
             enemy.GetComponent<MinionBehaviour>().agent.isStopped = true;
             // enemy.GetComponent<EnemyParameters>().bulletHit = true;
-            enemy.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+            enemy.GetComponent<EnemyParameters>().RPC_TakeDamage(damage);
         }
     }
 

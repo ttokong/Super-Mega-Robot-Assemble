@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Photon.Pun;
 
 public class MinionBehaviour : EnemyParameters
 {
@@ -22,6 +21,8 @@ public class MinionBehaviour : EnemyParameters
     public bool stunned = false;
     public float stunnedCD = 2f;
 
+    private EnemyController EC;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +31,8 @@ public class MinionBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        EC = GetComponent<EnemyController>();
         cam = Camera.main;
-        PV = GetComponent<PhotonView>();
         agent = GetComponent<NavMeshAgent>();
         timer = Random.Range(0, 4);
         OGhealth = health;
@@ -64,7 +65,7 @@ public class MinionBehaviour : EnemyParameters
 
             if (timer >= timeBetweenActions)
             {
-                PV.RPC("LocateRandomTarget", RpcTarget.All);
+                EC.LocateRandomTarget();
                 actionID = Random.Range(0, 19);
                 timer = Random.Range(0 , timeBetweenActions);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;
@@ -72,12 +73,11 @@ public class MinionBehaviour : EnemyParameters
         }
         else if (!actionComplete)
         {
-            PV.RPC("ChangeAction", RpcTarget.All, actionID);
+            ChangeAction(actionID);
         }
 
     }
 
-    [PunRPC]
     void ChangeAction(int id)
     {
         if (id >= 0 && id <= 9)    //50% chance to wander
@@ -92,6 +92,7 @@ public class MinionBehaviour : EnemyParameters
         {
             Follow();
         }
+        //add evade feature
         else
         {
             actionComplete = true;
@@ -102,10 +103,9 @@ public class MinionBehaviour : EnemyParameters
     {
         agent.isStopped = false;
         Vector3 newPos = RandomNavSphere(transform.position, targetRadiusMax, -1);
-        PV.RPC("RPC_MoveToLocation", RpcTarget.All, newPos);
+        RPC_MoveToLocation(newPos);
     }
 
-    [PunRPC]
     void RPC_MoveToLocation(Vector3 _pos)
     {
         agent.SetDestination(_pos);
@@ -166,13 +166,11 @@ public class MinionBehaviour : EnemyParameters
         {
             shootTrig = true;
             yield return new WaitForSeconds(1 / firerate);
-            PV.RPC("RPC_Fire", RpcTarget.All);
+            RPC_Fire();
             shootTrig = false;
         }
     }
 
-    
-    [PunRPC]
     private void RPC_Fire()
     {
         FindObjectOfType<AudioManager>().Play("LaserGun");

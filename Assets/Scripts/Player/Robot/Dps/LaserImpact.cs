@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class LaserImpact : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class LaserImpact : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<PhotonView>().RPC("RPC_TakeDamage", RpcTarget.All, damage);
+            other.GetComponent<EnemyParameters>().RPC_TakeDamage(damage);
         }
         if (other.tag == "Robot")
         {

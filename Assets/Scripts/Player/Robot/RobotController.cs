@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Photon.Pun;
-using Photon.Realtime;
 
 public class RobotController : MonoBehaviour
 {
+    [HideInInspector]
+    public PlayerConfiguration playerconfig;
 
     public float allowRotation;
     public GameObject[] robotParts;
@@ -15,7 +15,6 @@ public class RobotController : MonoBehaviour
     public float speed;
     public GameObject crosshair;
 
-    private PhotonView PV;
     private float gravity;
     private Camera cam;
     private MultipleTargetCamera multipleTargetCamera;
@@ -48,14 +47,12 @@ public class RobotController : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
 
         controls = new PlayerControls();
-
-        controls.Gameplay.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Pause.performed += context => Pause(context);
-        controls.Gameplay.Ultimate.performed += context => Ultimate(context);
-        controls.Gameplay.ShootHold.performed += context => RapidFire(context);
     }
 
+    public void InitializeRobot(PlayerConfiguration pc)
+    {
+        playerconfig = pc;
+    }
 
     void Start()
     {
@@ -65,7 +62,6 @@ public class RobotController : MonoBehaviour
     void InitSequence()
     {
         OGhealth = health;
-        PV = GetComponent<PhotonView>();
         CC = GetComponent<CharacterController>();
 
         multipleTargetCamera.targets.Add(gameObject.transform);
@@ -73,52 +69,49 @@ public class RobotController : MonoBehaviour
 
     void Update()
     {
-        //if (PV.IsMine)
-       // {
-            if (LevelManager.instance.transformBar.currentCharge > 0)
+        if (LevelManager.instance.transformBar.currentCharge > 0)
+        {
+            LevelManager.instance.transformBar.currentCharge -= Time.deltaTime;
+            LevelManager.instance.transformBar.SetCharge();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            GameObject.Find("GameSetupController").GetComponent<GameSetupController>().CreatePlayer();
+            gameObject.transform.position = new Vector3(0, 0, 0);
+        }
+
+        if (playerconfig.SelectedCharacter == 2)
+        {
+            Movement();
+        }
+
+        InputDecider();                             // dont touch this thanks
+
+        // when dash button is pressed, check whether there are still dash charges and whether it is still CDing or not
+        if (IsDashing)
+        {
+            if (dashCharges > 0 && dashCDing == false)
             {
-                LevelManager.instance.transformBar.currentCharge -= Time.deltaTime;
-                LevelManager.instance.transformBar.SetCharge();
+                StartCoroutine(Dash());
+                dashCharges--;
+                //IsDashing = false;
+                currentTarget = new Vector3(OGtarget.position.x, OGtarget.position.y, OGtarget.position.z);
+                transform.position = Vector3.Lerp(transform.position, currentTarget, dashSpeed);
+
             }
             else
             {
-                gameObject.SetActive(false);
-                GameObject.Find("GameSetupController").GetComponent<GameSetupController>().CreatePlayer();
-                gameObject.transform.position = new Vector3(0, 0, 0);
+                IsDashing = false;
             }
+        }
 
-            if (PlayerInfo.instance.mySelectedCharacter == 2)
-            {
-                Movement();
-            }
-
-            InputDecider();                             // dont touch this thanks
-
-            // when dash button is pressed, check whether there are still dash charges and whether it is still CDing or not
-            if (IsDashing)
-            {
-                if (dashCharges > 0 && dashCDing == false)
-                {
-                    StartCoroutine(Dash());
-                    dashCharges--;
-                    //IsDashing = false;
-                    currentTarget = new Vector3(OGtarget.position.x, OGtarget.position.y, OGtarget.position.z);
-                    transform.position = Vector3.Lerp(transform.position, currentTarget, dashSpeed);
-
-                }
-                else
-                {
-                    IsDashing = false;
-                }
-            }
-
-            // adds a charge of dash after a CD if it goes below 3
-            if (dashCharges < 3 && IsAddingCharge == false)
-            {
-                StartCoroutine(AddDashCharges());
-                IsAddingCharge = true;
-            }
-
+        // adds a charge of dash after a CD if it goes below 3
+        if (dashCharges < 3 && IsAddingCharge == false)
+        {
+            StartCoroutine(AddDashCharges());
+            IsAddingCharge = true;
+        }
     }
 
 
@@ -127,7 +120,7 @@ public class RobotController : MonoBehaviour
         float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
         float aimSpeed = new Vector2(aimInput.x, aimInput.y).sqrMagnitude;
 
-        if (PlayerInfo.instance.mySelectedCharacter == 2)
+        if (playerconfig.SelectedCharacter == 2)
         {
             if (currentSpeed > allowRotation)                   //if u exceed a certain speed u will rotate basically
             {
@@ -174,11 +167,14 @@ public class RobotController : MonoBehaviour
 
     }
 
+
+    public void GetRotationVector(Vector2 rotationv)
+    {
+        aimInput = rotationv;
+    }
+
     void AimRotation()
     {
-        Joystick js = Joystick.current;
-        Mouse mouse = Mouse.current;
-
         Vector3 forward = cam.transform.forward;
         Vector3 right = cam.transform.right;
 
@@ -191,32 +187,15 @@ public class RobotController : MonoBehaviour
         dir = right * movementInput.x + forward * movementInput.y;
 
 
-        if (PlayerInfo.instance.mySelectedCharacter == 0)                //tank
+        if (playerconfig.SelectedCharacter == 0)                //tank
         {
-            if (js == null) 
-            {
-                Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 350f))
-                {
-                    Vector3 mouseDir = hit.point - transform.position;
-                    Quaternion qDir = Quaternion.LookRotation(new Vector3(mouseDir.x, 0, mouseDir.z));
+            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
 
-                    robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, qDir, 0.15F);
-
-                }
-            }
-            else
-            {
-                Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
-
-                robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
-            }
+            robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
         }
-        else if (PlayerInfo.instance.mySelectedCharacter == 1)           //dps
+        else if (playerconfig.SelectedCharacter == 1)           //dps
         {
-            if (js == null)
-            {
+            /*
                 Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
                 RaycastHit hit;
 
@@ -232,16 +211,14 @@ public class RobotController : MonoBehaviour
                     robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, qDir, 0.15F);
 
                     crosshair.transform.position = hit.point;
-                }
-            }
-            else
-            {
-                Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+                } */
 
-                robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
-            }
+            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+
+            robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+
         }
-        else if (PlayerInfo.instance.mySelectedCharacter == 2)           //support
+        else if (playerconfig.SelectedCharacter == 2)           //support
         {
             robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
         }
@@ -249,11 +226,10 @@ public class RobotController : MonoBehaviour
 
     }
 
-    void RapidFire(InputAction.CallbackContext context)
+    public void RapidFire(float value)
     {
-        if (PV.IsMine && PlayerInfo.instance.mySelectedCharacter == 1)
+        if (playerconfig.SelectedCharacter == 1)
         {
-            float value = context.ReadValue<float>();
 
 
             if (value >= 0.9) //if button is pressed
@@ -263,6 +239,13 @@ public class RobotController : MonoBehaviour
         }
     }
 
+
+    public void GetMovementVector(Vector2 movementv)
+    {
+        movementInput = movementv;
+    }
+
+
     void Movement()
     {
         gravity -= 9.8f * Time.deltaTime;
@@ -270,7 +253,6 @@ public class RobotController : MonoBehaviour
 
 
         Vector3 moveDir = dir * (speed * Time.deltaTime);
-        Debug.Log(dir);
         moveDir = new Vector3(moveDir.x, gravity, moveDir.z);
 
         CC.Move(moveDir);
@@ -282,51 +264,40 @@ public class RobotController : MonoBehaviour
     }
 
     // player's personal ultimate
-    void Ultimate(InputAction.CallbackContext context)
+    public void Ultimate(float value)
     {
-        if (PV.IsMine)
+
+        if (value >= 0.9) //if button is pressed
         {
-            float value = context.ReadValue<float>();
 
-
-            if (value >= 0.9) //if button is pressed
+            if (playerconfig.SelectedCharacter == 0)
             {
-
-                if (PlayerInfo.instance.mySelectedCharacter == 0)
-                {
-                    GetComponentInChildren<ShieldBash>().Bash();
-                }
-                else if (PlayerInfo.instance.mySelectedCharacter == 1)
-                {
-                    GetComponent<Mortar>().Shoot();
-                }
-                else if (PlayerInfo.instance.mySelectedCharacter == 2)
-                {
-                    IsDashing = true;
-                    // StartCoroutine(RobotDash());
-                }
+                GetComponentInChildren<ShieldBash>().Bash();
+            }
+            else if (playerconfig.SelectedCharacter == 1)
+            {
+                GetComponent<Mortar>().Shoot();
+            }
+            else if (playerconfig.SelectedCharacter == 2)
+            {
+                IsDashing = true;
+                // StartCoroutine(RobotDash());
             }
         }
     }
 
 
-    void Pause(InputAction.CallbackContext context)
+    public void Pause(float value)
     {
-        if (PV.IsMine)
+        if (value >= 0.9) //if button is pressed
         {
-            float value = context.ReadValue<float>();
-
-
-            if (value >= 0.9) //if button is pressed
+            if (PauseMenu.gameIsPaused)
             {
-                if (PauseMenu.gameIsPaused)
-                {
-                    PauseMenu.gameIsPaused = false;
-                }
-                else if (!PauseMenu.gameIsPaused)
-                {
-                    PauseMenu.gameIsPaused = true;
-                }
+                PauseMenu.gameIsPaused = false;
+            }
+            else if (!PauseMenu.gameIsPaused)
+            {
+                PauseMenu.gameIsPaused = true;
             }
         }
     }

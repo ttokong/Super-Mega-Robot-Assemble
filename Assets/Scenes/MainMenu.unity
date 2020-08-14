@@ -1085,6 +1085,11 @@ PrefabInstance:
       propertyPath: MaxPlayers
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3138484084184237958, guid: 21ed83d6411918740ae1d112b5435cb1,
+        type: 3}
+      propertyPath: skipTutorial
+      value: 
+      objectReference: {fileID: 1483159771}
     - target: {fileID: 3138484084184237960, guid: 21ed83d6411918740ae1d112b5435cb1,
         type: 3}
       propertyPath: m_Name
@@ -7178,7 +7183,7 @@ PrefabInstance:
     - target: {fileID: 3972521575663905182, guid: 6102fb92e14cf474fa026e0e798b435a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.6999207
+      value: -3.6998901
       objectReference: {fileID: 0}
     - target: {fileID: 3972521575939912673, guid: 6102fb92e14cf474fa026e0e798b435a,
         type: 3}

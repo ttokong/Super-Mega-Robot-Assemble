@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   target: {fileID: 0}
-  knockbackStrength: 50
+  knockbackStrength: 6
   damage: 1
   speed: 70
   impactEffect: {fileID: 1690631632978393224, guid: 2b5a12ad59dd9d84fa70868b2a40c3a5,

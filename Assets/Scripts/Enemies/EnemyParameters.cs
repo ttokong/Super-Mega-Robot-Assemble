@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Photon.Pun;
 
 public class EnemyParameters : MonoBehaviour
 {
 
-    #region PhotonView
-
-    [HideInInspector]
-    public PhotonView PV;
-
-    #endregion
 
     public bool followTarget;
 
@@ -47,7 +40,6 @@ public class EnemyParameters : MonoBehaviour
 
     }
 
-    [PunRPC]
     public void RPC_TakeDamage(int dmg)
     {
         if (gameObject.GetComponent<BossBehaviour>())
@@ -70,7 +62,7 @@ public class EnemyParameters : MonoBehaviour
     {
         if (health <= 0)
         {
-            PV.RPC("Dead", RpcTarget.All);
+            Dead();
         }
 
         /*if (bulletHit == true && BTswitch == false)
@@ -80,7 +72,6 @@ public class EnemyParameters : MonoBehaviour
 
     }
 
-    [PunRPC]
     public void Dead()
     {
         FindObjectOfType<AudioManager>().Play("EnemyDeath");

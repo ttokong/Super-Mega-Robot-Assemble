@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Photon.Pun;
 
 public class BossBehaviour : EnemyParameters
 {
@@ -15,6 +14,7 @@ public class BossBehaviour : EnemyParameters
     public bool actionComplete = true;
 
     public BossHealthBar bossHealthBar;
+    private EnemyController EC;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,10 @@ public class BossBehaviour : EnemyParameters
 
     void InitSequence()
     {
+        EC = GetComponent<EnemyController>();
         cam = Camera.main;
         timer = Random.Range(0, 4);
         agent = GetComponent<NavMeshAgent>();
-        PV = GetComponent<PhotonView>();
         OGhealth = health;
         bossHealthBar.SetMaxHealth(OGhealth);
 
@@ -53,7 +53,7 @@ public class BossBehaviour : EnemyParameters
 
             if (timer >= timeBetweenAttacks)
             {
-                PV.RPC("LocateRandomTarget", RpcTarget.All);
+                EC.LocateRandomTarget();
                 actionID = Random.Range(0, 17);
                 timer = Random.Range(0, 4);         // randomly reduces wait time between each action by 0 to 3 seconds
                 actionComplete = false;
@@ -61,12 +61,11 @@ public class BossBehaviour : EnemyParameters
         }
         else if (!actionComplete)
         {
-            PV.RPC("ChangeAction", RpcTarget.All, actionID);
+            ChangeAction(actionID);
         }
 
     }
 
-    [PunRPC]
     void ChangeAction(int id)
     {
         if (id >= 0 && id <= 5)    //33.33% chance to wander
@@ -96,10 +95,9 @@ public class BossBehaviour : EnemyParameters
     {
         agent.isStopped = false;
         Vector3 newPos = RandomNavSphere(transform.position, targetRadiusMax, -1);
-        PV.RPC("RPC_MoveToLocation", RpcTarget.All, newPos);
+        RPC_MoveToLocation(newPos);
     }
 
-    [PunRPC]
     void RPC_MoveToLocation(Vector3 _pos)
     {
         agent.SetDestination(_pos);

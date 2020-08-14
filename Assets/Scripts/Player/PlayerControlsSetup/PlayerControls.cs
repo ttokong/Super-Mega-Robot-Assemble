@@ -22,7 +22,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e16401e6-6d92-4ad5-a52c-acb31c580690"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -36,9 +36,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""ShootHold"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""7361e798-fa95-411e-a7a6-2c618a28ce98"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -65,107 +65,35 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""UINav"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9d45f3e-de49-4bff-949a-08aad5674212"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UISelection"",
+                    ""type"": ""Button"",
+                    ""id"": ""94492b36-5dc8-405d-bf7c-7c35b57cd70a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""8bab02ed-a697-4b03-845f-4c8eb3fcbe9c"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Ultimate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""519fe101-02e9-4533-9b98-b2c2876f08d2"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""716002cf-393e-4040-84c8-e5548cde7722"",
-                    ""path"": ""<Keyboard>/g"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Super Mega Robot Assemble"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4627fb85-72f3-4388-90a4-6351a7f84551"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Super Mega Robot Assemble"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""85473e14-972a-4ab3-9b1a-fca4d1a834c2"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""7c550cdf-426b-4dc3-b9fb-e4746ea4eac2"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""2a8d569b-f2b0-4202-aa44-4de03d9279b6"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""989fe2b8-9eef-4f98-b0ac-91c0c0e50d60"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""4ec8bb05-d250-40c6-b541-5c42aaf9f1ab"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -191,34 +119,100 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""673f2d8d-e1ef-460f-9f11-b31e1f603a2b"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""681fb48f-4005-4494-aab6-1a6914503988"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""ShootHold"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b8504b0a-cb11-48f7-b77a-d55d45227a73"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ShootHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Left Right"",
+                    ""id"": ""2bd3930d-1a3f-4b78-a2df-91501194af23"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UINav"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""31899ac2-bdb2-45ba-895a-95f8072d4010"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UINav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2147cd62-452e-4fee-a2fb-03976fda8460"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UINav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""9e0d2e5f-37e7-4dcc-a5cb-b6306809339c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UISelection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e9d7fd21-4de8-41a2-93fa-7aa9098df1e6"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UISelection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c9790bd8-0191-454b-8ffa-49a3543a9e37"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UISelection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1385a096-053f-492f-bb25-90ea3c26e4da"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d9fc5cd-a3db-4647-8a6b-67c961ea0a0e"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,6 +252,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_SuperMegaRobotAssemble = m_Gameplay.FindAction("Super Mega Robot Assemble", throwIfNotFound: true);
+        m_Gameplay_UINav = m_Gameplay.FindAction("UINav", throwIfNotFound: true);
+        m_Gameplay_UISelection = m_Gameplay.FindAction("UISelection", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -313,6 +309,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Ultimate;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_SuperMegaRobotAssemble;
+    private readonly InputAction m_Gameplay_UINav;
+    private readonly InputAction m_Gameplay_UISelection;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -323,6 +321,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @SuperMegaRobotAssemble => m_Wrapper.m_Gameplay_SuperMegaRobotAssemble;
+        public InputAction @UINav => m_Wrapper.m_Gameplay_UINav;
+        public InputAction @UISelection => m_Wrapper.m_Gameplay_UISelection;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +350,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SuperMegaRobotAssemble.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSuperMegaRobotAssemble;
                 @SuperMegaRobotAssemble.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSuperMegaRobotAssemble;
                 @SuperMegaRobotAssemble.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSuperMegaRobotAssemble;
+                @UINav.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUINav;
+                @UINav.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUINav;
+                @UINav.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUINav;
+                @UISelection.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUISelection;
+                @UISelection.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUISelection;
+                @UISelection.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUISelection;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -372,6 +378,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SuperMegaRobotAssemble.started += instance.OnSuperMegaRobotAssemble;
                 @SuperMegaRobotAssemble.performed += instance.OnSuperMegaRobotAssemble;
                 @SuperMegaRobotAssemble.canceled += instance.OnSuperMegaRobotAssemble;
+                @UINav.started += instance.OnUINav;
+                @UINav.performed += instance.OnUINav;
+                @UINav.canceled += instance.OnUINav;
+                @UISelection.started += instance.OnUISelection;
+                @UISelection.performed += instance.OnUISelection;
+                @UISelection.canceled += instance.OnUISelection;
             }
         }
     }
@@ -402,5 +414,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnUltimate(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnSuperMegaRobotAssemble(InputAction.CallbackContext context);
+        void OnUINav(InputAction.CallbackContext context);
+        void OnUISelection(InputAction.CallbackContext context);
     }
 }

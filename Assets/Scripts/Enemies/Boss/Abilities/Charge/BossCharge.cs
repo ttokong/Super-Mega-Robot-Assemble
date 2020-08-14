@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class BossCharge : MonoBehaviour
 {
@@ -94,7 +93,7 @@ public class BossCharge : MonoBehaviour
     {
         if (other.tag == "Player" && charging == true)
         {
-            other.GetComponent<PhotonView>().RPC("RPC_PlayerTakeDamage", RpcTarget.All, damage);
+            other.GetComponent<PlayerStats>().RPC_PlayerTakeDamage(damage);
         }
         if (other.tag == "Robot" && charging == true)
         {

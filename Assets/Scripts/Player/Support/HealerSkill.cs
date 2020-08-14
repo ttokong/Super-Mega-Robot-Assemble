@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class HealerSkill : MonoBehaviour
 {
@@ -28,7 +27,7 @@ public class HealerSkill : MonoBehaviour
         {
             if (other.GetComponent<PlayerStats>().health < other.GetComponent<PlayerStats>().OGhealth)
             {
-                other.GetComponent<PhotonView>().RPC("RPC_PlayerHeal", RpcTarget.All, heal);
+                other.GetComponent<PlayerStats>().RPC_PlayerHeal(heal);
             }
         }
     }

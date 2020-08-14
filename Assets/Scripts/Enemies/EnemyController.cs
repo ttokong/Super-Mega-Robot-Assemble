@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
@@ -43,7 +42,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    [PunRPC]
     public void LocateRandomTarget()
     {
         // find gameobject with tag "Player"

@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex;
+
+    Gamepad gp = InputSystem.GetDevice<Gamepad>();
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,42 +38,42 @@ public class TutorialManager : MonoBehaviour
         if (popUpIndex == 0)
         {
             // checks whether any input of this specific button is received
-            if(Input.GetAxis("Move") != 0)
+            if(gp.leftStick.IsActuated())
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 1)
         {
-            if (Input.GetAxis("Aim") != 0)
+            if (gp.rightStick.IsActuated())
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 2)
         {
-            if (Input.GetAxis("ShootHold") != 0)
+            if (gp.rightTrigger.wasPressedThisFrame)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 3)
         {
-            if (Input.GetAxis("Ultimate") != 0)
+            if (gp.rightShoulder.wasPressedThisFrame)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 4)
         {
-            if (Input.GetAxis("Super Mega Robot Assemble") != 0)
+            if (gp.leftTrigger.wasPressedThisFrame)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 5)
         {
-            if (Input.GetAxis("Ultimate") != 0)
+            if (gp.rightShoulder.wasPressedThisFrame)
             {
                 popUpIndex++;
             }

@@ -45,6 +45,7 @@ public class PlayerSelectionManager : MonoBehaviour
         }
 
         controls = new PlayerControls();
+
     }
 
     public void Input_OnActionTriggered(CallbackContext obj)

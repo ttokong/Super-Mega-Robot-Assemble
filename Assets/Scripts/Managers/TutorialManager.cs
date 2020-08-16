@@ -8,7 +8,8 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex;
-    bool tutorialEnd;
+    bool tutorialEnd = false;
+    bool bufferTime = false;
 
     public GameObject baseTutorial;
 
@@ -37,19 +38,22 @@ public class TutorialManager : MonoBehaviour
                 baseTutorial.SetActive(false);
                 ShowPopUp();
                 popUpIndex++;
+                StartCoroutine(BufferTimer());
             }
         }
         // tutorial 1
-        if (popUpIndex == 1)
+        if (popUpIndex == 1 && bufferTime)
         {
             if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
             {
                 ShowPopUp();
                 popUpIndex++;
+                bufferTime = false;
+                StartCoroutine(BufferTimer());
             }
         }
         // tutorial 1.1
-        if (popUpIndex == 2)
+        if (popUpIndex == 2 && bufferTime)
         {
             if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
             {
@@ -224,6 +228,12 @@ public class TutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         tutorialEnd = true;
+    }
+
+    IEnumerator BufferTimer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        bufferTime = true;
     }
 
 }

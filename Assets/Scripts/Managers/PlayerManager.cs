@@ -22,7 +22,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("Somethings wrong just saying. Too bad!");
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(instance);
+            playerConfigs = new List<PlayerConfiguration>();
         }
         else
         {

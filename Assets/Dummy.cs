@@ -56,4 +56,6 @@ public class Dummy : MonoBehaviour
         gettingHit = true;
         inCombatCD = 5f;
     }
+
+
 }

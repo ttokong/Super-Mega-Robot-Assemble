@@ -49,6 +49,7 @@ public class EnemyBullet : MonoBehaviour
             }
             DestroyBullet();
         }
+
     }
 
     public void DestroyBullet()

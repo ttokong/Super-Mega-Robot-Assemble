@@ -5,6 +5,7 @@ using UnityEngine;
 public class DPSBullet : MonoBehaviour
 {
     List<GameObject> enemyInRange = new List<GameObject>();
+    List<GameObject> dummyInRange = new List<GameObject>();
 
     public GameObject player;
     public Transform target;
@@ -65,6 +66,22 @@ public class DPSBullet : MonoBehaviour
                 DPSDamageEnemy(other.gameObject);
             }
         }
+        if (other.tag == "Dummy")
+        {
+            dummyInRange.Add(other.gameObject);
+
+            foreach (GameObject dummy in dummyInRange)
+            {
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+
+                Vector3 dir = dummy.transform.position - transform.position;
+                dir.y = 0;
+
+                rb.AddForce(dir * knockbackStrength, ForceMode.Impulse);
+
+                DPSDamageDummy(other.gameObject);
+            }
+        }
     }
 
     void DPSDamageEnemy(GameObject enemy)
@@ -76,6 +93,11 @@ public class DPSBullet : MonoBehaviour
             // enemy.GetComponent<EnemyParameters>().bulletHit = true;
             enemy.GetComponent<EnemyParameters>().RPC_TakeDamage(damage);
         }
+    }
+
+    void DPSDamageDummy(GameObject dummy)
+    {
+        dummy.GetComponent<Dummy>().TakeDamage(damage);
     }
 
 }

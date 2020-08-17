@@ -14,6 +14,8 @@ TagManager:
   - Shield
   - Hitbox
   - Robot
+  - Dummy
+  - Wall
   layers:
   - Default
   - TransparentFX

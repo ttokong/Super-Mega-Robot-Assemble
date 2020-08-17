@@ -19,6 +19,9 @@ public class EnemyParameters : MonoBehaviour
     //[HideInInspector]
     //public MultipleTargetCamera multipleTargetCamera;
 
+    //[HideInInspector]
+    //public SupportSkill sk;
+
     [HideInInspector]
     public Camera cam;
 
@@ -37,7 +40,7 @@ public class EnemyParameters : MonoBehaviour
 
     void Start()
     {
-
+        //sk.GetComponent<SupportSkill>();
     }
 
     public void RPC_TakeDamage(int dmg)
@@ -77,6 +80,7 @@ public class EnemyParameters : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("EnemyDeath");
         Destroy(gameObject);
         //multipleTargetCamera.targets.Remove(gameObject.transform);
+        //sk.amountofEnemies.Remove(gameObject);
     }
 
     /*IEnumerator bulletTrigger()

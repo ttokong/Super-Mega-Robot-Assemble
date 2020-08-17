@@ -4,9 +4,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public Toggle skipTutorial;
 
     private List<PlayerConfiguration> playerConfigs;
 
@@ -20,7 +22,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("Somethings wrong just saying. Too bad!");
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(instance);
+            playerConfigs = new List<PlayerConfiguration>();
         }
         else
         {
@@ -52,7 +57,14 @@ public class PlayerManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         if (playerConfigs.Count == MaxPlayers && playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (skipTutorial.isOn == false)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else if (skipTutorial.isOn == true)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+            }
         }
     }
 

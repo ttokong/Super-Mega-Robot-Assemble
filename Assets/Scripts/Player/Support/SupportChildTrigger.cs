@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealerChildTrigger : MonoBehaviour
+public class SupportChildTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,9 +18,9 @@ public class HealerChildTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Enemy" || other.tag == "Dummy")
         {
-            gameObject.GetComponentInParent<HealerSkill>().PullTrigger(other);
+            gameObject.GetComponentInParent<SupportSkill>().PullTrigger(other);
         }
     }
 }

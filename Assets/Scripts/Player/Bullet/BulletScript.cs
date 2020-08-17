@@ -43,6 +43,14 @@ public class BulletScript : MonoBehaviour
 
                 DestroyBullet();
             }
+            else if (other.tag == "Dummy")
+            {
+                other.GetComponent<Dummy>().TakeDamage(damage);
+
+                player.GetComponent<PlayerStats>().RPC_SetUltCharge(player.GetComponent<PlayerStats>().ultiChargePerShot);
+
+                DestroyBullet();
+            }
             else
             {
                 DestroyBullet();

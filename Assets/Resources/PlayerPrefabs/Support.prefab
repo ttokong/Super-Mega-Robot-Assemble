@@ -65,6 +65,7 @@ Transform:
   m_Children:
   - {fileID: 548443295089887639}
   - {fileID: 9042059709479103135}
+  - {fileID: 8935498542650383634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,8 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d2ebe3e781a954785bfa91e879019a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealingRadius: {fileID: 2663210225087354887}
-  heal: 1
+  VacuumRadius: {fileID: 2663210225087354887}
+  VacuumPoint: {fileID: 6250246196776426404}
+  knockbackStrength: -0.3
+  amountofEnemies: []
 --- !u!114 &3495994946520274498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,12 +193,12 @@ GameObject:
   - component: {fileID: 575794717650947965}
   - component: {fileID: 2597967203421375420}
   m_Layer: 0
-  m_Name: HealingRadius
+  m_Name: VacuumRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9042059709479103135
 Transform:
   m_ObjectHideFlags: 0
@@ -205,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 2663210225087354887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 60, y: 60, z: 60}
   m_Children: []
   m_Father: {fileID: 8771012805933133602}
   m_RootOrder: 1
@@ -265,7 +268,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2663210225087354887}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -282,3 +285,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9783f34cefb544dbbe6e91016f9e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6250246196776426404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8935498542650383634}
+  m_Layer: 0
+  m_Name: VacuumPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8935498542650383634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250246196776426404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8771012805933133602}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

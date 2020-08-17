@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: -46}
+  m_AnchoredPosition: {x: 127, y: -59}
   m_SizeDelta: {x: 71.73, y: 27.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672784
@@ -2107,7 +2107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: -115}
+  m_AnchoredPosition: {x: 127, y: -127.99999}
   m_SizeDelta: {x: 71.73, y: 27.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &320679797
@@ -2922,8 +2922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.15}
-  m_SizeDelta: {x: 6.028, y: 0.545}
+  m_AnchoredPosition: {x: 0, y: -0.35}
+  m_SizeDelta: {x: 5.675, y: 0.713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425972147
 MonoBehaviour:
@@ -2943,10 +2943,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MADE BY KRABBY KRABS
+  m_text: A GAME BY KRABBY KRABS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6b9bd6293702266429099848f8b107c7, type: 2}
-  m_sharedMaterial: {fileID: 2299127694940848303, guid: 6b9bd6293702266429099848f8b107c7,
+  m_fontAsset: {fileID: 11400000, guid: e39323a488d52fb45abcd8df3624c922, type: 2}
+  m_sharedMaterial: {fileID: -4552559392077081723, guid: e39323a488d52fb45abcd8df3624c922,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2972,13 +2972,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 0.35
-  m_fontSizeBase: 0.35
+  m_fontSize: 0.175
+  m_fontSizeBase: 0.175
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 33
+  m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3013,10 +3013,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 425972147}
-    characterCount: 20
+    characterCount: 22
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -6427,7 +6427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: -80}
+  m_AnchoredPosition: {x: 127, y: -92.99999}
   m_SizeDelta: {x: 71.73, y: 27.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744418081
@@ -10662,7 +10662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254763432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.0999975, z: 0}
+  m_LocalPosition: {x: 0, y: -28.09999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1684227129}
@@ -12304,7 +12304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: -10}
+  m_AnchoredPosition: {x: 127, y: -22.999992}
   m_SizeDelta: {x: 80.79, y: 30.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492817763

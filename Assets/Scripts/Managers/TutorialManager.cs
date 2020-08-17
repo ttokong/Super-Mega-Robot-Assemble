@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
         if (popUpIndex == 0)
         {
             // checks whether any input of this specific button is received
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 baseTutorial.SetActive(false);
                 ShowPopUp();
@@ -44,7 +44,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 1
         if (popUpIndex == 1 && bufferTime)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -55,7 +55,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 1.1
         if (popUpIndex == 2 && bufferTime)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -64,7 +64,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 2
         else if (popUpIndex == 3)
         {
-            if (/*gp.leftStick.IsActuated() ||*/ kb.wKey.wasPressedThisFrame || kb.aKey.wasPressedThisFrame || kb.sKey.wasPressedThisFrame || kb.dKey.wasPressedThisFrame)
+            if (gp.leftStick.IsActuated() /*|| kb.wKey.wasPressedThisFrame || kb.aKey.wasPressedThisFrame || kb.sKey.wasPressedThisFrame || kb.dKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -73,7 +73,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 2.1
         if (popUpIndex == 4)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -82,7 +82,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 3
         else if (popUpIndex == 5)
         {
-            if (/*gp.rightStick.IsActuated() ||*/ kb.iKey.wasPressedThisFrame || kb.jKey.wasPressedThisFrame || kb.kKey.wasPressedThisFrame || kb.lKey.wasPressedThisFrame)
+            if (gp.rightStick.IsActuated() /*|| kb.iKey.wasPressedThisFrame || kb.jKey.wasPressedThisFrame || kb.kKey.wasPressedThisFrame || kb.lKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -91,7 +91,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 3.1
         if (popUpIndex == 6)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -100,7 +100,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 4
         else if (popUpIndex == 7)
         {
-            if (/*gp.rightTrigger.wasPressedThisFrame ||*/ kb.spaceKey.wasPressedThisFrame)
+            if (gp.rightTrigger.wasPressedThisFrame /*|| kb.spaceKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -109,7 +109,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 4.1
         if (popUpIndex == 8)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -119,7 +119,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 5
         else if (popUpIndex == 9)
         {
-            if (/*gp.rightShoulder.wasPressedThisFrame ||*/ kb.qKey.wasPressedThisFrame)
+            if (gp.rightShoulder.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -128,7 +128,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 5.1
         if (popUpIndex == 10)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -138,7 +138,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 6
         else if (popUpIndex == 11)
         {
-            if (/*gp.leftTrigger.wasPressedThisFrame ||*/ kb.eKey.wasPressedThisFrame)
+            if (gp.leftTrigger.wasPressedThisFrame /*|| kb.eKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -147,7 +147,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 6.1
         if (popUpIndex == 12)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -156,7 +156,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 7
         else if (popUpIndex == 13)
         {
-            if (/*gp.rightShoulder.wasPressedThisFrame ||*/ kb.qKey.wasPressedThisFrame)
+            if (gp.rightShoulder.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -165,7 +165,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 7.1
         if (popUpIndex == 14)
         {
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -201,11 +201,11 @@ public class TutorialManager : MonoBehaviour
     {
         if (tutorialEnd == true)
         {
-            if (/*gp.xButton.wasPressedThisFrame ||*/ kb.fKey.wasPressedThisFrame)
+            if (gp.buttonEast.wasPressedThisFrame /*|| kb.fKey.wasPressedThisFrame*/)
             {
                 SceneManager.LoadScene(0);
             }
-            if (/*gp.circleButton.wasPressedThisFrame ||*/ kb.gKey.wasPressedThisFrame)
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
                 SceneManager.LoadScene(2);
             }

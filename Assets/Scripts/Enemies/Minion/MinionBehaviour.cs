@@ -23,6 +23,12 @@ public class MinionBehaviour : EnemyParameters
 
     private EnemyController EC;
 
+    public bool pulled = false;
+    //public float pulledCD = 1f;
+
+    private bool stuncdcalled;
+    //private bool pullcdcalled;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,9 @@ public class MinionBehaviour : EnemyParameters
         timer = Random.Range(0, 4);
         OGhealth = health;
         enemyHealthBar.SetMaxHealth(OGhealth);
+
+        //multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
+        //multipleTargetCamera.targets.Add(gameObject.transform);
     }
 
     // Update is called once per frame
@@ -53,8 +62,21 @@ public class MinionBehaviour : EnemyParameters
 
         if (stunned)
         {
-            StartCoroutine(stunCD());
+            if (!stuncdcalled)
+            {
+                StartCoroutine(StunCD());
+            }
         }
+
+        /* if (pulled)
+        {
+            stunned = true;
+            transform.position = Vector3.Lerp(transform.position, SK.VacuumPoint.transform.position, 1f);
+            if (!pullcdcalled)
+            {
+                StartCoroutine(PullCD());
+            }
+        }*/
     }
 
     void RngDecider()
@@ -198,11 +220,26 @@ public class MinionBehaviour : EnemyParameters
             return; 
     }
 
-    IEnumerator stunCD()
+    IEnumerator StunCD()
     {
+        stuncdcalled = true;
         yield return new WaitForSeconds(stunnedCD);
+        /*if (!agent.isStopped)
+        {
+            agent.isStopped = true;
+        }*/
+
         stunned = false;
+        stuncdcalled = false;
     }
+
+    /*IEnumerator PullCD()
+    {
+        pullcdcalled = true;
+        yield return new WaitForSeconds(pulledCD);
+        pulled = false;
+        pullcdcalled = false;
+    }*/
 
     void OnDrawGizmosSelected()
     {

@@ -210,9 +210,9 @@ public class PlayerController : PlayerStats
                         this.GetComponent<DPSSkill>().DPS();
                         break;
 
-                    // healer
+                    // support
                     case 2:
-                        this.GetComponent<HealerSkill>().Healing();
+                        this.GetComponent<SupportSkill>().BufferTime();
                         break;
                 }
 

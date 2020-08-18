@@ -15,6 +15,10 @@ public class RobotController : MonoBehaviour
     public float speed;
     public GameObject crosshair;
 
+    public float crosshairSpeed;
+    public GameObject headrotate;
+    public float dpsRange;
+
     private float gravity;
     private Camera cam;
     private MultipleTargetCamera multipleTargetCamera;
@@ -215,7 +219,20 @@ public class RobotController : MonoBehaviour
 
             Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
 
-            robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+            headrotate.transform.rotation = Quaternion.Slerp(headrotate.transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
+
+            robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(-(robotParts[0].transform.position - crosshair.transform.position)), 0.15F);
+
+            GetComponent<LaserScript>().ShootLaserFromTargetPosition
+                            (GetComponent<LaserScript>().firepoint.transform.position, crosshair.transform.position - GetComponent<LaserScript>().firepoint.transform.position,
+                            GetComponent<LaserScript>().laserMaxLength);
+
+            crosshair.transform.position += headrotate.transform.forward * Time.deltaTime * crosshairSpeed;
+            
+            //clamp
+            Vector3 v = crosshair.transform.position - transform.position;
+            v = Vector3.ClampMagnitude(v, dpsRange);
+            crosshair.transform.position = transform.position + v;
 
         }
         else if (playerconfig.SelectedCharacter == 2)           //support

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyParameters : MonoBehaviour
+public class MinionParameters
 {
     public bool followTarget;
 
@@ -38,23 +38,12 @@ public class EnemyParameters : MonoBehaviour
 
     public void RPC_TakeDamage(int dmg)
     {
-        if (gameObject.GetComponent<BossBehaviour>())
-        {
-            if (gameObject.GetComponent<BossCharge>().charging == false)
-            {
-                health -= dmg;
-            }
-        }
-        else
-        {
-            health -= dmg;
-        }
-
+        health -= dmg;
     }
 
     // private bool BTswitch = false;
 
-    public void DeathTrigger()
+    /* public void DeathTrigger()
     {
         if (health <= 0)
         {
@@ -64,18 +53,10 @@ public class EnemyParameters : MonoBehaviour
         /*if (bulletHit == true && BTswitch == false)
         {
             StartCoroutine(bulletTrigger());
-        }*/
+        }
+    } */
 
-    }
 
-    public void Dead()
-    {
-        FindObjectOfType<AudioManager>().Play("EnemyDeath");
-        MinionSpawner.minionCount--;
-        Destroy(gameObject);
-        //multipleTargetCamera.targets.Remove(gameObject.transform);
-        //sk.amountofEnemies.Remove(gameObject);
-    }
 
     /*IEnumerator bulletTrigger()
     {

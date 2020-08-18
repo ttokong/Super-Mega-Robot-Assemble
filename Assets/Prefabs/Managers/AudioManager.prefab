@@ -50,33 +50,39 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: Level1
     clip: {fileID: 8300000, guid: 1620c6d57b5b90949bdaf9dc945172fd, type: 3}
     volume: 0.6
     pitch: 1
     loop: 1
     source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: Charging
     clip: {fileID: 8300000, guid: 22031d9e992b8454eac7f29b0cd00c56, type: 3}
     volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: GroundSlam
     clip: {fileID: 8300000, guid: b798069470672f54aa20606a8d6d93cb, type: 3}
     volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: EnemyDeath
     clip: {fileID: 8300000, guid: cd563613124a682449966edf2a372efd, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: LaserGun
     clip: {fileID: 8300000, guid: 330d09edde031104e8bf098ff029b628, type: 3}
     volume: 0.6
     pitch: 0.6
     loop: 0
     source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}

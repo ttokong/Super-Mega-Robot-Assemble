@@ -59,10 +59,43 @@ public class TutorialManager : MonoBehaviour
             {
                 ShowPopUp();
                 popUpIndex++;
+                bufferTime = false;
+                StartCoroutine(BufferTimer());
+            }
+        }
+        // tutorial 1.2
+        if (popUpIndex == 3 && bufferTime)
+        {
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
+            {
+                ShowPopUp();
+                popUpIndex++;
+                bufferTime = false;
+                StartCoroutine(BufferTimer());
+            }
+        }
+        // tutorial 1.3
+        if (popUpIndex == 4 && bufferTime)
+        {
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
+            {
+                ShowPopUp();
+                popUpIndex++;
+                bufferTime = false;
+                StartCoroutine(BufferTimer());
+            }
+        }
+        // tutorial 1.4
+        if (popUpIndex == 5 && bufferTime)
+        {
+            if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
+            {
+                ShowPopUp();
+                popUpIndex++;
             }
         }
         // tutorial 2
-        else if (popUpIndex == 3)
+        else if (popUpIndex == 6)
         {
             if (gp.leftStick.IsActuated() /*|| kb.wKey.wasPressedThisFrame || kb.aKey.wasPressedThisFrame || kb.sKey.wasPressedThisFrame || kb.dKey.wasPressedThisFrame*/)
             {
@@ -71,7 +104,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 2.1
-        if (popUpIndex == 4)
+        if (popUpIndex == 7)
         {
             if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
@@ -80,7 +113,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 3
-        else if (popUpIndex == 5)
+        else if (popUpIndex == 8)
         {
             if (gp.rightStick.IsActuated() /*|| kb.iKey.wasPressedThisFrame || kb.jKey.wasPressedThisFrame || kb.kKey.wasPressedThisFrame || kb.lKey.wasPressedThisFrame*/)
             {
@@ -89,7 +122,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 3.1
-        if (popUpIndex == 6)
+        if (popUpIndex == 9)
         {
             if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
@@ -98,7 +131,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 4
-        else if (popUpIndex == 7)
+        else if (popUpIndex == 10)
         {
             if (gp.rightTrigger.wasPressedThisFrame /*|| kb.spaceKey.wasPressedThisFrame*/)
             {
@@ -107,7 +140,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 4.1
-        if (popUpIndex == 8)
+        if (popUpIndex == 11)
         {
             if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
@@ -117,7 +150,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 5
-        else if (popUpIndex == 9)
+        else if (popUpIndex == 12)
         {
             if (gp.rightShoulder.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
             {
@@ -126,7 +159,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 5.1
-        if (popUpIndex == 10)
+        if (popUpIndex == 13)
         {
             if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
@@ -136,7 +169,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 6
-        else if (popUpIndex == 11)
+        else if (popUpIndex == 14)
         {
             if (gp.leftTrigger.wasPressedThisFrame /*|| kb.eKey.wasPressedThisFrame*/)
             {
@@ -145,7 +178,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 6.1
-        if (popUpIndex == 12)
+        if (popUpIndex == 15)
         {
             if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
@@ -154,7 +187,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 7
-        else if (popUpIndex == 13)
+        else if (popUpIndex == 16)
         {
             if (gp.rightShoulder.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
             {
@@ -163,7 +196,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial 7.1
-        if (popUpIndex == 14)
+        if (popUpIndex == 17)
         {
             if (gp.buttonSouth.wasPressedThisFrame /*|| kb.gKey.wasPressedThisFrame*/)
             {
@@ -172,7 +205,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         // tutorial END
-        if (popUpIndex == 15)
+        if (popUpIndex == 18)
         {
             StartCoroutine(TutorialEnding());
         }

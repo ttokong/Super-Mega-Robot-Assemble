@@ -39,7 +39,7 @@ public class PlayerController : PlayerStats
     // Update is called once per frame
     void Update()
     {
-        if(!robotForm)
+        if(!robotForm && gameObject.activeSelf == true)
         {
             Movement();
             InputDecider();
@@ -156,7 +156,6 @@ public class PlayerController : PlayerStats
     public void RapidFire(float value)
     {
         shooting = value >= 0.6f; //if value is more than 0.9, shooting = true, else false.
-        Debug.Log(value);
     }
 
     // when shooting projectiles

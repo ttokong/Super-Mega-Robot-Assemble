@@ -25,17 +25,22 @@ public class DPSBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // destroys itself if there is no target to move towards
         if (target == null)
         {
             Destroy(gameObject);
             return;
         }
 
+        // calculates the distance between itself and target
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
+        // destroys itself if it has travelled the distance
         if (dir.magnitude <= distanceThisFrame)
         {
+            enemyInRange.Clear();
+            dummyInRange.Clear();
             Destroy(gameObject);
             GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 3f);
@@ -45,9 +50,6 @@ public class DPSBullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
     }
 
-
-
-
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
@@ -56,15 +58,16 @@ public class DPSBullet : MonoBehaviour
 
             foreach (GameObject enemy in enemyInRange)
             {
+                DPSDamageEnemy(other.gameObject);
+
                 Rigidbody rb = other.GetComponent<Rigidbody>();
 
                 Vector3 dir = enemy.transform.position - transform.position;
                 dir.y = 0;
 
                 rb.AddForce(dir * knockbackStrength, ForceMode.Impulse);
-
-                DPSDamageEnemy(other.gameObject);
             }
+
         }
         if (other.tag == "Dummy")
         {
@@ -72,24 +75,28 @@ public class DPSBullet : MonoBehaviour
 
             foreach (GameObject dummy in dummyInRange)
             {
-                Rigidbody rb = other.GetComponent<Rigidbody>();
+                if (other != null)
+                {
+                    DPSDamageDummy(other.gameObject);
 
-                Vector3 dir = dummy.transform.position - transform.position;
-                dir.y = 0;
+                    Rigidbody rb = other.GetComponent<Rigidbody>();
 
-                rb.AddForce(dir * knockbackStrength, ForceMode.Impulse);
+                    Vector3 dir = dummy.transform.position - transform.position;
+                    dir.y = 0;
 
-                DPSDamageDummy(other.gameObject);
+                    rb.AddForce(dir * knockbackStrength, ForceMode.Impulse);
+                }
+
             }
         }
     }
 
     void DPSDamageEnemy(GameObject enemy)
     {
-        if (enemy.GetComponent<MinionBehaviour>().bulletHit == false)
+        if (enemy.GetComponent<EnemyParameters>().bulletHit == false)
         {
+            enemy.GetComponent<EnemyParameters>().bulletHit = true;
             enemy.GetComponent<MinionBehaviour>().stunned = true;
-            enemy.GetComponent<MinionBehaviour>().agent.isStopped = true;
             // enemy.GetComponent<EnemyParameters>().bulletHit = true;
             enemy.GetComponent<EnemyParameters>().RPC_TakeDamage(damage);
         }

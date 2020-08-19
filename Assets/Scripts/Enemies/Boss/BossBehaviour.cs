@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class BossBehaviour : EnemyParameters
 {
+    public bool enraged = false;
+    public bool enragedCharging = false;
 
     private int actionID;
 
@@ -40,9 +42,14 @@ public class BossBehaviour : EnemyParameters
     {
         DeathTrigger();
 
-        RngDecider();
+        if (!enragedCharging)
+        {
+            RngDecider();
+        }
 
         UpdateHealth();
+
+        EnragedCheck();
     }
 
     void RngDecider()
@@ -91,6 +98,17 @@ public class BossBehaviour : EnemyParameters
         bossHealthBar.SetHealth(health);
     }
 
+    void EnragedCheck()
+    {
+        if (!enraged)
+        {
+            if (health <= OGhealth / 10)
+            {
+                EnragedEnabled();
+            }
+        }
+    }
+
     private void Wander()
     {
         agent.isStopped = false;
@@ -118,6 +136,13 @@ public class BossBehaviour : EnemyParameters
         return navHit.position;
     }
 
+    void EnragedEnabled()
+    {
+        enraged = true;
+        health = OGhealth;
+        gameObject.GetComponent<BossGroundSlam>().enraged = true;
+        gameObject.GetComponent<BossCharge>().enraged = true;
+    }
 
     void OnDrawGizmosSelected()
     {

@@ -4,27 +4,46 @@ using UnityEngine;
 
 public class MinionSpawner : MonoBehaviour
 {
-    public GameObject minion;
+    ObjectPooler objectPooler;
+
     public int xPos;
     public int zPos;
-    public int minionCount;
+    public static int minionCount;
 
+    bool minionSpawningCalled = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        StartCoroutine(MinionSpawning());
+
+        objectPooler = ObjectPooler.instance;
+    }
+
+    private void Update()
+    {
+        if (!minionSpawningCalled)
+        {
+            StartCoroutine(MinionSpawning());
+        }
     }
 
     IEnumerator MinionSpawning()
     {
-        while (minionCount < 10)
+        if (minionCount < 10)
         {
+            minionSpawningCalled = true;
+
             xPos = Random.Range(-54, 54);
             zPos = Random.Range(-58, 45);
-            Instantiate(minion, new Vector3(xPos, 0.01f, zPos), Quaternion.identity);
+            Vector3 newPos = new Vector3 (xPos, 2, zPos);
+
+            objectPooler.SpawnFromPool("Minion", newPos, Quaternion.identity);
+
             minionCount++;
-            yield return new WaitForSeconds(8f);
+
+            yield return new WaitForSeconds(5f);
+
+            minionSpawningCalled = false;
         }
     }
 

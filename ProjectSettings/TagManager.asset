@@ -16,6 +16,9 @@ TagManager:
   - Robot
   - Dummy
   - Wall
+  - DpsSkillHolder
+  - ObjectPooler
+  - LevelManager
   layers:
   - Default
   - TransparentFX
@@ -25,8 +28,8 @@ TagManager:
   - UI
   - 
   - 
-  - Cursor
-  - Border
+  - 
+  - 
   - 
   - 
   - 

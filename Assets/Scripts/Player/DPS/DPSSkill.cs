@@ -4,9 +4,31 @@ using UnityEngine;
 
 public class DPSSkill : MonoBehaviour
 {
+    CharacterController cc;
     public GameObject[] targets;
+
     public GameObject bulletPrefab;
     public Transform firepoint;
+
+    bool isCasting = false;
+    Quaternion rotationY;
+
+    void Start()
+    {
+        cc = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        if (!isCasting)
+        {
+            rotationY = gameObject.transform.rotation;
+        }
+        else if (isCasting)
+        {
+            gameObject.transform.rotation = rotationY;
+        }
+    }
 
     public void DPS()
     {
@@ -17,6 +39,17 @@ public class DPSSkill : MonoBehaviour
             bullet.GetComponent<DPSBullet>().target = targets[i].transform;
             bullet.GetComponent<DPSBullet>().player = this.gameObject;
         }
+
+        StartCoroutine(StartCasting());
+    }
+
+    IEnumerator StartCasting()
+    {
+        isCasting = true;
+
+        yield return new WaitForSeconds(0.1f);
+
+        isCasting = false;
     }
 
 }

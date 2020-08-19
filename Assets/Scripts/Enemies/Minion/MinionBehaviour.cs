@@ -26,7 +26,8 @@ public class MinionBehaviour : EnemyParameters
     public bool pulled = false;
     //public float pulledCD = 1f;
 
-    private bool stuncdcalled;
+    private bool stuncdcalled = false;
+    private bool bulletHitBufferCalled = false;
     //private bool pullcdcalled;
 
     private Animator anim;
@@ -56,11 +57,11 @@ public class MinionBehaviour : EnemyParameters
     {
         DeathTrigger();
 
+        UpdateHealth();
+
         if (!stunned)
         {
             RngDecider();
-
-            UpdateHealth();
         }
 
         if (stunned)
@@ -71,6 +72,15 @@ public class MinionBehaviour : EnemyParameters
             }
         }
 
+        if (bulletHit)
+        {
+            if (!bulletHitBufferCalled)
+            {
+                StartCoroutine(bulletHitBuffer());
+            }
+        }
+        
+        
         if (GetComponent<Rigidbody>().velocity != Vector3.zero)
         {
             anim.SetBool("Walking", true);
@@ -206,6 +216,7 @@ public class MinionBehaviour : EnemyParameters
         }
     }
 
+    // enemy shoots
     private void RPC_Fire()
     {
         FindObjectOfType<AudioManager>().Play("LaserGun");
@@ -236,6 +247,9 @@ public class MinionBehaviour : EnemyParameters
     IEnumerator StunCD()
     {
         stuncdcalled = true;
+
+        agent.isStopped = true;
+
         yield return new WaitForSeconds(stunnedCD);
         /*if (!agent.isStopped)
         {
@@ -244,6 +258,16 @@ public class MinionBehaviour : EnemyParameters
 
         stunned = false;
         stuncdcalled = false;
+    }
+
+    IEnumerator bulletHitBuffer()
+    {
+        bulletHitBufferCalled = true;
+
+        yield return new WaitForSeconds(0.3f);
+        bulletHit = false;
+
+        bulletHitBufferCalled = false;
     }
 
     /*IEnumerator PullCD()

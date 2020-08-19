@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+
     //public GameObject lobby;
 
     // Start is called before the first frame update
@@ -27,6 +28,8 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>(); // adds audio source 
             s.source.clip = s.clip; // clip of audio source
+
+            s.source.outputAudioMixerGroup = s.group;
 
             s.source.volume = s.volume; // allows for control of volume
             s.source.pitch = s.pitch; // allows for control of pitch

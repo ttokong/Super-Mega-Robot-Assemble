@@ -5,7 +5,10 @@ using UnityEngine;
 public class GhostScript : MonoBehaviour
 {
     public GameObject player;
+    public GameObject reviveTimerBar;
     private LineRenderer line;
+
+    public ReviveBar reviveBar;
 
     [Range(0, 50)]
     private int segments = 50;
@@ -22,8 +25,11 @@ public class GhostScript : MonoBehaviour
     void Start()
     {
         OGReviveTime = reviveTime;
+        reviveTimerBar.SetActive(false);
 
         line = gameObject.GetComponent<LineRenderer>();
+
+        reviveBar.SetMaxTime(OGReviveTime);
 
         line.positionCount = segments + 1;
         line.useWorldSpace = false;
@@ -60,12 +66,20 @@ public class GhostScript : MonoBehaviour
             player.gameObject.SetActive(true);
             player.GetComponent<PlayerStats>().health = player.GetComponent<PlayerStats>().OGhealth;
         }
+
+        UpdateTimer();
+    }
+
+    void UpdateTimer()
+    {
+        reviveBar.SetTime(reviveTime);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            reviveTimerBar.SetActive(true);
             playerCount++;
         }
     }
@@ -82,6 +96,7 @@ public class GhostScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            reviveTimerBar.SetActive(false);
             playerCount--;
             reviveTime = OGReviveTime;
         }

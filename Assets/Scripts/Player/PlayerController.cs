@@ -40,7 +40,7 @@ public class PlayerController : PlayerStats
     // Update is called once per frame
     void Update()
     {
-        if(!robotForm)
+        if(!robotForm && gameObject.activeSelf == true)
         {
             Movement();
             InputDecider();

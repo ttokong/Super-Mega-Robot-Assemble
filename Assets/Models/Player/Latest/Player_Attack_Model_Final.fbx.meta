@@ -6,7 +6,47 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #452
+    second: {fileID: 2100000, guid: 84c8efa54b71b864cae679135219351a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #453
+    second: {fileID: 2100000, guid: 1d3c3ec9d4d66884098d7942e3f19a53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arm armor
+    second: {fileID: 2100000, guid: a2549452cf97222418e751c93fa64f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt
+    second: {fileID: 2100000, guid: 84c8efa54b71b864cae679135219351a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 67cebb08054055e4c90608ebea19a1ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ear armor
+    second: {fileID: 2100000, guid: e7f36d9ffe003f24eabf3d320a935e53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: head armor
+    second: {fileID: 2100000, guid: ee9bdc59ce83c974f9e74f9b2c72ffc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoulders
+    second: {fileID: 2100000, guid: b4d59824db28c0d4795f9430d3c8312e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

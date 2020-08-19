@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class RobotController : MonoBehaviour
 {
-    [HideInInspector]
-    public PlayerConfiguration playerconfig;
-
     public float allowRotation;
     public GameObject[] robotParts;
     public int health;
@@ -21,9 +18,16 @@ public class RobotController : MonoBehaviour
     private PlayerControls controls;
     private Vector2 movementInput;
     private Vector2 aimInput;
+    private Vector2 DPSaimInput;
     private CharacterController CC;
     private int OGhealth;
     private Vector3 dir;
+    private Vector3 SPdir;
+    private Vector3 DPdir;
+
+    public GameObject headrotate;
+    public float dpsRange;
+    public float crosshairSpeed;
 
     public bool IsDashing = false;
     public bool IsAddingCharge = false;
@@ -49,10 +53,6 @@ public class RobotController : MonoBehaviour
         controls = new PlayerControls();
     }
 
-    public void InitializeRobot(PlayerConfiguration pc)
-    {
-        playerconfig = pc;
-    }
 
     void Start()
     {
@@ -81,10 +81,10 @@ public class RobotController : MonoBehaviour
             gameObject.transform.position = new Vector3(0, 0, 0);
         }
 
-        if (playerconfig.SelectedCharacter == 2)
-        {
+        // (playerconfig.SelectedCharacter == 2)
+        //{
             Movement();
-        }
+        //}
 
         InputDecider();                             // dont touch this thanks
 
@@ -119,8 +119,9 @@ public class RobotController : MonoBehaviour
     {
         float currentSpeed = new Vector2(movementInput.x, movementInput.y).sqrMagnitude;
         float aimSpeed = new Vector2(aimInput.x, aimInput.y).sqrMagnitude;
+        float DPSaimSpeed = new Vector2(DPSaimInput.x, DPSaimInput.y).sqrMagnitude;
 
-        if (playerconfig.SelectedCharacter == 2)
+        //if (playerconfig.SelectedCharacter == 2)
         {
             if (currentSpeed > allowRotation)                   //if u exceed a certain speed u will rotate basically
             {
@@ -128,11 +129,11 @@ public class RobotController : MonoBehaviour
             }
             else
             {
-                dir = Vector3.zero;                             //if not moving then dont rotate
+                SPdir = Vector3.zero;                             //if not moving then dont rotate
             }
         }
-        else
-        {
+        //else
+        //{
             if (aimSpeed > allowRotation)
             {
                 AimRotation();
@@ -145,7 +146,20 @@ public class RobotController : MonoBehaviour
             {
                 dir = Vector3.zero;                             //if not moving then dont rotate
             }
-        }    
+
+        if (DPSaimSpeed > allowRotation)
+        {
+            AimRotation();
+        }
+        else if (DPSaimSpeed > allowRotation)
+        {
+            AimRotation();
+        }
+        else
+        {
+            DPdir = Vector3.zero;                             //if not moving then dont rotate
+        }
+        //}    
     }
 
     // rotation of player character
@@ -161,16 +175,25 @@ public class RobotController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        dir = right * movementInput.x + forward * movementInput.y;
+        SPdir = right * movementInput.x + forward * movementInput.y;
 
-        robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
+        robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(SPdir), 0.15F);
 
     }
 
 
-    public void GetRotationVector(Vector2 rotationv)
+    public void GetRotationVector(Vector2 rotationv, int c)
     {
-        aimInput = rotationv;
+        if (c == 0)
+        {
+            aimInput = rotationv;
+        }
+        else if (c == 1)
+        {
+            DPSaimInput = rotationv;
+        }
+        else { return; }
+
     }
 
     void AimRotation()
@@ -184,17 +207,17 @@ public class RobotController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        dir = right * movementInput.x + forward * movementInput.y;
+        SPdir = right * movementInput.x + forward * movementInput.y;
 
 
-        if (playerconfig.SelectedCharacter == 0)                //tank
-        {
+        //if (playerconfig.SelectedCharacter == 0)                //tank
+        //{
             Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
 
             robotParts[1].transform.rotation = Quaternion.Slerp(robotParts[1].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
-        }
-        else if (playerconfig.SelectedCharacter == 1)           //dps
-        {
+        //}
+        //else if (playerconfig.SelectedCharacter == 1)           //dps
+        //{
             /*
                 Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
                 RaycastHit hit;
@@ -213,22 +236,36 @@ public class RobotController : MonoBehaviour
                     crosshair.transform.position = hit.point;
                 } */
 
-            Vector3 aimDir = right * aimInput.x + forward * aimInput.y;
+            Vector3 DPSaimDir = right * DPSaimInput.x + forward * DPSaimInput.y;
 
-            robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(aimDir), 0.15F);
 
-        }
-        else if (playerconfig.SelectedCharacter == 2)           //support
-        {
-            robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(dir), 0.15F);
-        }
+        headrotate.transform.rotation = Quaternion.Slerp(headrotate.transform.rotation, Quaternion.LookRotation(DPSaimDir), 0.15F);
+
+        robotParts[0].transform.rotation = Quaternion.Slerp(robotParts[0].transform.rotation, Quaternion.LookRotation(-(robotParts[0].transform.position - crosshair.transform.position)), 0.15F);
+
+        GetComponent<LaserScript>().ShootLaserFromTargetPosition
+                        (GetComponent<LaserScript>().firepoint.transform.position, crosshair.transform.position - GetComponent<LaserScript>().firepoint.transform.position,
+                        GetComponent<LaserScript>().laserMaxLength);
+
+        crosshair.transform.position += headrotate.transform.forward * Time.deltaTime * crosshairSpeed;
+
+        //clamp
+        Vector3 v = crosshair.transform.position - transform.position;
+        v = Vector3.ClampMagnitude(v, dpsRange);
+        crosshair.transform.position = transform.position + v;
+
+        //}
+        //else if (playerconfig.SelectedCharacter == 2)           //support
+        //{
+            robotParts[2].transform.rotation = Quaternion.Slerp(robotParts[2].transform.rotation, Quaternion.LookRotation(SPdir), 0.15F);
+        //}
 
 
     }
 
-    public void RapidFire(float value)
+    public void RapidFire(float value, int c)
     {
-        if (playerconfig.SelectedCharacter == 1)
+        if (c == 1)
         {
 
 
@@ -237,12 +274,17 @@ public class RobotController : MonoBehaviour
                 GetComponent<LaserScript>().ShootBeam();
             }
         }
+        else { return; }
     }
 
 
-    public void GetMovementVector(Vector2 movementv)
+    public void GetMovementVector(Vector2 movementv, int c)
     {
-        movementInput = movementv;
+        if (c == 2)
+        {
+            movementInput = movementv;
+        }
+        else { return; }
     }
 
 
@@ -252,7 +294,7 @@ public class RobotController : MonoBehaviour
         gravity *= gravityMultiplier;
 
 
-        Vector3 moveDir = dir * (speed * Time.deltaTime);
+        Vector3 moveDir = SPdir * (speed * Time.deltaTime);
         moveDir = new Vector3(moveDir.x, gravity, moveDir.z);
 
         CC.Move(moveDir);
@@ -264,21 +306,21 @@ public class RobotController : MonoBehaviour
     }
 
     // player's personal ultimate
-    public void Ultimate(float value)
+    public void Ultimate(float value, int c)
     {
 
         if (value >= 0.9) //if button is pressed
         {
 
-            if (playerconfig.SelectedCharacter == 0)
+            if (c == 0)
             {
                 GetComponentInChildren<ShieldBash>().Bash();
             }
-            else if (playerconfig.SelectedCharacter == 1)
+            else if (c == 1)
             {
                 GetComponent<Mortar>().Shoot();
             }
-            else if (playerconfig.SelectedCharacter == 2)
+            else if (c == 2)
             {
                 IsDashing = true;
                 // StartCoroutine(RobotDash());

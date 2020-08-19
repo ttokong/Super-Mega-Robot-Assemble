@@ -71,7 +71,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (rc != null)
             {
-                rc.GetMovementVector(ctx.ReadValue<Vector2>());
+                rc.GetMovementVector(ctx.ReadValue<Vector2>(), playerConfig.SelectedCharacter);
             }
         }
     }
@@ -86,7 +86,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (rc != null)
             {
-                rc.GetRotationVector(ctx.ReadValue<Vector2>());
+                rc.GetRotationVector(ctx.ReadValue<Vector2>(), playerConfig.SelectedCharacter);
             }
         }
     }
@@ -102,7 +102,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (rc != null)
             {
-                rc.RapidFire(context.ReadValue<float>());
+                rc.RapidFire(context.ReadValue<float>(), playerConfig.SelectedCharacter);
             }
         }
     }
@@ -125,7 +125,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             if (rc != null)
             {
-                rc.Ultimate(context.ReadValue<float>());
+                rc.Ultimate(context.ReadValue<float>(), playerConfig.SelectedCharacter);
             }
         }
     }

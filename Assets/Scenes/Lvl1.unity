@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.044600282, g: 0.062980816, b: 0.1007196, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8803,11 +8803,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
-    - target: {fileID: 5382782261967959246, guid: 0a144e23233abd54492b87f17b58ecee,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5382782261967959247, guid: 0a144e23233abd54492b87f17b58ecee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8863,23 +8858,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5382782261967959247, guid: 0a144e23233abd54492b87f17b58ecee,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382782261967959247, guid: 0a144e23233abd54492b87f17b58ecee,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382782261967959247, guid: 0a144e23233abd54492b87f17b58ecee,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a144e23233abd54492b87f17b58ecee, type: 3}
+--- !u!1 &5382782261405832659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5382782262110501087, guid: 0a144e23233abd54492b87f17b58ecee,
+    type: 3}
+  m_PrefabInstance: {fileID: 5382782261405832658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5382782261405832660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5382782261696790452, guid: 0a144e23233abd54492b87f17b58ecee,
+    type: 3}
+  m_PrefabInstance: {fileID: 5382782261405832658}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5382782261405832661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5382782262878672727, guid: 0a144e23233abd54492b87f17b58ecee,
+    type: 3}
+  m_PrefabInstance: {fileID: 5382782261405832658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5396000910473213325
 GameObject:
   m_ObjectHideFlags: 0
@@ -9517,6 +9515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258389332028850233, guid: 1b32210a5afa5934ba7d6802e80c6370,
         type: 3}
+      propertyPath: robotParts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258389332028850233, guid: 1b32210a5afa5934ba7d6802e80c6370,
+        type: 3}
       propertyPath: spawnpoints.Array.data[0]
       value: 
       objectReference: {fileID: 1275809370}
@@ -9575,6 +9578,21 @@ PrefabInstance:
       propertyPath: robot
       value: 
       objectReference: {fileID: 562159900}
+    - target: {fileID: 8258389332028850233, guid: 1b32210a5afa5934ba7d6802e80c6370,
+        type: 3}
+      propertyPath: robotParts.Array.data[0]
+      value: 
+      objectReference: {fileID: 5382782261405832660}
+    - target: {fileID: 8258389332028850233, guid: 1b32210a5afa5934ba7d6802e80c6370,
+        type: 3}
+      propertyPath: robotParts.Array.data[1]
+      value: 
+      objectReference: {fileID: 5382782261405832659}
+    - target: {fileID: 8258389332028850233, guid: 1b32210a5afa5934ba7d6802e80c6370,
+        type: 3}
+      propertyPath: robotParts.Array.data[2]
+      value: 
+      objectReference: {fileID: 5382782261405832661}
     - target: {fileID: 8258389332028850234, guid: 1b32210a5afa5934ba7d6802e80c6370,
         type: 3}
       propertyPath: m_RootOrder

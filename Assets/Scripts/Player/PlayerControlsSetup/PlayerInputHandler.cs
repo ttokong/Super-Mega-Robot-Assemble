@@ -30,7 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         playerConfig = config;
         playerConfig.Input.onActionTriggered += Input_OnActionTriggered;
-        rc = GetComponent<RobotController>();
+        rc = GetComponentInParent<RobotController>();
     }
 
     private void Input_OnActionTriggered(CallbackContext obj)

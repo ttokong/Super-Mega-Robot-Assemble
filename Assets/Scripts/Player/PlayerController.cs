@@ -56,7 +56,7 @@ public class PlayerController : PlayerStats
             gameObject.SetActive(false);
             Destroy(gameObject, 5f);
             LevelManager.instance.robot.SetActive(true);
-            LevelManager.instance.robot.GetComponent<PlayerInputHandler>().InitializeRobot(playerconfig);
+            LevelManager.instance.robotParts[playerconfig.SelectedCharacter].GetComponent<PlayerInputHandler>().InitializeRobot(playerconfig);
         }
     }
 

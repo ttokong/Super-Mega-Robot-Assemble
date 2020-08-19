@@ -64,7 +64,7 @@ public class GhostScript : MonoBehaviour
         {
             Destroy(gameObject);
             player.gameObject.SetActive(true);
-            player.GetComponent<PlayerStats>().health = player.GetComponent<PlayerStats>().OGhealth;
+            player.GetComponent<PlayerStats>().health = player.GetComponent<PlayerStats>().OGhealth - 3;
         }
 
         UpdateTimer();

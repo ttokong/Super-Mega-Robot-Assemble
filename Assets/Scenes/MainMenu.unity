@@ -161,7 +161,7 @@ PrefabInstance:
     - target: {fileID: 1389988962613363036, guid: cabec52220a90b24dab2600480813e0e,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.041341014
+      value: 0.04134091
       objectReference: {fileID: 0}
     - target: {fileID: 1389988962613363036, guid: cabec52220a90b24dab2600480813e0e,
         type: 3}
@@ -2955,7 +2955,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1630068634537726305}
         m_MethodName: SetResolution
         m_Mode: 0
         m_Arguments:
@@ -3236,7 +3236,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1630068634537726305}
         m_MethodName: skipingTutorial
         m_Mode: 1
         m_Arguments:
@@ -3472,7 +3472,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1630068634537726305}
         m_MethodName: SetFullscreen
         m_Mode: 0
         m_Arguments:
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1630068634537726305}
         m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
@@ -7066,7 +7066,7 @@ GameObject:
   - component: {fileID: 1630068634537726317}
   - component: {fileID: 1630068634537726305}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

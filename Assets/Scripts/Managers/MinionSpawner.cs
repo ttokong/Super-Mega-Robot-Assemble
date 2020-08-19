@@ -9,6 +9,7 @@ public class MinionSpawner : MonoBehaviour
     public int xPos;
     public int zPos;
     public static int minionCount;
+    public static float minionSpawnRate = 3f;
 
     bool minionSpawningCalled = false;
 
@@ -29,19 +30,19 @@ public class MinionSpawner : MonoBehaviour
 
     IEnumerator MinionSpawning()
     {
-        if (minionCount < 10)
+        if (minionCount < 15)
         {
             minionSpawningCalled = true;
 
-            xPos = Random.Range(-54, 54);
-            zPos = Random.Range(-58, 45);
+            xPos = Random.Range(-60, 55);
+            zPos = Random.Range(-75, 32);
             Vector3 newPos = new Vector3 (xPos, 2, zPos);
 
             objectPooler.SpawnFromPool("Minion", newPos, Quaternion.identity);
 
             minionCount++;
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(minionSpawnRate);
 
             minionSpawningCalled = false;
         }

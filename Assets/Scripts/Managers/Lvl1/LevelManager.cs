@@ -32,4 +32,6 @@ public class LevelManager : MonoBehaviour
 
     public TransformBar transformBar;
 
+    public GameObject[] robotParts;
+
 }

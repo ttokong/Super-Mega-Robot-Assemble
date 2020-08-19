@@ -27,18 +27,30 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    void Resume()
+    public void Resume()
     {
         pauseMenu.SetActive(false);
     }
 
-    void Paused()
+    public void Paused()
     {
         pauseMenu.SetActive(true);
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("Lvl1");
+    }
+
+
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Quit()
+    {
+        Debug.Log("Quit!");
+        Application.Quit();
     }
 }

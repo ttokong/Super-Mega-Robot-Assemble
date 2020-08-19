@@ -29,6 +29,8 @@ public class MinionBehaviour : EnemyParameters
     private bool stuncdcalled;
     //private bool pullcdcalled;
 
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class MinionBehaviour : EnemyParameters
         timer = Random.Range(0, 4);
         OGhealth = health;
         enemyHealthBar.SetMaxHealth(OGhealth);
+        anim = GetComponent<Animator>();
 
         //multipleTargetCamera = cam.GetComponentInParent<MultipleTargetCamera>();
         //multipleTargetCamera.targets.Add(gameObject.transform);
@@ -67,6 +70,16 @@ public class MinionBehaviour : EnemyParameters
                 StartCoroutine(StunCD());
             }
         }
+
+        if (GetComponent<Rigidbody>().velocity != Vector3.zero)
+        {
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
+
 
         /* if (pulled)
         {

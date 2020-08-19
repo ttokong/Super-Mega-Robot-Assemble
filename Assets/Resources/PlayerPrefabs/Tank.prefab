@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 0
-  ghost: {fileID: 1249079797471237287, guid: 051196a3e614ff745b75c119e394f943, type: 3}
+  ghost: {fileID: 7937917366995982144, guid: 051196a3e614ff745b75c119e394f943, type: 3}
   speed: 16
   health: 5
   Iframe: 1

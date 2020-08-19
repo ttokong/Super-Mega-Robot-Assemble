@@ -73,6 +73,19 @@ public class PlayerManager : MonoBehaviour
         playerConfigs[index].IsReady = false;
     }
 
+    public void Ult(int index, PlayerController pc)
+    {
+        if (playerConfigs.All(p => p.IsReadyToTransform == true))
+        {
+            pc.RPC_SuperRobotMegaAssemble();
+            playerConfigs.All(p => p.IsReadyToTransform = false);
+        }
+        else
+        {
+            playerConfigs[index].IsReadyToTransform = true;
+        }
+    }
+
     public void HandlePlayerJoin(PlayerInput pi)
     {
         Debug.Log("Player " + pi.playerIndex + " joined");
@@ -95,5 +108,6 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public int SelectedCharacter { get; set; }
     public bool IsReady { get; set; }
+    public bool IsReadyToTransform { get; set; }
 }
 

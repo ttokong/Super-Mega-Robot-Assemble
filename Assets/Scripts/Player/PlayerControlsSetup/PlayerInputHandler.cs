@@ -132,15 +132,18 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPause(CallbackContext context)
     {
-        if (pc != null && !pc.robotForm)
+        if (context.performed)
         {
-            pc.Pause(context.ReadValue<float>());
-        }
-        else
-        {
-            if (rc != null)
+            if (pc != null && !pc.robotForm)
             {
                 pc.Pause(context.ReadValue<float>());
+            }
+            else
+            {
+                if (rc != null)
+                {
+                    pc.Pause(context.ReadValue<float>());
+                }
             }
         }
     }

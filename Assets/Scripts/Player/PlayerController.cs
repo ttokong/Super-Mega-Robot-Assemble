@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+using System.Linq;
 
 public class PlayerController : PlayerStats
 {
@@ -156,7 +157,6 @@ public class PlayerController : PlayerStats
     public void RapidFire(float value)
     {
         shooting = value >= 0.6f; //if value is more than 0.9, shooting = true, else false.
-        Debug.Log(value);
     }
 
     // when shooting projectiles
@@ -183,7 +183,7 @@ public class PlayerController : PlayerStats
         {
             if (value >= 0.9)
             {
-                RPC_SuperRobotMegaAssemble();
+                PlayerManager.instance.Ult(playerconfig.PlayerIndex, this);
             }
         }
 
@@ -230,10 +230,9 @@ public class PlayerController : PlayerStats
 
     public void Pause(float value)
     {
-
-
         if (value >= 0.9) //if button is pressed
         {
+            Debug.Log("yep");
             if (PauseMenu.gameIsPaused)
             {
                 PauseMenu.gameIsPaused = false;
@@ -245,7 +244,7 @@ public class PlayerController : PlayerStats
         }
     }
 
-    private void RPC_SuperRobotMegaAssemble()
+    public void RPC_SuperRobotMegaAssemble()
     {
         PlayerController[] player = FindObjectsOfType<PlayerController>();
         foreach (PlayerController p in player)
@@ -261,6 +260,4 @@ public class PlayerController : PlayerStats
         GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation) as GameObject;
         bullet.GetComponent<BulletScript>().player = gameObject;
     }
-
-
 }

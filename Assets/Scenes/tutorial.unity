@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.049958445, g: 0.06980642, b: 0.10719529, a: 1}
+  m_IndirectSpecularColor: {r: 0.049958445, g: 0.069805466, b: 0.107194334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -803,7 +803,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -6173,7 +6173,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -6750,7 +6750,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -8127,7 +8127,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -11869,7 +11869,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -13647,7 +13647,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -14916,7 +14916,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -16453,7 +16453,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -17796,7 +17796,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -19340,7 +19340,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
@@ -21529,7 +21529,7 @@ PrefabInstance:
     - target: {fileID: 8142989865570160469, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.7957747
+      value: 0.39788735
       objectReference: {fileID: 0}
     - target: {fileID: 8696686645889785779, guid: c4fe5390b8d15b54a953c7d70f9d9e5f,
         type: 3}

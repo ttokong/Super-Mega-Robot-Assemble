@@ -59,7 +59,7 @@ MonoBehaviour:
     source: {fileID: 0}
     group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: Charging
-    clip: {fileID: 8300000, guid: 22031d9e992b8454eac7f29b0cd00c56, type: 3}
+    clip: {fileID: 8300000, guid: 125093b79c2ae2b4abb95390e34ff226, type: 3}
     volume: 0.4
     pitch: 1
     loop: 0
@@ -73,15 +73,106 @@ MonoBehaviour:
     source: {fileID: 0}
     group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: EnemyDeath
-    clip: {fileID: 8300000, guid: cd563613124a682449966edf2a372efd, type: 3}
+    clip: {fileID: 8300000, guid: b798069470672f54aa20606a8d6d93cb, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.4
     loop: 0
     source: {fileID: 0}
     group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
   - name: LaserGun
-    clip: {fileID: 8300000, guid: 330d09edde031104e8bf098ff029b628, type: 3}
+    clip: {fileID: 8300000, guid: 8434ae178d5828d44bac658b062fe5d1, type: 3}
     volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 0abe8daa667bd224abc52596c95fa4e1, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: TankSkill
+    clip: {fileID: 8300000, guid: 09fd3ade22468054e92dc16138e41240, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: DPSSkill
+    clip: {fileID: 8300000, guid: 23a6259ef8856d44296d9ada00893fb0, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: SupportSkill
+    clip: {fileID: 8300000, guid: 28f8786a1b1d4ce4ab4e12204eaf035c, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: Revive
+    clip: {fileID: 8300000, guid: 689df60a0faf07d4d9be25a5cb25b032, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: BossDead
+    clip: {fileID: 8300000, guid: 17d3a0fcadd3cef4190d957c5079d8d1, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: Enraged
+    clip: {fileID: 8300000, guid: c5c0a0b58a6818045b72717758873297, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: RobotTank
+    clip: {fileID: 8300000, guid: 1768abd76c533574a9a4f491fe968a38, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: RobotLaser
+    clip: {fileID: 8300000, guid: e9dd9f5bf25e6b046931154e7e73beb0, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: RobotDPS
+    clip: {fileID: 8300000, guid: bc7b10032ee7b924f881aaec4ab90f0c, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: RobotSupport
+    clip: {fileID: 8300000, guid: ffaea250d697c22449df88264cbf2301, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: RobotTransform
+    clip: {fileID: 8300000, guid: bb260294654b79741901e43679fb59a4, type: 3}
+    volume: 1
+    pitch: 0.6
+    loop: 0
+    source: {fileID: 0}
+    group: {fileID: 24300002, guid: dfec441739e6a4844bb906c6d47f54cd, type: 2}
+  - name: RobotDead
+    clip: {fileID: 8300000, guid: fdab03a3177e0ad42a16bcf424412610, type: 3}
+    volume: 1
     pitch: 0.6
     loop: 0
     source: {fileID: 0}

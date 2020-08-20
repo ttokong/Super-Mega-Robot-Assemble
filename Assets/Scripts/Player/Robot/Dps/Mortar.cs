@@ -56,7 +56,7 @@ public class Mortar : MonoBehaviour
 
     void RPC_LaunchMortar()
     {
-
+        FindObjectOfType<AudioManager>().Play("RobotDPS");
         GameObject rock = Instantiate(rockPrefab, firePoint.position, firePoint.rotation) as GameObject;
         rock.GetComponent<Rigidbody>().velocity = CalcBallisticVelocityVector(firePoint, targetArea.transform, shootAngle);
         rock.GetComponent<MortarBullet>().dmg = damage; 

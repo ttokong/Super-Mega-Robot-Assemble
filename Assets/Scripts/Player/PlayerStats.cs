@@ -146,6 +146,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Dead()
     {
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
         gameObject.SetActive(false);
         // create a prefab as a gameobject at this transform and setting the new gameobject as a reference
         GameObject deadplayer = Instantiate(ghost, gameObject.transform.position, Quaternion.identity) as GameObject;

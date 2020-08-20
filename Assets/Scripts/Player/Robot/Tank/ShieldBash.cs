@@ -66,6 +66,7 @@ public class ShieldBash : MonoBehaviour
     IEnumerator BashCo()
     {
         yield return new WaitForSeconds(.1f);
+        FindObjectOfType<AudioManager>().Play("RobotTank");
         hitZone.localScale = new Vector3(1, 1, 0);
         hitBox.SetActive(false);
     }

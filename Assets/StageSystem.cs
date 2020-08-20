@@ -52,6 +52,7 @@ public class StageSystem : MonoBehaviour
     {
         if (Boss.GetComponent<BossBehaviour>().health <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("BossDead");
             VictoryScreen.SetActive(true);
         }
     }

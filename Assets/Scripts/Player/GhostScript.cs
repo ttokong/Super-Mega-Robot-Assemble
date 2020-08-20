@@ -62,6 +62,7 @@ public class GhostScript : MonoBehaviour
     {
         if (reviveTime <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("Revive");
             Destroy(gameObject);
             player.gameObject.SetActive(true);
             player.GetComponent<PlayerStats>().health = player.GetComponent<PlayerStats>().OGhealth - 3;

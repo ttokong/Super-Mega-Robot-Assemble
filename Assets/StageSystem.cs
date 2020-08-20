@@ -16,6 +16,7 @@ public class StageSystem : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(Phase0());
         Boss.SetActive(false);
         VictoryScreen.SetActive(false);
         Text1.SetActive(false);
@@ -28,18 +29,18 @@ public class StageSystem : MonoBehaviour
     {
         if (PhaseCounter == 0 && MinionsKilled == 5)
         {
-            StartCoroutine(Phase1());
             EnterPhase1();
+            StartCoroutine(Phase1());
         }
         else if (PhaseCounter == 1 && MinionsKilled == 20)
         {
-            StartCoroutine(Phase2());
             EnterPhase2();
+            StartCoroutine(Phase2());
         }
         else if (PhaseCounter == 2 && Boss.GetComponent<BossBehaviour>().enraged == true)
         {
-            StartCoroutine(Phase3());
             EnterPhase3();
+            StartCoroutine(Phase3());
         }
 
     }

@@ -152,7 +152,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 5
         else if (popUpIndex == 12)
         {
-            if (gp.rightShoulder.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
+            if (gp.leftTrigger.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -171,7 +171,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 6
         else if (popUpIndex == 14)
         {
-            if (gp.leftTrigger.wasPressedThisFrame /*|| kb.eKey.wasPressedThisFrame*/)
+            if (gp.rightShoulder.wasPressedThisFrame /*|| kb.eKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;
@@ -189,7 +189,7 @@ public class TutorialManager : MonoBehaviour
         // tutorial 7
         else if (popUpIndex == 16)
         {
-            if (gp.rightShoulder.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
+            if (gp.rightTrigger.wasPressedThisFrame /*|| kb.qKey.wasPressedThisFrame*/)
             {
                 ShowPopUp();
                 popUpIndex++;

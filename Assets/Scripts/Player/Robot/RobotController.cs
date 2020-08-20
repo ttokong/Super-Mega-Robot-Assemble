@@ -79,7 +79,7 @@ public class RobotController : MonoBehaviour
             gameObject.SetActive(false);
             FindObjectOfType<AudioManager>().Play("RobotDead");
             GameObject.Find("GameSetupController").GetComponent<GameSetupController>().CreatePlayer();
-            gameObject.transform.position = new Vector3(0, 0, 0);
+            gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
 
         // (playerconfig.SelectedCharacter == 2)

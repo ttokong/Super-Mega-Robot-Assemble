@@ -72,6 +72,7 @@ public class EnemyParameters : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("EnemyDeath");
         MinionSpawner.minionCount--;
+        StageSystem.MinionsKilled++;
         Destroy(gameObject);
         //multipleTargetCamera.targets.Remove(gameObject.transform);
         //sk.amountofEnemies.Remove(gameObject);

@@ -36,6 +36,7 @@ public class LaserScript : MonoBehaviour
         laserLineRenderer.enabled = true;
         yield return new WaitForSeconds(2f);
         laserLineRenderer.enabled = false;
+        FindObjectOfType<AudioManager>().Play("RobotLaser");
         GameObject effect = Instantiate(groundExplosion, target.position, Quaternion.identity);
         Destroy(effect, 5f);
         cd = 0;

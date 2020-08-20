@@ -52,6 +52,7 @@ public class PlayerController : PlayerStats
         else if (robotForm)
         {
             //gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("RobotTransform");
             multipleTargetCamera.targets.Remove(gameObject.transform);
             gameObject.SetActive(false);
             Destroy(gameObject, 5f);
@@ -201,16 +202,19 @@ public class PlayerController : PlayerStats
                 {
                     // tank
                     case 0:
+                        FindObjectOfType<AudioManager>().Play("TankSkill");
                         this.GetComponent<TankSkill>().TankShield();
                         break;
 
                     // dps
                     case 1:
+                        FindObjectOfType<AudioManager>().Play("DPSSkill");
                         this.GetComponent<DPSSkill>().DPS();
                         break;
 
                     // support
                     case 2:
+                        FindObjectOfType<AudioManager>().Play("SupportSkill");
                         this.GetComponent<SupportSkill>().BufferTime();
                         break;
                 }

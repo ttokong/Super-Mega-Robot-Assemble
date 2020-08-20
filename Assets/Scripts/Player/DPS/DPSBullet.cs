@@ -93,6 +93,8 @@ public class DPSBullet : MonoBehaviour
 
     void DPSDamageEnemy(GameObject enemy)
     {
+        if (enemy = null)
+            return;
         if (enemy.GetComponent<EnemyParameters>().bulletHit == false)
         {
             enemy.GetComponent<EnemyParameters>().bulletHit = true;

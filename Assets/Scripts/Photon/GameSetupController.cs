@@ -22,6 +22,8 @@ public class GameSetupController : MonoBehaviour
             GameObject player = Instantiate(avatarPrefabs[playerconfigs[i].SelectedCharacter], LevelManager.instance.spawnpoints[playerconfigs[i].SelectedCharacter].position, Quaternion.identity);
             player.GetComponent<PlayerStats>().InitializePlayer(playerconfigs[i]);
             player.GetComponent<PlayerInputHandler>().InitializePlayer(playerconfigs[i]);
+            LevelManager.instance.HealthBars[i].SetHealth(5);
+            LevelManager.instance.UltimateBars[i].SetUltimatePercentage(0); 
         }
     }
 

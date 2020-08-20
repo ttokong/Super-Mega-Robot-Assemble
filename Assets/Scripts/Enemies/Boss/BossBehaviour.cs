@@ -138,8 +138,9 @@ public class BossBehaviour : EnemyParameters
 
     void EnragedEnabled()
     {
+        FindObjectOfType<AudioManager>().Play("Enraged");
         enraged = true;
-        health = OGhealth;
+        health = OGhealth * 2;
         gameObject.GetComponent<BossGroundSlam>().enraged = true;
         gameObject.GetComponent<BossCharge>().enraged = true;
     }

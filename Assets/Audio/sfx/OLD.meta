@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Audio/sfx/OLD.meta
 guid: 4511bb166aa9e5c4e9a2f57e509d6433
+=======
+guid: 98951132346795f438babe7a3183da43
+>>>>>>> 4351292f1dd10cdcc9f6d98705689d282d0e9526:Assets/Photon.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
